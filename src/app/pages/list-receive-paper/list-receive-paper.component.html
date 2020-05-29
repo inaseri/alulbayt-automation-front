@@ -1,0 +1,33 @@
+<div class=" content">
+  <div class=" row" dir="rtl">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">لیست نامه های ورودی</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter text-right" id="">
+              <thead class=" text-primary">
+              <tr>
+                <th class=" text-right">ردیف</th>
+                <th class=" text-right">شماره نامه</th>
+                <th class=" text-right">سازمان ارسال کننده</th>
+                <th class=" text-right">موضوع نامه</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr mdbTableCol *ngFor="let el of elements">
+                <th scope="row">{{el.id}}</th>
+                <td>{{el.id}}</td>
+                <td>{{el.organization}}</td>
+                <td>{{el.subject}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

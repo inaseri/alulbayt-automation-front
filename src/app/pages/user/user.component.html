@@ -1,0 +1,106 @@
+
+<div class=" content" dir="rtl">
+  <div class="text-right row">
+    <div class=" col-md-8">
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title">ویرایش مشخصات من</h5></div>
+        <div class=" card-body">
+          <form>
+            <div class=" row">
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> شماره تلفن </label>
+                  <input
+                    name="username"
+                    [(ngModel)]="data.username"
+                    class=" form-control"
+                    type="tel"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 px-md-1">
+                <div class=" form-group">
+                  <label> نام </label>
+                  <input
+                    name="first_name"
+                    [(ngModel)]="data.first_name"
+                    class=" form-control"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label> نام خانوادگی </label>
+                  <input
+                    name="last_name"
+                    [(ngModel)]="data.last_name"
+                    class=" form-control"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> ایمیل </label>
+                  <input
+                    name="email"
+                    [(ngModel)]="data.email"
+                    class=" form-control"
+                    type="email"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 px-md-1">
+                <div class="">
+                  <label> تصویر </label>
+                  <input
+                    #imageInput
+                    class=" form-control"
+                    type="file"
+                    type="file"
+                    accept="image/*"
+                    (change)="processFile(imageInput)"
+                  />
+                </div>
+              </div>
+              <div class=" col-md-4 pl-md-1">
+                <div class=" form-group">
+                  <label> </label>
+                  <input
+                    class=" form-control"
+                    disabled
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class=" card-footer">
+          <button class=" btn btn-fill btn-danger" type="submit" (click)="updateUserInfo()">به روز رسانی</button>
+        </div>
+      </div>
+    </div>
+    <div class=" col-md-4">
+      <div class=" card card-user">
+        <div class=" card-body">
+          <p class=" card-text"></p>
+          <div class=" author">
+            <div class=" block block-one"></div>
+            <div class=" block block-two"></div>
+            <div class=" block block-three"></div>
+            <div class=" block block-four"></div>
+            <a href="javascript:void(0)">
+              <img alt="..." class=" avatar" src="{{data.image}}" />
+              <h5 class=" title">{{data.first_name}} &nbsp; {{data.last_name}}</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
