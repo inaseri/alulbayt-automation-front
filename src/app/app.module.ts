@@ -21,6 +21,7 @@ import { CreateReceivePaperComponent } from './pages/create-receive-paper/create
 import { ListReceivePaperComponent } from './pages/list-receive-paper/list-receive-paper.component';
 import { CreateSendPaperComponent } from './pages/create-send-paper/create-send-paper.component';
 import { ListSendPaperComponent } from './pages/list-send-paper/list-send-paper.component';
+import { SettingsMokatebatComponent } from './pages/settings-mokatebat/settings-mokatebat.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,7 @@ import { ListSendPaperComponent } from './pages/list-send-paper/list-send-paper.
     CKEditorModule,
     AngularEditorModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

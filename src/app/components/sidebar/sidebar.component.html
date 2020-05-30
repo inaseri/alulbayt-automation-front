@@ -1,24 +1,55 @@
 <div class="logo">
-  <a href="https://www.creative-tim.com?ref=bda-sidebar-logo" class="simple-text logo-mini">
+  <a class="simple-text logo-mini">
     <div class="logo-img">
       <img src="./assets/img/angular2-logo-white.png" />
     </div>
   </a>
-  <a href="https://www.creative-tim.com?ref=bda-sidebar-logo" class="simple-text logo-normal">
-    Creative Tim
+  <a class="simple-text logo-normal">
+    اتوماسیون اداری
   </a>
 </div>
 <div class="sidebar-wrapper">
   <ul class="nav">
-    <li
-      routerLinkActive="active"
-      *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item"
-    >
-      <a [routerLink]="[menuItem.path]">
-        <i class="tim-icons  {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
-      </a>
+    <li class=" nav-item" ngbDropdown>
+      <a class=" nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle> مکاتبات اداری</a>
+      <ul class=" dropdown-navbar" ngbDropdownMenu>
+        <li class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/create-send-paper']" href="javascript:void(0)" ngbDropdownItem>
+            ایجاد نامه ارسالی
+          </a>
+        </li>
+        <li style="color: black;" class=" nav-link">
+
+          <a style="color: black;" class=" nav-item" [routerLink]="['/create-receive-paper']" href="javascript:void(0)" ngbDropdownItem>
+            ایجاد نامه ورود
+          </a>
+        </li>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/list-send-paper']" href="javascript:void(0)" ngbDropdownItem>
+            فهرست نامه های ارسالی
+          </a>
+        </li>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/list-receive-paper']" href="javascript:void(0)" ngbDropdownItem>
+            فهرست نامه های ورودی
+          </a>
+        </li>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
+            گزارش گیری
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class=" nav-item" ngbDropdown>
+      <a class=" nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle> تنظیمات </a>
+      <ul class=" dropdown-navbar" ngbDropdownMenu>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/mokatebat-settings']" href="javascript:void(0)" ngbDropdownItem>
+            مکاتبات اداری
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

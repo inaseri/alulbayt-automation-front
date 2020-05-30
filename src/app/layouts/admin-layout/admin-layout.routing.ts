@@ -11,6 +11,7 @@ import { CreateReceivePaperComponent } from "../../pages/create-receive-paper/cr
 import { ListReceivePaperComponent } from "../../pages/list-receive-paper/list-receive-paper.component";
 import { CreateSendPaperComponent } from "../../pages/create-send-paper/create-send-paper.component";
 import { ListSendPaperComponent } from "../../pages/list-send-paper/list-send-paper.component";
+import { SettingsMokatebatComponent } from "../../pages/settings-mokatebat/settings-mokatebat.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -21,6 +22,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'list-receive-paper', component: ListReceivePaperComponent },
   { path: 'create-send-paper', component: CreateSendPaperComponent },
   { path: 'list-send-paper', component: ListSendPaperComponent },
+  { path: 'mokatebat-settings', component: SettingsMokatebatComponent },
 
   { path: "icons", component: IconsComponent },
   { path: "maps", component: MapComponent },
