@@ -74,7 +74,7 @@
                 width: 34px;
                 margin-right: 10px;
                 margin-left: 0px;
-                font-size: 12px;
+                font-size: 20px!important;
                 text-align: center;
                 line-height: 25px;
                 position: relative;
@@ -86,7 +86,7 @@
               }
 
               i{
-                font-size: 17px;
+                font-size: 20px!important;
                 line-height: 20px;
                 width: 26px;
               }
@@ -160,7 +160,7 @@
                 position: relative;
                 text-transform: uppercase;
                 cursor: pointer;
-                font-size: $font-size-xs;
+                font-size: 15px!important;
                 padding: 10px 8px;
                 line-height: $line-height-lg;
             }
@@ -587,7 +587,7 @@
       margin-left: 10px;
       i{
       color: $white;
-      font-size: 20px;
+      font-size: 20px!important;
       }
     }
   }
@@ -612,7 +612,7 @@
       max-width: 600px;
       color: $opacity-5;
       margin: 0 auto;
-      font-size: 13px;
+      font-size: 20px!important;
 
       a{
         color: $white;

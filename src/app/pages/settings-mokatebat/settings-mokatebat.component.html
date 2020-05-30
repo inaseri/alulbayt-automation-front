@@ -23,7 +23,7 @@
               <div class="col-md-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i  (click)="open(mymodal, 'لیست مکان ها دریافت نامه')" class="tim-icons icon-bullet-list-67 form-control"></i>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
               <div class="col-md-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i (click)="open(mymodal, 'لیست اشخاص دریافت کننده نامه')" class="tim-icons icon-bullet-list-67 form-control"></i>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
               <div class="col-md-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i (click)="open(mymodal, 'لیست موضوعات نامه ها')" class="tim-icons icon-bullet-list-67 form-control"></i>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
               <div class="col-md-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i (click)="open(mymodal, 'لیست اشخاص امضا کننده نامه')" class="tim-icons icon-bullet-list-67 form-control"></i>
                 </div>
               </div>
             </div>
@@ -107,17 +107,37 @@
               <div class="col-md-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i (click)="open(mymodal, 'لیست پیش نویس ها')" class="tim-icons icon-bullet-list-67 form-control"></i>
                 </div>
               </div>
             </div>
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit" >ثبت نامه</button>
-        </div>
       </div>
     </div>
     <div class="col-md-2"></div>
   </div>
+  <ng-template #mymodal let-modal dir="rtl" style="text-align: right">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ title_str }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="modal-body">
+          <ul class="text-right" style="margin-right: 20px;">
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>

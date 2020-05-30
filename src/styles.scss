@@ -2,3 +2,22 @@
 .text-center {
   text-align: center;
 }
+
+@font-face {
+  font-family: 'Neda-Custom';
+  src: url("assets/fonts/Mj_Neda_0.ttf");
+}
+
+body {
+  font-family: Neda-Custom!important;
+  font-size: 15px!important;
+}
+
+label {
+  font-size: 15px!important;
+}
+
+button {
+  font-family: Neda-Custom!important;
+  font-size: 15px!important;
+}

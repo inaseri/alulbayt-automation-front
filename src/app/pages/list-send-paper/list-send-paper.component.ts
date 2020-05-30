@@ -7,8 +7,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ListSendPaperComponent implements OnInit {
 
-  title = 'appBootstrap';
-
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
