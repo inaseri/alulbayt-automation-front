@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
 import { DpDatePickerModule } from "ng2-jalali-date-picker";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
@@ -32,7 +33,8 @@ import { ListSendPaperComponent } from './pages/list-send-paper/list-send-paper.
     AppRoutingModule,
     ToastrModule.forRoot(),
     DpDatePickerModule,
-    CKEditorModule
+    CKEditorModule,
+    AngularEditorModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent],
   providers: [],

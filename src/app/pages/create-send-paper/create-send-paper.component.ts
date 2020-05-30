@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 
 
@@ -10,27 +9,84 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-send-paper.component.scss']
 })
 export class CreateSendPaperComponent implements OnInit {
-  // public Editor = ClassicEditor
 
-  // editorConfig = {
-  //   placeholder: 'Type the content here!',
-  //   color: 'black',
-  // };
   persian_template = false;
   arabic_template = true;
-  //
-  // constructor() {
-  //   this.Editor.builtinPlugins = [
-  //     Alignment,
-  //   ];
-  // }
-  //
-  //
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'times-new-roman', name: 'Times New Roman'},
+      {class: 'calibri', name: 'Calibri'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    uploadUrl: 'v1/image',
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+      [
+        'bold',
+        'italic',
+        'underline',
+        'strikeThrough',
+        'subscript',
+        'superscript',
+        'indent',
+        'outdent',
+        'insertUnorderedList',
+        'insertOrderedList',
+        'heading',
+        'fontName'
+      ],
+      [ 'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'link',
+        'unlink',
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ]
+  };
+
+  constructor() {
+  }
+
   ngOnInit(): void {
-    // this.Editor.create( document.querySelector( '#editor' ), {
-    //   plugins: [ Alignment ],
-    //   toolbar: [ 'alignment' ]
-    // } )
   }
 
   filter(value: number) {
