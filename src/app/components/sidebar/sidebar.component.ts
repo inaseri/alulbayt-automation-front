@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/icons",
+    path: "/create-send-paper",
     title: "ایجاد نامه ارسالی",
     rtlTitle: "ایجاد نامه ارسال",
     icon: "icon-simple-add",
@@ -29,9 +29,9 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-simple-add",
     class: "" },
   {
-    path: "/notifications",
+    path: "/list-send-paper",
     title: "فهرست نامه ارسالی",
-    rtlTitle: "فهرست نامه ورودی",
+    rtlTitle: "فهرست نامه ارسالی",
     icon: "icon-bullet-list-67",
     class: ""
   },

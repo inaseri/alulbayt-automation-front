@@ -1,0 +1,124 @@
+
+<div class=" content" dir="rtl">
+  <div class=" row">
+    <div class="col--md-1"></div>
+    <div class=" col-md-9">
+      <div class="text-right card">
+        <div class="card-header"><h5 class=" title">ایجاد نامه ارسالی</h5></div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-fill btn-success" type="submit" (click)="filter(1)">قالب فارسی</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-fill btn-success" type="submit" (click)="filter(0)">قالب عربی</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6" *ngIf="persian_template">
+                <div class="form-group">
+                  <dp-date-picker
+                    name="date_dabirkhane"
+                    dir="rtl" mode="day"
+                    placeholder="تاریخ"
+                    theme="dp-material"
+                    class="new-dp"
+                    style="background: transparent!important;"
+                  ></dp-date-picker>
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="arabic_template">
+                <div class=" form-group">
+                  <label> تاریخ </label>
+                  <input
+                    name="last_name"
+                    class=" form-control"
+                    type="date"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> پیوست </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> مکان دریافت کننده </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> شخص دریافت کننده </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> موضوع نامه </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label> متن پیش نویس </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-4 pr-md-1">
+                <div class=" form-group">
+                  <label>شخص امضا کننده </label>
+                  <select class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+<!--                <ckeditor id="editor"-->
+<!--                          [editor]="Editor"-->
+<!--                          [config]="editorConfig"-->
+<!--                          data="<p>Hello, world!</p>">-->
+<!--                </ckeditor>-->
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class=" card-footer">
+          <button class="btn btn-fill btn-danger" type="submit">ثبت نامه</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {
     this.location = location;
     this.sidebarVisible = false;
+    this.data = new User();
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
@@ -57,15 +58,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     });
     this.apiService.userInfo().subscribe(response => {
-      // for (const key in response) {
-      //   if (response.hasOwnProperty(key)) {
-      //     if (!response[key].image) {
-      //       response[key].image = "assets/img/anime3.png";
-      //     }
-      //   }
-      // }
+      for (const key in response) {
+        if (response.hasOwnProperty(key)) {
+          if (response[key].image === '') {
+            response[key].image = "assets/img/anime3.png";
+          }
+        }
+      }
       this.data = response;
     });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('is_admin');
+    localStorage.clear();
+    this.apiService.isUserLoggedIn = false;
+    // reload page after logout
+    window.location.assign('/');
   }
 
   collapse() {
