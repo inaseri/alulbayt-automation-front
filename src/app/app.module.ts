@@ -11,6 +11,7 @@ import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
+import { MatSelectModule } from "@angular/material/select";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -36,7 +37,8 @@ import { SettingUserComponent } from './pages/setting-user/setting-user.componen
     ToastrModule.forRoot(),
     DpDatePickerModule,
     CKEditorModule,
-    AngularEditorModule
+    AngularEditorModule,
+    MatSelectModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent],
   providers: [],
