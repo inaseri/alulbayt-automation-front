@@ -57,6 +57,24 @@ export const ROUTES: RouteInfo[] = [
     class: "",
 
   },
+  {
+    path: "/mokatebat-settings",
+    title: "تنظیمات مکاتبات اداری",
+    rtlTitle: "تنظیمات مکاتبات اداری",
+    icon: "icon-single-02",
+    class: "",
+
+  },
+  {
+    path: "/user-settings",
+    title: "دسترسی ها و ساخت کاربران",
+    rtlTitle: "دسترسی ها و ساخت کاربران",
+    icon: "icon-single-02",
+    class: "",
+  },
+
+
+
 ];
 
 @Component({

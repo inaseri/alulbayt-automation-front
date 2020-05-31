@@ -12,6 +12,7 @@ import { ListReceivePaperComponent } from "../../pages/list-receive-paper/list-r
 import { CreateSendPaperComponent } from "../../pages/create-send-paper/create-send-paper.component";
 import { ListSendPaperComponent } from "../../pages/list-send-paper/list-send-paper.component";
 import { SettingsMokatebatComponent } from "../../pages/settings-mokatebat/settings-mokatebat.component";
+import { SettingUserComponent } from "../../pages/setting-user/setting-user.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -23,6 +24,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'create-send-paper', component: CreateSendPaperComponent },
   { path: 'list-send-paper', component: ListSendPaperComponent },
   { path: 'mokatebat-settings', component: SettingsMokatebatComponent },
+  { path: 'user-settings', component: SettingUserComponent },
 
   { path: "icons", component: IconsComponent },
   { path: "maps", component: MapComponent },
