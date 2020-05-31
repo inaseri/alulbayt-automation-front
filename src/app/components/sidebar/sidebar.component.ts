@@ -72,6 +72,27 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-single-02",
     class: "",
   },
+  {
+    path: "/create-mokeb",
+    title: "ایجاد موکب",
+    rtlTitle: "ایجاد موکب",
+    icon: "icon-single-02",
+    class: "",
+  },
+  {
+    path: "/list-mokeb",
+    title: "فهرست مواکب",
+    rtlTitle: "فهرست مواکب",
+    icon: "icon-single-02",
+    class: "",
+  },
+  {
+    path: "/create-certificate",
+    title: "صدور شناسنامه",
+    rtlTitle: "صدور شناسنامه",
+    icon: "icon-single-02",
+    class: "",
+  },
 
 
 

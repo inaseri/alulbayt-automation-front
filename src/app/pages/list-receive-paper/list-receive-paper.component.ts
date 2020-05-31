@@ -12,7 +12,6 @@ export class ListReceivePaperComponent implements OnInit {
   searchStringSubjects: string;
   searchStringOrganizations: string;
   elements: any;
-  headElements = ['ردیف', 'شماره نامه', 'سازمان ارسال کننده', 'موضوع نامه'];
 
   constructor(
     public apiSerivce: ApiService,

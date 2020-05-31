@@ -1,0 +1,70 @@
+<div class=" content">
+  <div class="col-md-1"></div>
+  <div class=" row" dir="rtl">
+    <div class="col-md-1"></div>
+    <div class=" col-md-11">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class="text-right card-title">لیست نامه های ارسالی</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter text-right" id="">
+              <thead class=" text-primary">
+              <tr>
+                <th class=" text-right">ردیف</th>
+                <th class=" text-right">شناسه ثبت موکب</th>
+                <th class=" text-right">نام موکب</th>
+                <th class=" text-right">مدیر موکب</th>
+                <th class=" text-right">محل استقرار موکب</th>
+                <th class=" text-right">عملیات</th>
+              </tr>
+              </thead>
+              <tbody>
+              <th class=" text-right">ردیف</th>
+              <th class=" text-right">شناسه ثبت موکب</th>
+              <th class=" text-right">نام موکب</th>
+              <th class=" text-right">مدیر موکب</th>
+              <th class=" text-right">محل استقرار موکب</th>
+              <th class=" text-right">
+                <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">عملیات</button>
+              </th>
+              <!--              <tr mdbTableCol *ngFor="let el of elements">-->
+              <!--                <th scope="row">{{el.id}}</th>-->
+              <!--                <td>{{el.id}}</td>-->
+              <!--                <td>{{el.organization}}</td>-->
+              <!--                <td>{{el.subject}}</td>-->
+              <!--              </tr>-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #mymodal let-modal dir="rtl" style="text-align: right">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">انجام عملیات</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="modal-body">
+          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">اصلاح موکب</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="modal-body">
+          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">راکد کردن موکب</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="modal-body">
+          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">مشاهده اطلاعات موکب</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

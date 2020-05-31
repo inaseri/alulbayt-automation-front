@@ -12,6 +12,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { MatSelectModule } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -24,6 +25,9 @@ import { CreateSendPaperComponent } from './pages/create-send-paper/create-send-
 import { ListSendPaperComponent } from './pages/list-send-paper/list-send-paper.component';
 import { SettingsMokatebatComponent } from './pages/settings-mokatebat/settings-mokatebat.component';
 import { SettingUserComponent } from './pages/setting-user/setting-user.component';
+import { CreateMokebComponent } from './pages/create-mokeb/create-mokeb.component';
+import { ListMokebComponent } from './pages/list-mokeb/list-mokeb.component';
+import { CreateCertificateComponent } from './pages/create-certificate/create-certificate.component';
 
 @NgModule({
   imports: [
@@ -38,9 +42,10 @@ import { SettingUserComponent } from './pages/setting-user/setting-user.componen
     DpDatePickerModule,
     CKEditorModule,
     AngularEditorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
