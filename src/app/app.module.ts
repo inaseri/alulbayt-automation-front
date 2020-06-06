@@ -28,6 +28,8 @@ import { SettingUserComponent } from './pages/setting-user/setting-user.componen
 import { CreateMokebComponent } from './pages/create-mokeb/create-mokeb.component';
 import { ListMokebComponent } from './pages/list-mokeb/list-mokeb.component';
 import { CreateCertificateComponent } from './pages/create-certificate/create-certificate.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -43,7 +45,8 @@ import { CreateCertificateComponent } from './pages/create-certificate/create-ce
     CKEditorModule,
     AngularEditorModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent],
   providers: [],

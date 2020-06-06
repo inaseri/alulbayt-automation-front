@@ -6,7 +6,8 @@ import { map } from  'rxjs/operators';
 
 import { User } from '../models/User/user';
 import { ReceivePaper } from "../models/Mokatebat/receive-paper";
-
+import { Location } from "../models/location/location";
+import { Subject } from "../models/subject/subject";
 
 @Injectable({
   providedIn: 'root'
@@ -128,5 +129,47 @@ export class ApiService {
       );
   }
 
+  create_location_send_paper(item: Location): Observable<Location> {
+    return this.http
+      .post<Location>(this.base_path +
+        'mokatebat/sendtoorganization/location/' + '?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2', JSON.stringify(item),
+         this.httpOptions
+      )
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+
+  }
+
+  list_location_send_paper(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/location/' + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_subject_send_paper(item: Subject): Observable<Subject> {
+    return this.http
+      .post<Subject>(this.base_path +
+        'mokatebat/sendtoorganization/subject/?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2', JSON.stringify(item),
+         this.httpOptions
+      )
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  list_subject_send_paper(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/subject/' + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
 
 }

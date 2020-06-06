@@ -11,13 +11,13 @@
               <div class="col-8">
                 <div class=" form-group">
                   <label> ایجاد مکان دریافت نامه </label>
-                  <input class="form-control">
+                  <input class="form-control" [(ngModel)]="create_location.name" name="name">
                 </div>
               </div>
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="create_send_location()"></i>
                 </div>
               </div>
               <div class="col-2">
@@ -51,13 +51,13 @@
               <div class="col-8">
                 <div class=" form-group">
                   <label> موضوع نامه </label>
-                  <input class="form-control">
+                  <input class="form-control" [(ngModel)]="create_subject.text" name="text">
                 </div>
               </div>
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="create_send_subject()"></i>
                 </div>
               </div>
               <div class="col-2">
@@ -126,14 +126,10 @@
     <div class="row">
       <div class="col">
         <div class="modal-body">
-          <ul class="text-right" style="margin-right: 20px;">
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
-            <li style="color: black; list-style: disc; direction: rtl;">no 1</li>
+          <ul class="text-right" style="margin-right: 20px;" >
+            <li style="color: black; list-style: disc; direction: rtl;"
+                *ngFor="let list_content of modal_body"
+            >{{list_content}}</li>
           </ul>
         </div>
       </div>
