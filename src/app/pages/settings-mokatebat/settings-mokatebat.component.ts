@@ -27,7 +27,7 @@ export class SettingsMokatebatComponent implements OnInit {
   }
 
   open(content, title: string) {
-
+    this.modal_body = [];
     if (title === 'لیست مکان ها دریافت نامه') {
       for (const key in this.list_location)  {
         if (this.list_location.hasOwnProperty(key)) {

@@ -53,34 +53,6 @@ export class CreateSendPaperComponent implements OnInit {
     uploadWithCredentials: false,
     sanitize: true,
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      [
-        'bold',
-        'italic',
-        'underline',
-        'strikeThrough',
-        'subscript',
-        'superscript',
-        'indent',
-        'outdent',
-        'insertUnorderedList',
-        'insertOrderedList',
-        'heading',
-        'fontName'
-      ],
-      [ 'fontSize',
-        'textColor',
-        'backgroundColor',
-        'customClasses',
-        'link',
-        'unlink',
-        'insertImage',
-        'insertVideo',
-        'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
-    ]
   };
 
   constructor() {
