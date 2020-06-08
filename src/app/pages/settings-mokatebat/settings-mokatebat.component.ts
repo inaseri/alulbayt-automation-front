@@ -3,6 +3,7 @@ import { ApiService } from "../../services/api.service";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Location } from "../../models/location/location";
 import { Subject } from "../../models/subject/subject";
+import { UserReceive } from "../../models/user-receive";
 
 @Component({
   selector: 'app-settings-mokatebat',
@@ -21,9 +22,13 @@ export class SettingsMokatebatComponent implements OnInit {
   create_subject: Subject;
   list_subject: any;
 
+  create_user_receive: UserReceive;
+  list_user_receive: any;
+
   constructor(private modalService: NgbModal, private apiService: ApiService) {
     this.create_location = new Location();
     this.create_subject = new Subject();
+    this.create_user_receive = new UserReceive();
   }
 
   open(content, title: string) {
@@ -34,14 +39,18 @@ export class SettingsMokatebatComponent implements OnInit {
           this.modal_body.push(this.list_location[key].name);
         }
       }
-      console.log(this.list_location);
     } else if (title === 'لیست موضوعات نامه ها') {
       for (const key in this.list_subject)  {
         if (this.list_subject.hasOwnProperty(key)) {
           this.modal_body.push(this.list_subject[key].text);
         }
       }
-      console.log(this.list_subject);
+    } else if (title === 'لیست اشخاص دریافت کننده نامه') {
+      for (const key in this.list_user_receive)  {
+        if (this.list_user_receive.hasOwnProperty(key)) {
+          this.modal_body.push(this.list_user_receive[key].name);
+        }
+      }
     }
 
     this.title_str = title;
@@ -65,6 +74,7 @@ export class SettingsMokatebatComponent implements OnInit {
   ngOnInit(): void {
     this.list_send_location();
     this.list_send_subject();
+    this.list_receive_user()
   }
 
   create_send_location() {
@@ -77,6 +87,20 @@ export class SettingsMokatebatComponent implements OnInit {
   list_send_location() {
     this.apiService.list_location_send_paper().subscribe(
       response => this.list_location = response['objects'],
+      error => console.log('There is some problem: ', error)
+    );
+  }
+
+  create_receive_user() {
+    this.apiService.create_user_receive(this.create_user_receive).subscribe(
+      response => alert('ثبت شخص دریافت کننده نامه با موفقیت انجام شد.'),
+      error => console.log('There is some problem: ', error)
+    );
+  }
+
+  list_receive_user() {
+    this.apiService.list_user_receive().subscribe(
+      response => this.list_user_receive = response['objects'],
       error => console.log('There is some problem: ', error)
     );
   }

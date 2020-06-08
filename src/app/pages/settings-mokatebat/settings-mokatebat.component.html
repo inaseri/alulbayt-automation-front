@@ -28,16 +28,26 @@
               </div>
             </div>
             <div class="row form-row">
-              <div class="col-8">
+              <div class="col-4">
                 <div class=" form-group">
                   <label> شخص دریافت نامه </label>
-                  <input class="form-control">
+                  <input [(ngModel)]="create_user_receive.name" name="name" class="form-control">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class=" form-group">
+                  <label> انتخاب مکان </label>
+                  <select class="form-control" [(ngModel)]="create_user_receive.location" name="location">
+                    <option *ngFor="let item3 of list_location"
+                            class=" form-control" [value]="item3.id"
+                            style="background: transparent; color: black">{{item3.name}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="create_receive_user()"></i>
                 </div>
               </div>
               <div class="col-2">

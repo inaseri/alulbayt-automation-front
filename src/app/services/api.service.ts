@@ -8,6 +8,7 @@ import { User } from '../models/User/user';
 import { ReceivePaper } from "../models/Mokatebat/receive-paper";
 import { Location } from "../models/location/location";
 import { Subject } from "../models/subject/subject";
+import {UserReceive} from "../models/user-receive";
 
 @Injectable({
   providedIn: 'root'
@@ -166,6 +167,25 @@ export class ApiService {
   list_subject_send_paper(): Observable<any> {
     return this.http
       .get<any>(this.base_path + 'v1/sendtoorg/subject/' + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_user_receive(item: UserReceive): Observable<UserReceive> {
+    return this.http
+      .post<UserReceive>(this.base_path + 'mokatebat/sendtoorganization/user/?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2',
+        JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  list_user_receive(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?token=' + localStorage.getItem('token'))
       .pipe(
         retry(0),
         catchError(this.handleError)
