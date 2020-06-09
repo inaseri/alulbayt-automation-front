@@ -4,6 +4,13 @@ import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Location } from "../../models/location/location";
 import { Subject } from "../../models/subject/subject";
 import { UserReceive } from "../../models/user-receive";
+import { User } from "../../models/User/user";
+
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 
 @Component({
   selector: 'app-settings-mokatebat',
@@ -11,6 +18,8 @@ import { UserReceive } from "../../models/user-receive";
   styleUrls: ['./settings-mokatebat.component.scss']
 })
 export class SettingsMokatebatComponent implements OnInit {
+
+  selectedFile: ImageSnippet;
 
   title_str: string;
   modal_body: any[] = [];
@@ -25,10 +34,14 @@ export class SettingsMokatebatComponent implements OnInit {
   create_user_receive: UserReceive;
   list_user_receive: any;
 
+  list_user_assign: any;
+  create_user_assign: User;
+
   constructor(private modalService: NgbModal, private apiService: ApiService) {
     this.create_location = new Location();
     this.create_subject = new Subject();
     this.create_user_receive = new UserReceive();
+    this.create_user_assign = new User();
   }
 
   open(content, title: string) {
@@ -49,6 +62,12 @@ export class SettingsMokatebatComponent implements OnInit {
       for (const key in this.list_user_receive)  {
         if (this.list_user_receive.hasOwnProperty(key)) {
           this.modal_body.push(this.list_user_receive[key].name);
+        }
+      }
+    } else if (title === 'لیست اشخاص امضا کننده نامه') {
+      for (const key in this.list_user_receive) {
+        if (this.list_user_assign.hasOwnProperty(key)) {
+          this.modal_body.push(this.list_user_assign[key].first_name.toString() + ' ' + this.list_user_assign[key].last_name.toString());
         }
       }
     }
@@ -74,7 +93,8 @@ export class SettingsMokatebatComponent implements OnInit {
   ngOnInit(): void {
     this.list_send_location();
     this.list_send_subject();
-    this.list_receive_user()
+    this.list_receive_user();
+    this.list_send_user_assign();
   }
 
   create_send_location() {
@@ -117,6 +137,32 @@ export class SettingsMokatebatComponent implements OnInit {
       response => this.list_subject = response['objects'],
       error => console.log('There is some problems: ', error)
     )
+  }
+
+  list_send_user_assign() {
+    this.apiService.list_assign_user().subscribe(
+      response => this.list_user_assign = response['objects'],
+      error => console.log('There is some problems: ', error)
+    );
+  }
+
+  create_send_user_assign() {
+    const uploadData = new FormData();
+    uploadData.append('sign', this.selectedFile.file);
+    uploadData.append('id', this.create_user_assign.id)
+    this.apiService.crete_assign_user(uploadData).subscribe(
+      response => alert('مهر شخص امضا کننده با موفقیت بارگذاری گردید.'),
+      error => console.log('There is some problems: ', error)
+    );
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+    reader.readAsDataURL(file);
   }
 
 

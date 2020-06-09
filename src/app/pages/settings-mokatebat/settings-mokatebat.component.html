@@ -28,6 +28,26 @@
               </div>
             </div>
             <div class="row form-row">
+              <div class="col-8">
+                <div class=" form-group">
+                  <label> موضوع نامه </label>
+                  <input class="form-control" [(ngModel)]="create_subject.text" name="text">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="from-group">
+                  <label>&nbsp;</label>
+                  <i class="tim-icons icon-simple-add form-control" (click)="create_send_subject()"></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="from-group">
+                  <label>&nbsp;</label>
+                  <i (click)="open(mymodal, 'لیست موضوعات نامه ها')" class="tim-icons icon-bullet-list-67 form-control"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
               <div class="col-4">
                 <div class=" form-group">
                   <label> شخص دریافت نامه </label>
@@ -58,36 +78,31 @@
               </div>
             </div>
             <div class="row form-row">
-              <div class="col-8">
+              <div class="col-4">
+                <div class="">
+                  <label> تصویر امضا </label>
+                  <input #imageInput
+                         type="file"
+                         accept="image/*"
+                         (change)="processFile(imageInput)"
+                         class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
                 <div class=" form-group">
-                  <label> موضوع نامه </label>
-                  <input class="form-control" [(ngModel)]="create_subject.text" name="text">
+                  <label> شخص امضا کننده </label>
+                  <select class="form-control" [(ngModel)]="create_user_assign.id" name="location">
+                    <option *ngFor="let item2 of list_user_assign"
+                            class=" form-control" [value]="item2.id"
+                            style="background: transparent; color: black">{{item2.first_name}}&nbsp;{{item2.last_name}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control" (click)="create_send_subject()"></i>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="from-group">
-                  <label>&nbsp;</label>
-                  <i (click)="open(mymodal, 'لیست موضوعات نامه ها')" class="tim-icons icon-bullet-list-67 form-control"></i>
-                </div>
-              </div>
-            </div>
-            <div class="row form-row">
-              <div class="col-8">
-                <div class=" form-group">
-                  <label> شخص امضا کننده نامه </label>
-                  <input class="form-control">
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="from-group">
-                  <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="create_send_user_assign()"></i>
                 </div>
               </div>
               <div class="col-2">

@@ -32,20 +32,17 @@ export class ApiService {
   };
 
   // Handle API errors
-  handleError(error: HttpErrorResponse) {
+  handleError(error: any) {
+    let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error['error']}`;
     }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 
@@ -133,7 +130,7 @@ export class ApiService {
   create_location_send_paper(item: Location): Observable<Location> {
     return this.http
       .post<Location>(this.base_path +
-        'mokatebat/sendtoorganization/location/' + '?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2', JSON.stringify(item),
+        'mokatebat/sendtoorganization/location/' + '?token=' + localStorage.getItem('token'), JSON.stringify(item),
          this.httpOptions
       )
       .pipe(
@@ -155,7 +152,7 @@ export class ApiService {
   create_subject_send_paper(item: Subject): Observable<Subject> {
     return this.http
       .post<Subject>(this.base_path +
-        'mokatebat/sendtoorganization/subject/?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2', JSON.stringify(item),
+        'mokatebat/sendtoorganization/subject/' + '?token=' + localStorage.getItem('token'), JSON.stringify(item),
          this.httpOptions
       )
       .pipe(
@@ -175,7 +172,7 @@ export class ApiService {
 
   create_user_receive(item: UserReceive): Observable<UserReceive> {
     return this.http
-      .post<UserReceive>(this.base_path + 'mokatebat/sendtoorganization/user/?token=a6f9d837d4345ad60cfe2fe1ad28ac0f09d99cd2',
+      .post<UserReceive>(this.base_path + 'mokatebat/sendtoorganization/user/' + '?token=' + localStorage.getItem('token'),
         JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(0),
@@ -186,6 +183,24 @@ export class ApiService {
   list_user_receive(): Observable<any> {
     return this.http
       .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  list_assign_user(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/auth/user/'  + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  crete_assign_user(item): Observable<User> {
+    return this.http
+      .post<User>(this.base_path + 'mokatebat/edit_user/' + '?token=' + localStorage.getItem('token'), item)
       .pipe(
         retry(0),
         catchError(this.handleError)

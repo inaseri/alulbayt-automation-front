@@ -54,9 +54,9 @@
                 <div class=" form-group">
                   <label>مکان دریافت</label>
                   <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class="form-control" *ngFor="let location of list_location"
+                            style="background: transparent; color: black">{{location.name}}</option>
                   </select>
                 </div>
               </div>
@@ -64,9 +64,9 @@
                 <div class=" form-group">
                   <label>شخص دریافت</label>
                   <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class=" form-control" *ngFor="let user_receiver of list_user_receive"
+                            style="background: transparent; color: black">{{user_receiver.name}}</option>
                   </select>
                 </div>
               </div>
@@ -76,9 +76,9 @@
                 <div class=" form-group">
                   <label> موضوع نامه </label>
                   <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class=" form-control" *ngFor="let subject of list_subject"
+                            style="background: transparent; color: black">{{subject.text}}</option>
                   </select>
                 </div>
               </div>
@@ -96,9 +96,9 @@
                 <div class=" form-group">
                   <label>امضا کننده</label>
                   <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class=" form-control" *ngFor="let user_assign of list_user_assign"
+                            style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
                   </select>
                 </div>
               </div>
