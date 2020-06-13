@@ -8,110 +8,114 @@
         <div class="card-body">
           <form>
             <div class="row form-row">
-              <div class="col">
-                <button class="btn btn-fill btn-success" type="submit" (click)="filter(1)">قالب فارسی</button>
-              </div>
-              <div class="col">
-                <button class="btn btn-fill btn-success" type="submit" (click)="filter(0)">قالب عربی</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6" *ngIf="persian_template">
-                <div class="form-group">
-                  <dp-date-picker
-                    name="date_dabirkhane"
-                    dir="rtl" mode="day"
-                    placeholder="تاریخ"
-                    theme="dp-material"
-                    class="new-dp"
-                    style="background: transparent!important;"
-                  ></dp-date-picker>
-                </div>
-              </div>
-              <div class="col-md-6" *ngIf="arabic_template">
-                <div class=" form-group">
-                  <label> تاریخ </label>
-                  <input
-                    name="last_name"
-                    class=" form-control"
-                    type="date"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row form-row">
-              <div class="col-4">
-                <div class=" form-group">
-                  <label>پیوست</label>
-                  <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class=" form-group">
-                  <label>مکان دریافت</label>
-                  <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class="form-control" *ngFor="let location of list_location"
-                            style="background: transparent; color: black">{{location.name}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class=" form-group">
-                  <label>شخص دریافت</label>
-                  <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_receiver of list_user_receive"
-                            style="background: transparent; color: black">{{user_receiver.name}}</option>
-                  </select>
-                </div>
-              </div>
+              <mat-tab-group>
+                <mat-tab style="font-family: Neda-Custom!important;" label="قالب عربی">
+                  <div class="col" style="margin-top: 15px;">
+                    <div class="form-group">
+                      <label style="font-family: Neda-Custom!important;"> تاریخ </label>
+                      <input
+                        class=" form-control"
+                        type="date"
+                        [(ngModel)]="create_send_paper.date"
+                        name="date"
+                      />
+                    </div>
+                  </div>
+                </mat-tab>
+                <mat-tab style="font-family: Neda-Custom!important;" label="قالب فارسی">
+                  <div class="col" style="margin-top: 15px;">
+                    <div class="form-group">
+                      <dp-date-picker
+                        dir="rtl" mode="day"
+                        placeholder="تاریخ"
+                        theme="dp-material"
+                        class="new-dp"
+                        style="background: transparent!important;"
+                        [(ngModel)]="create_send_paper.date"
+                        name="date"
+                      ></dp-date-picker>
+                    </div>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
             </div>
             <div class="row form-row">
               <div class="col-4">
                 <div class=" form-group">
                   <label> موضوع نامه </label>
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="create_send_paper.subject" name="subject">
                     <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let subject of list_subject"
+                    <option class=" form-control" *ngFor="let subject of list_subject" [value]="list_subject.id"
                             style="background: transparent; color: black">{{subject.text}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-4">
                 <div class=" form-group">
-                  <label>متن پیش نویس</label>
-                  <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  <label>مکان دریافت</label>
+                  <select class="form-control" #locationSelect (change)="on_change_location(locationSelect.value)">
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class="form-control" *ngFor="let location of list_location"
+                            style="background: transparent; color: black" [value]="location.id">{{location.name}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-4">
                 <div class=" form-group">
-                  <label>امضا کننده</label>
-                  <select class="form-control">
+                  <label>شخص دریافت</label>
+                  <select class="form-control" name="user" [(ngModel)]="create_send_paper.user" [disabled]="select_receive_user_disable == 0">
                     <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_assign of list_user_assign"
-                            style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
+                    <option class=" form-control" *ngFor="let user_receiver of list_user_receive" [value]="list_user_receive.id"
+                            style="background: transparent; color: black" >{{user_receiver.name}}</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig"></angular-editor>
+            <div class="row form-row">
+              <div class="col-4">
+                <div class=" form-group">
+                  <label>امضا کننده</label>
+                  <select class="form-control" name="user_sign" [(ngModel)]="create_send_paper.user_sign">
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class=" form-control" *ngFor="let user_assign of list_user_assign" [value]="list_user_assign.id"
+                            style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class=" form-group">
+                  <label>موضوع پیش نویس</label>
+                  <select #mySelect class="form-control">
+                    <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class=" form-group">
+                  <label>پیوست</label>
+                  <select #mySelect class="form-control" (change)="select_attachment_number(mySelect.value)">
+                    <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngFor="let item of attachmentArray" style="margin-bottom: 60px;">
+              <div class="col-md-12" >
+                <angular-editor [config]="editorConfig" name="text" [(ngModel)]="create_send_paper.text"></angular-editor>
               </div>
             </div>
           </form>
         </div>
         <div class=" card-footer">
-          <button class="btn btn-fill btn-danger" type="submit">ثبت نامه</button>
+          <button class="btn btn-fill btn-info" type="submit">ثبت نامه</button>
         </div>
       </div>
     </div>

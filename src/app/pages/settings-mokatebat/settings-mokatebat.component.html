@@ -116,23 +116,23 @@
               <div class="col-8">
                 <div class=" form-group">
                   <label> متن پیش نویس نامه </label>
-                  <select class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black">صلوات</option>
+                  <angular-editor [(ngModel)]="create_pre_text.text" [config]="editorConfig" name="pre_text"></angular-editor>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class=" form-group">
+                  <label> انتخاب موضوع متن </label>
+                  <select class="form-control" [(ngModel)]="create_pre_text.subject" name="location">
+                    <option *ngFor="let item4 of list_subject"
+                            class=" form-control" [value]="item4.id"
+                            style="background: transparent; color: black">{{item4.text}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="from-group">
-                  <label>&nbsp;</label>
-                  <i (click)="open(mymodal, 'لیست پیش نویس ها')" class="tim-icons icon-bullet-list-67 form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="crete_pre_text()"></i>
                 </div>
               </div>
             </div>

@@ -5,12 +5,12 @@ import { Location } from "../../models/location/location";
 import { Subject } from "../../models/subject/subject";
 import { UserReceive } from "../../models/user-receive";
 import { User } from "../../models/User/user";
-
+import { PreText } from "../../models/Pre_text/pre-text";
+import { AngularEditorConfig } from "@kolkov/angular-editor";
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
-
 
 @Component({
   selector: 'app-settings-mokatebat',
@@ -19,6 +19,49 @@ class ImageSnippet {
 })
 export class SettingsMokatebatComponent implements OnInit {
 
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'times-new-roman', name: 'Times New Roman'},
+      {class: 'calibri', name: 'Calibri'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    uploadUrl: 'v1/image',
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+  };
+
+  pre_text: string;
   selectedFile: ImageSnippet;
 
   title_str: string;
@@ -37,11 +80,14 @@ export class SettingsMokatebatComponent implements OnInit {
   list_user_assign: any;
   create_user_assign: User;
 
+  create_pre_text: PreText;
+
   constructor(private modalService: NgbModal, private apiService: ApiService) {
     this.create_location = new Location();
     this.create_subject = new Subject();
     this.create_user_receive = new UserReceive();
     this.create_user_assign = new User();
+    this.create_pre_text = new PreText();
   }
 
   open(content, title: string) {
@@ -152,6 +198,13 @@ export class SettingsMokatebatComponent implements OnInit {
     uploadData.append('id', this.create_user_assign.id)
     this.apiService.crete_assign_user(uploadData).subscribe(
       response => alert('مهر شخص امضا کننده با موفقیت بارگذاری گردید.'),
+      error => console.log('There is some problems: ', error)
+    );
+  }
+
+  crete_pre_text() {
+    this.apiService.create_pre_text(this.create_pre_text).subscribe(
+      response => alert('متن پیش نویس با موفقیت ایجاد گردید.'),
       error => console.log('There is some problems: ', error)
     );
   }

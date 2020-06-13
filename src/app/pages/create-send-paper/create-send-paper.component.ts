@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ApiService } from "../../services/api.service";
+import { MatTabsModule } from '@angular/material/tabs';
+import { PreText } from "../../models/Pre_text/pre-text";
+import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
 
-
+@NgModule({
+  exports: [MatTabsModule]
+})
 @Component({
   selector: 'app-create-send-paper',
   templateUrl: './create-send-paper.component.html',
@@ -10,13 +15,16 @@ import { ApiService } from "../../services/api.service";
 })
 export class CreateSendPaperComponent implements OnInit {
 
-  persian_template = false;
-  arabic_template = true;
+  attachmentArray = [];
 
   list_location: any;
   list_user_receive: any;
   list_subject: any;
   list_user_assign: any;
+  pre_text_str: string;
+  create_send_paper: CreateSendPaper;
+
+  select_receive_user_disable = 0
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -61,35 +69,28 @@ export class CreateSendPaperComponent implements OnInit {
   };
 
   constructor(private apiService: ApiService) {
+    this.create_send_paper = new CreateSendPaper();
   }
 
   ngOnInit(): void {
     this.list_send_location();
-    this.list_receive_user();
     this.list_send_subject();
     this.list_send_user_assign();
+    this.get_pre_text();
   }
 
-  filter(value: number) {
-    if (value == 1) {
-      this.persian_template = true;
-      this.arabic_template = false
-    } else if (value == 0) {
-      this.persian_template = false;
-      this.arabic_template = true;
+  select_attachment_number(number: string) {
+    this.attachmentArray = [];
+    const number2 = Number(number);
+    for (let i=0; i < number2; i ++) {
+      this.attachmentArray.push(i.toString());
     }
+    console.log(this.attachmentArray);
   }
 
   list_send_location() {
     this.apiService.list_location_send_paper().subscribe(
       response => this.list_location = response['objects'],
-      error => console.log('There is some problem: ', error)
-    );
-  }
-
-  list_receive_user() {
-    this.apiService.list_user_receive().subscribe(
-      response => this.list_user_receive = response['objects'],
       error => console.log('There is some problem: ', error)
     );
   }
@@ -108,4 +109,17 @@ export class CreateSendPaperComponent implements OnInit {
     );
   }
 
+  get_pre_text() {
+    this.apiService.get_pre_text(5).subscribe(
+      response => {this.pre_text_str = response['objects'].text; console.log(response['objects'].text)},
+      error => console.log('There is some problems: ', error)
+    );
+  }
+
+  on_change_location(location_id: string) {
+    console.log(location_id)
+    this.apiService.list_user_receive_filter(location_id).subscribe(
+      response => { this.list_user_receive = response['objects']; this.select_receive_user_disable = 1 }
+    );
+  }
 }

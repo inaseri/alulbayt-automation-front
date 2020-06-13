@@ -8,7 +8,8 @@ import { User } from '../models/User/user';
 import { ReceivePaper } from "../models/Mokatebat/receive-paper";
 import { Location } from "../models/location/location";
 import { Subject } from "../models/subject/subject";
-import {UserReceive} from "../models/user-receive";
+import { UserReceive } from "../models/user-receive";
+import { PreText } from "../models/Pre_text/pre-text";
 
 @Injectable({
   providedIn: 'root'
@@ -189,6 +190,15 @@ export class ApiService {
       );
   }
 
+  list_user_receive_filter(location_id: string): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?token=' + localStorage.getItem('token') + '&location=' + location_id)
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
   list_assign_user(): Observable<any> {
     return this.http
       .get<any>(this.base_path + 'v1/auth/user/'  + '?token=' + localStorage.getItem('token'))
@@ -201,6 +211,25 @@ export class ApiService {
   crete_assign_user(item): Observable<User> {
     return this.http
       .post<User>(this.base_path + 'mokatebat/edit_user/' + '?token=' + localStorage.getItem('token'), item)
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_pre_text(item: PreText): Observable<PreText> {
+    return this.http
+      .post<PreText>(this.base_path + 'mokatebat/sendtoorganization/pishnevis' + '?token=' + localStorage.getItem('token'),
+        JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  get_pre_text(subject_id: number): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/pishnevis/' +  '?token=' + localStorage.getItem('token') + '&subject_id=' + subject_id)
       .pipe(
         retry(0),
         catchError(this.handleError)
