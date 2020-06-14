@@ -25,6 +25,7 @@ export class CreateSendPaperComponent implements OnInit {
   create_send_paper: CreateSendPaper;
 
   select_receive_user_disable = 0
+  select_pre_text_disable = 0
 
   editorConfig: AngularEditorConfig = {
     editable: true,

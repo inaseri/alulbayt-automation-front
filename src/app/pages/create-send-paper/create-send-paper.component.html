@@ -52,6 +52,20 @@
               </div>
               <div class="col-4">
                 <div class=" form-group">
+                  <label>پیوست</label>
+                  <select #mySelect class="form-control" (change)="select_attachment_number(mySelect.value)">
+                    <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
+                    <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-4">
+                <div class=" form-group">
                   <label>مکان دریافت</label>
                   <select class="form-control" #locationSelect (change)="on_change_location(locationSelect.value)">
                     <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
@@ -72,7 +86,7 @@
               </div>
             </div>
             <div class="row form-row">
-              <div class="col-4">
+              <div class="col-8">
                 <div class=" form-group">
                   <label>امضا کننده</label>
                   <select class="form-control" name="user_sign" [(ngModel)]="create_send_paper.user_sign">
@@ -82,30 +96,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-4">
-                <div class=" form-group">
-                  <label>موضوع پیش نویس</label>
-                  <select #mySelect class="form-control">
-                    <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class=" form-group">
-                  <label>پیوست</label>
-                  <select #mySelect class="form-control" (change)="select_attachment_number(mySelect.value)">
-                    <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
-                    <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
-                  </select>
-                </div>
-              </div>
+              <div class="col-4"></div>
             </div>
             <div class="row" *ngFor="let item of attachmentArray" style="margin-bottom: 60px;">
               <div class="col-md-12" >
