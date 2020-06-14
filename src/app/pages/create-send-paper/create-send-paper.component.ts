@@ -1,13 +1,10 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ApiService } from "../../services/api.service";
-import { MatTabsModule } from '@angular/material/tabs';
-import { PreText } from "../../models/Pre_text/pre-text";
+// import { MatTabsModule } from '@angular/material/tabs';
 import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
 
-@NgModule({
-  exports: [MatTabsModule]
-})
+
 @Component({
   selector: 'app-create-send-paper',
   templateUrl: './create-send-paper.component.html',
@@ -17,15 +14,17 @@ export class CreateSendPaperComponent implements OnInit {
 
   attachmentArray = [];
 
-  list_location: any;
-  list_user_receive: any;
-  list_subject: any;
-  list_user_assign: any;
-  pre_text_str: string;
-  create_send_paper: CreateSendPaper;
+  listLocation: any;
+  listUserReceive: any;
+  listSubject: any;
+  listUserAssign: any;
+  preTextArray: any = [];
 
-  select_receive_user_disable = 0
-  select_pre_text_disable = 0
+  createSendPaper: CreateSendPaper;
+
+  selectReceiveUserDisable = 0
+  selectPreTextDisable = 0
+  selectPreTextCountDisable = 0
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -70,14 +69,14 @@ export class CreateSendPaperComponent implements OnInit {
   };
 
   constructor(private apiService: ApiService) {
-    this.create_send_paper = new CreateSendPaper();
+    this.createSendPaper = new CreateSendPaper();
   }
 
   ngOnInit(): void {
     this.list_send_location();
     this.list_send_subject();
     this.list_send_user_assign();
-    this.get_pre_text();
+    console.log(this.createSendPaper.subject);
   }
 
   select_attachment_number(number: string) {
@@ -91,36 +90,42 @@ export class CreateSendPaperComponent implements OnInit {
 
   list_send_location() {
     this.apiService.list_location_send_paper().subscribe(
-      response => this.list_location = response['objects'],
+      response => this.listLocation = response['objects'],
       error => console.log('There is some problem: ', error)
     );
   }
 
   list_send_subject() {
     this.apiService.list_subject_send_paper().subscribe(
-      response => this.list_subject = response['objects'],
+      response => this.listSubject = response['objects'],
       error => console.log('There is some problems: ', error)
     )
   }
 
   list_send_user_assign() {
     this.apiService.list_assign_user().subscribe(
-      response => this.list_user_assign = response['objects'],
+      response => this.listUserAssign = response['objects'],
       error => console.log('There is some problems: ', error)
     );
   }
 
-  get_pre_text() {
-    this.apiService.get_pre_text(5).subscribe(
-      response => {this.pre_text_str = response['objects'].text; console.log(response['objects'].text)},
-      error => console.log('There is some problems: ', error)
-    );
-  }
 
   on_change_location(location_id: string) {
-    console.log(location_id)
     this.apiService.list_user_receive_filter(location_id).subscribe(
-      response => { this.list_user_receive = response['objects']; this.select_receive_user_disable = 1 }
+      response => { this.listUserReceive = response['objects']; this.selectReceiveUserDisable = 1 }
     );
+  }
+
+  on_change_subject(subject_id: string) {
+    console.log(subject_id)
+    this.apiService.get_pre_text(subject_id).subscribe(
+      response => { this.preTextArray = response['objects']; this.selectPreTextDisable = 1 },
+      error => console.log('There is some problems: ', error)
+    );
+  }
+
+  on_change_pre_text(text: string) {
+    this.selectPreTextCountDisable = 1
+    this.createSendPaper.text = text
   }
 }

@@ -68,7 +68,12 @@ export class ApiService {
 
   userInfo(): Observable<User> {
     return this.http
-      .get<User>(this.base_path + 'mokatebat/user_info/' + '?token=' + localStorage.getItem('token'), this.httpOptions)
+      .get<User>(this.base_path + 'mokatebat/user_info/', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -86,12 +91,13 @@ export class ApiService {
 
 
   // Mokatebat specific api
-  createSendPapper(item) {
+  createReceivePaper(item) {
     return this.http
       .post<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/' + '?token=' + localStorage.getItem('token'), item , {
         reportProgress: true,
-        observe: 'events'
-      }).pipe(
+        observe: 'events',
+      })
+      .pipe(
         map(event => this.getEventMessage(event, item)),
         catchError(this.handleError)
       );
@@ -121,7 +127,12 @@ export class ApiService {
 
   getListRecievePaper(): Observable<ReceivePaper> {
     return this.http
-      .get<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/' + '?token=' + localStorage.getItem('token'))
+      .get<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/', { headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        Authorization: 'Token ' + localStorage.getItem('token')
+       })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -131,9 +142,12 @@ export class ApiService {
   create_location_send_paper(item: Location): Observable<Location> {
     return this.http
       .post<Location>(this.base_path +
-        'mokatebat/sendtoorganization/location/' + '?token=' + localStorage.getItem('token'), JSON.stringify(item),
-         this.httpOptions
-      )
+        'mokatebat/sendtoorganization/location/' , JSON.stringify(item), { headers: new HttpHeaders(
+            {
+              'Content-Type': 'application/json',
+              Authorization: 'Token ' + localStorage.getItem('token')
+            })
+        })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -143,7 +157,12 @@ export class ApiService {
 
   list_location_send_paper(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/location/' + '?token=' + localStorage.getItem('token'))
+      .get<any>(this.base_path + 'v1/sendtoorg/location/', { headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        Authorization: 'Token ' + localStorage.getItem('token')
+        })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -153,9 +172,12 @@ export class ApiService {
   create_subject_send_paper(item: Subject): Observable<Subject> {
     return this.http
       .post<Subject>(this.base_path +
-        'mokatebat/sendtoorganization/subject/' + '?token=' + localStorage.getItem('token'), JSON.stringify(item),
-         this.httpOptions
-      )
+        'mokatebat/sendtoorganization/subject/', JSON.stringify(item), { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -164,7 +186,12 @@ export class ApiService {
 
   list_subject_send_paper(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/subject/' + '?token=' + localStorage.getItem('token'))
+      .get<any>(this.base_path + 'v1/sendtoorg/subject/',{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -173,8 +200,13 @@ export class ApiService {
 
   create_user_receive(item: UserReceive): Observable<UserReceive> {
     return this.http
-      .post<UserReceive>(this.base_path + 'mokatebat/sendtoorganization/user/' + '?token=' + localStorage.getItem('token'),
-        JSON.stringify(item), this.httpOptions)
+      .post<UserReceive>(this.base_path + 'mokatebat/sendtoorganization/user/', JSON.stringify(item),
+        { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+        })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -183,7 +215,12 @@ export class ApiService {
 
   list_user_receive(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?token=' + localStorage.getItem('token'))
+      .get<any>(this.base_path + 'v1/sendtoorg/user/', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -192,7 +229,12 @@ export class ApiService {
 
   list_user_receive_filter(location_id: string): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?token=' + localStorage.getItem('token') + '&location=' + location_id)
+      .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?location=' + location_id, { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -201,7 +243,12 @@ export class ApiService {
 
   list_assign_user(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/auth/user/'  + '?token=' + localStorage.getItem('token'))
+      .get<any>(this.base_path + 'v1/auth/user/', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -210,7 +257,12 @@ export class ApiService {
 
   crete_assign_user(item): Observable<User> {
     return this.http
-      .post<User>(this.base_path + 'mokatebat/edit_user/' + '?token=' + localStorage.getItem('token'), item)
+      .post<User>(this.base_path + 'mokatebat/edit_user/', item, { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -219,17 +271,28 @@ export class ApiService {
 
   create_pre_text(item: PreText): Observable<PreText> {
     return this.http
-      .post<PreText>(this.base_path + 'mokatebat/sendtoorganization/pishnevis' + '?token=' + localStorage.getItem('token'),
-        JSON.stringify(item), this.httpOptions)
+      .post<PreText>(this.base_path + 'mokatebat/sendtoorganization/pishnevis', JSON.stringify(item),
+        { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)
       );
   }
 
-  get_pre_text(subject_id: number): Observable<any> {
+  get_pre_text(subject_id: string): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/pishnevis/' +  '?token=' + localStorage.getItem('token') + '&subject_id=' + subject_id)
+      .get<any>(this.base_path + 'v1/sendtoorg/pishnevis/?subject_id=' + subject_id,
+        { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token')
+          })
+      })
       .pipe(
         retry(0),
         catchError(this.handleError)

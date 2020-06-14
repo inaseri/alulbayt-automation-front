@@ -36,7 +36,7 @@ export class CreateReceivePaperComponent implements OnInit {
     uploadData.append('date_dabirkhane', JSON.stringify(this.data.date_dabirkhane).split('T')[0].replace('"', ''));
     uploadData.append('organization', this.data.organization);
     uploadData.append('subject', this.data.subject);
-    this.apiService.createSendPapper(uploadData).subscribe(
+    this.apiService.createReceivePaper(uploadData).subscribe(
       data => {
         this.fileUpload = data;
         if (data === 201) {

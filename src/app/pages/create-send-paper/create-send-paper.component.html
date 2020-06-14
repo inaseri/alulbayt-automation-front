@@ -16,7 +16,7 @@
                       <input
                         class=" form-control"
                         type="date"
-                        [(ngModel)]="create_send_paper.date"
+                        [(ngModel)]="createSendPaper.date"
                         name="date"
                       />
                     </div>
@@ -31,7 +31,7 @@
                         theme="dp-material"
                         class="new-dp"
                         style="background: transparent!important;"
-                        [(ngModel)]="create_send_paper.date"
+                        [(ngModel)]="createSendPaper.date"
                         name="date"
                       ></dp-date-picker>
                     </div>
@@ -43,17 +43,29 @@
               <div class="col-4">
                 <div class=" form-group">
                   <label> موضوع نامه </label>
-                  <select class="form-control" [(ngModel)]="create_send_paper.subject" name="subject">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let subject of list_subject" [value]="list_subject.id"
+                  <select class="form-control" #preTextSelect
+                          [(ngModel)]="createSendPaper.subject"
+                          name="subject" (change)="on_change_subject(preTextSelect.value)">
+                    <option class=" form-control" *ngFor="let subject of listSubject" [value]="subject.id"
                             style="background: transparent; color: black">{{subject.text}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-4">
+                <label> متن پیش نویس </label>
+                <select class="form-control" name="pre_text" #selectedPreText
+                        [disabled]="selectPreTextDisable == 0" (change)="on_change_pre_text(selectedPreText.value)">
+                  <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                  <option class=" form-control" *ngFor="let pretext of preTextArray" [value]="pretext.text"
+                          style="background: transparent; color: black">{{pretext.text}}</option>
+                </select>
+              </div>
+              <div class="col-4">
                 <div class=" form-group">
-                  <label>پیوست</label>
-                  <select #mySelect class="form-control" (change)="select_attachment_number(mySelect.value)">
+                  <label>تعداد پیوست</label>
+                  <select #mySelect class="form-control"
+                          (change)="select_attachment_number(mySelect.value)"
+                          [disabled]="selectPreTextCountDisable == 0">
                     <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
                     <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
                     <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
@@ -66,10 +78,20 @@
             <div class="row form-row">
               <div class="col-4">
                 <div class=" form-group">
+                  <label>امضا کننده</label>
+                  <select class="form-control" name="user_sign" [(ngModel)]="createSendPaper.user_sign">
+                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option class=" form-control" *ngFor="let user_assign of listUserAssign" [value]="listUserAssign.id"
+                            style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class=" form-group">
                   <label>مکان دریافت</label>
                   <select class="form-control" #locationSelect (change)="on_change_location(locationSelect.value)">
                     <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class="form-control" *ngFor="let location of list_location"
+                    <option class="form-control" *ngFor="let location of listLocation"
                             style="background: transparent; color: black" [value]="location.id">{{location.name}}</option>
                   </select>
                 </div>
@@ -77,30 +99,17 @@
               <div class="col-4">
                 <div class=" form-group">
                   <label>شخص دریافت</label>
-                  <select class="form-control" name="user" [(ngModel)]="create_send_paper.user" [disabled]="select_receive_user_disable == 0">
+                  <select class="form-control" name="user" [(ngModel)]="createSendPaper.user" [disabled]="selectReceiveUserDisable == 0">
                     <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_receiver of list_user_receive" [value]="list_user_receive.id"
+                    <option class=" form-control" *ngFor="let user_receiver of listUserReceive" [value]="listUserReceive.id"
                             style="background: transparent; color: black" >{{user_receiver.name}}</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="row form-row">
-              <div class="col-8">
-                <div class=" form-group">
-                  <label>امضا کننده</label>
-                  <select class="form-control" name="user_sign" [(ngModel)]="create_send_paper.user_sign">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_assign of list_user_assign" [value]="list_user_assign.id"
-                            style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-4"></div>
-            </div>
             <div class="row" *ngFor="let item of attachmentArray" style="margin-bottom: 60px;">
               <div class="col-md-12" >
-                <angular-editor [config]="editorConfig" name="text" [(ngModel)]="create_send_paper.text"></angular-editor>
+                <angular-editor [config]="editorConfig" name="text" [(ngModel)]="createSendPaper.text"></angular-editor>
               </div>
             </div>
           </form>
