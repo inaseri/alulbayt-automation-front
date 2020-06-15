@@ -10,6 +10,7 @@ import { Location } from "../models/location/location";
 import { Subject } from "../models/subject/subject";
 import { UserReceive } from "../models/user-receive";
 import { PreText } from "../models/Pre_text/pre-text";
+import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ApiService {
   // API path
   base_path = 'https://api.atomation.inaseri.ir/api/';
   token = 'token';
+  is_superuser = false;
 
   public user = localStorage.getItem('user_id');
   public isUserLoggedIn: boolean;
@@ -71,7 +73,7 @@ export class ApiService {
       .get<User>(this.base_path + 'mokatebat/user_info/', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -82,7 +84,7 @@ export class ApiService {
 
   uploadUserImage(item) {
     return this.http
-      .put<any>(this.base_path + 'mokatebat/user_info/' + '?token=' + localStorage.getItem('token'), item)
+      .put<any>(this.base_path + 'mokatebat/user_info/' + '?token=' + localStorage.getItem('token_alulbayt_automation'), item)
       .pipe(
         retry(0),
         catchError(this.handleError)
@@ -93,7 +95,7 @@ export class ApiService {
   // Mokatebat specific api
   createReceivePaper(item) {
     return this.http
-      .post<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/' + '?token=' + localStorage.getItem('token'), item , {
+      .post<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/' + '?token=' + localStorage.getItem('token_alulbayt_automation'), item , {
         reportProgress: true,
         observe: 'events',
       })
@@ -130,7 +132,7 @@ export class ApiService {
       .get<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/', { headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        Authorization: 'Token ' + localStorage.getItem('token')
+        Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
        })
       })
       .pipe(
@@ -145,7 +147,7 @@ export class ApiService {
         'mokatebat/sendtoorganization/location/' , JSON.stringify(item), { headers: new HttpHeaders(
             {
               'Content-Type': 'application/json',
-              Authorization: 'Token ' + localStorage.getItem('token')
+              Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
             })
         })
       .pipe(
@@ -160,7 +162,7 @@ export class ApiService {
       .get<any>(this.base_path + 'v1/sendtoorg/location/', { headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        Authorization: 'Token ' + localStorage.getItem('token')
+        Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
         })
       })
       .pipe(
@@ -175,7 +177,7 @@ export class ApiService {
         'mokatebat/sendtoorganization/subject/', JSON.stringify(item), { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -189,7 +191,7 @@ export class ApiService {
       .get<any>(this.base_path + 'v1/sendtoorg/subject/',{ headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -204,7 +206,7 @@ export class ApiService {
         { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
         })
       .pipe(
@@ -218,7 +220,7 @@ export class ApiService {
       .get<any>(this.base_path + 'v1/sendtoorg/user/', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -232,7 +234,7 @@ export class ApiService {
       .get<any>(this.base_path + 'v1/sendtoorg/user/' + '?location=' + location_id, { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -246,7 +248,7 @@ export class ApiService {
       .get<any>(this.base_path + 'v1/auth/user/', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -260,7 +262,7 @@ export class ApiService {
       .post<User>(this.base_path + 'mokatebat/edit_user/', item, { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -275,7 +277,7 @@ export class ApiService {
         { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -290,7 +292,7 @@ export class ApiService {
         { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
-            Authorization: 'Token ' + localStorage.getItem('token')
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
       .pipe(
@@ -299,4 +301,17 @@ export class ApiService {
       );
   }
 
+  create_send_paper(item: CreateSendPaper): Observable<CreateSendPaper> {
+    return this.http
+      .post<CreateSendPaper>(this.base_path + 'mokatebat/sendtoorganization/create/', JSON.stringify(item),{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
 }

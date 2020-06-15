@@ -20,11 +20,16 @@ export class CreateSendPaperComponent implements OnInit {
   listUserAssign: any;
   preTextArray: any = [];
 
+  persianDate: string;
+  europeDate: string;
+  persianTemp: boolean;
+
   createSendPaper: CreateSendPaper;
 
   selectReceiveUserDisable = 0
   selectPreTextDisable = 0
   selectPreTextCountDisable = 0
+  showTextEditor = false
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -109,7 +114,6 @@ export class CreateSendPaperComponent implements OnInit {
     );
   }
 
-
   on_change_location(location_id: string) {
     this.apiService.list_user_receive_filter(location_id).subscribe(
       response => { this.listUserReceive = response['objects']; this.selectReceiveUserDisable = 1 }
@@ -127,5 +131,30 @@ export class CreateSendPaperComponent implements OnInit {
   on_change_pre_text(text: string) {
     this.selectPreTextCountDisable = 1
     this.createSendPaper.text = text
+    this.showTextEditor = true
+  }
+
+  filter($event) {
+    const value = [$event.index];
+    if (value[0] == 0) {
+      this.persianTemp = false
+    } else {
+      this.persianTemp = true
+    }
+  }
+  create_send_paper() {
+    if (this.persianTemp) {
+      this.createSendPaper.date = JSON.stringify(this.persianDate).split('T')[0].replace('"', '');
+    } else {
+      this.createSendPaper.date = this.europeDate;
+    }
+    this.apiService.create_send_paper(this.createSendPaper).subscribe(
+      response => {
+        console.log('response is:', response);
+        alert('نامه با موفقیت ارسال گردید.');
+        // f
+      },
+      error => console.log('There is some problems: ', error)
+    );
   }
 }

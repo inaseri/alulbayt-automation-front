@@ -29,7 +29,12 @@ export class VerifyComponent implements OnInit {
     this.apiService.login(this.data).subscribe((response) => {
       console.log(response);
       this.apiService.token = response.token;
-      localStorage.setItem('token', response.token);
+      if (response.is_superuser == true) {
+        this.apiService.is_superuser = true;
+      } else {
+        this.apiService.is_superuser = false;
+      }
+      localStorage.setItem('token_alulbayt_automation', response.token);
       this.router.navigate(['home']);
     });
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../../services/api.service";
+
 
 declare interface RouteInfo {
   path: string;
@@ -94,8 +96,6 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
 
-
-
 ];
 
 @Component({
@@ -105,11 +105,15 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  is_superuser: boolean;
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.is_superuser = this.apiService.is_superuser;
+    console.log(this.is_superuser);
+    console.log('super user in api service:', this.apiService.is_superuser)
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

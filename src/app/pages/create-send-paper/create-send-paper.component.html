@@ -8,16 +8,16 @@
         <div class="card-body">
           <form>
             <div class="row form-row">
-              <mat-tab-group>
+              <mat-tab-group (selectedTabChange)="filter($event)">
                 <mat-tab style="font-family: Neda-Custom!important;" label="قالب عربی">
                   <div class="col" style="margin-top: 15px;">
                     <div class="form-group">
                       <label style="font-family: Neda-Custom!important;"> تاریخ </label>
                       <input
-                        class=" form-control"
-                        type="date"
-                        [(ngModel)]="createSendPaper.date"
+                        class=" form-control" required
                         name="date"
+                        type="date"
+                        [(ngModel)]="europeDate"
                       />
                     </div>
                   </div>
@@ -31,7 +31,7 @@
                         theme="dp-material"
                         class="new-dp"
                         style="background: transparent!important;"
-                        [(ngModel)]="createSendPaper.date"
+                        [(ngModel)]="persianDate"
                         name="date"
                       ></dp-date-picker>
                     </div>
@@ -42,12 +42,11 @@
             <div class="row form-row">
               <div class="col-4">
                 <div class=" form-group">
-                  <label> موضوع نامه </label>
-                  <select class="form-control" #preTextSelect
-                          [(ngModel)]="createSendPaper.subject"
-                          name="subject" (change)="on_change_subject(preTextSelect.value)">
+                  <label > موضوع نامه </label>
+                  <select class="form-control" #preTextSelect [(ngModel)]="createSendPaper.subject"
+                          name="subject" (change)="on_change_subject(preTextSelect.value)" >
                     <option class=" form-control" *ngFor="let subject of listSubject" [value]="subject.id"
-                            style="background: transparent; color: black">{{subject.text}}</option>
+                            style="background: transparent; color: black" >{{subject.text}}</option>
                   </select>
                 </div>
               </div>
@@ -55,7 +54,7 @@
                 <label> متن پیش نویس </label>
                 <select class="form-control" name="pre_text" #selectedPreText
                         [disabled]="selectPreTextDisable == 0" (change)="on_change_pre_text(selectedPreText.value)">
-                  <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                  <option></option>
                   <option class=" form-control" *ngFor="let pretext of preTextArray" [value]="pretext.text"
                           style="background: transparent; color: black">{{pretext.text}}</option>
                 </select>
@@ -79,9 +78,8 @@
               <div class="col-4">
                 <div class=" form-group">
                   <label>امضا کننده</label>
-                  <select class="form-control" name="user_sign" [(ngModel)]="createSendPaper.user_sign">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_assign of listUserAssign" [value]="listUserAssign.id"
+                  <select class="form-control" name="user_sign" [(ngModel)]="createSendPaper.sign">
+                    <option class=" form-control" *ngFor="let user_assign of listUserAssign" [value]="user_assign.id"
                             style="background: transparent; color: black">{{user_assign.first_name}}&nbsp;{{user_assign.last_name}}</option>
                   </select>
                 </div>
@@ -90,7 +88,7 @@
                 <div class=" form-group">
                   <label>مکان دریافت</label>
                   <select class="form-control" #locationSelect (change)="on_change_location(locationSelect.value)">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
+                    <option></option>
                     <option class="form-control" *ngFor="let location of listLocation"
                             style="background: transparent; color: black" [value]="location.id">{{location.name}}</option>
                   </select>
@@ -100,22 +98,31 @@
                 <div class=" form-group">
                   <label>شخص دریافت</label>
                   <select class="form-control" name="user" [(ngModel)]="createSendPaper.user" [disabled]="selectReceiveUserDisable == 0">
-                    <option class=" form-control" style="background: transparent; color: black">انتخاب کنید</option>
-                    <option class=" form-control" *ngFor="let user_receiver of listUserReceive" [value]="listUserReceive.id"
+                    <option class=" form-control" *ngFor="let user_receiver of listUserReceive" [value]="user_receiver.id"
                             style="background: transparent; color: black" >{{user_receiver.name}}</option>
                   </select>
                 </div>
               </div>
             </div>
+            <div class="row"  style="margin-bottom: 60px;" *ngIf="showTextEditor">
+              <div class="col-12">
+                <angular-editor [config]="editorConfig" name="text" [(ngModel)]="createSendPaper.text"></angular-editor>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <hr style="">
+              </div>
+            </div>
             <div class="row" *ngFor="let item of attachmentArray" style="margin-bottom: 60px;">
               <div class="col-md-12" >
-                <angular-editor [config]="editorConfig" name="text" [(ngModel)]="createSendPaper.text"></angular-editor>
+                <angular-editor [config]="editorConfig" name="text" ></angular-editor>
               </div>
             </div>
           </form>
         </div>
         <div class=" card-footer">
-          <button class="btn btn-fill btn-info" type="submit">ثبت نامه</button>
+          <button class="btn btn-fill btn-info" type="submit" (click)="create_send_paper()">ثبت نامه</button>
         </div>
       </div>
     </div>

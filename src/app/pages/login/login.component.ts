@@ -24,11 +24,8 @@ export class LoginComponent implements OnInit {
 
   get_key() {
     this.apiService.get_key(this.data).subscribe(response => {
-      console.log('username is:', this.data.username);
       localStorage.setItem('username', this.data.username);
       localStorage.setItem('password', this.data.password);
-      console.log(localStorage.getItem('username'));
-      console.log(localStorage.getItem('password'));
       this.router.navigate(['verify']);
       window.location.assign('#/verify');
     });

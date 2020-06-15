@@ -3,5 +3,5 @@ export class CreateSendPaper {
   user: string;
   date: string;
   text: string;
-  user_sign: string;
+  sign: string;
 }

@@ -9,4 +9,5 @@ export class User {
   last_name: string;
   email: string;
   sign: string;
+  is_superuser: boolean;
 }
