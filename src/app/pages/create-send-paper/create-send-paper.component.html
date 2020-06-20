@@ -114,9 +114,9 @@
                 <hr style="">
               </div>
             </div>
-            <div class="row" *ngFor="let item of attachmentArray" style="margin-bottom: 60px;">
+            <div class="row" *ngFor="let item of attachmentArray; let indexOf=index" style="margin-bottom: 60px;">
               <div class="col-md-12" >
-                <angular-editor [config]="editorConfig" name="text" ></angular-editor>
+                <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]" name="text + {{indexOf}}" ></angular-editor>
               </div>
             </div>
           </form>

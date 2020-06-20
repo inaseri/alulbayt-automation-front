@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from "../../services/api.service";
+import { ListSendPaper } from "../../models/list_send_paper/list-send-paper";
+
 @Component({
   selector: 'app-list-send-paper',
   templateUrl: './list-send-paper.component.html',
@@ -9,7 +12,9 @@ export class ListSendPaperComponent implements OnInit {
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  listSendPaper: any[];
+  tableHead = ['ردیف', 'شماره نامه', 'سازمان گیرنده', 'شخص گیرنده', 'موضوع', 'عملیات'];
+  constructor(private modalService: NgbModal, private apiService: ApiService) {}
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -30,6 +35,29 @@ export class ListSendPaperComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.get_list_send_paper();
+  }
+
+  get_list_send_paper() {
+    this.apiService.list_send_paper().subscribe(
+      response => {
+        this.listSendPaper = []
+        for (const key in response['objects']) {
+          if (response['objects'].hasOwnProperty(key)) {
+            console.log(response['objects'][key]);
+            console.log('id: ', response['objects'][key].id, 'subject: ', response['objects'][key]['subject'].text, 'user: ', response['objects'][key]['user'].name, 'organize: ',  response['objects'][key]['user']['location'].name)
+            this.listSendPaper.push({
+              id: response['objects'][key].id,
+              subject: response['objects'][key]['subject'].text,
+              user: response['objects'][key]['user'].name,
+              organize: response['objects'][key]['user']['location'].name
+            });
+          }
+        }
+        console.log('list is:',this.listSendPaper);
+      },
+      error => console.log('There is some problems: ', error)
+    );
   }
 
 }

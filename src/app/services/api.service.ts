@@ -11,6 +11,7 @@ import { Subject } from "../models/subject/subject";
 import { UserReceive } from "../models/user-receive";
 import { PreText } from "../models/Pre_text/pre-text";
 import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
+import { Attachment } from "../models/attachment/attachment";
 
 @Injectable({
   providedIn: 'root'
@@ -304,6 +305,34 @@ export class ApiService {
   create_send_paper(item: CreateSendPaper): Observable<CreateSendPaper> {
     return this.http
       .post<CreateSendPaper>(this.base_path + 'mokatebat/sendtoorganization/create/', JSON.stringify(item),{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  save_send_paper_attachment(item: any): Observable<any> {
+    return this.http
+      .post<any>(this.base_path + 'mokatebat/sendtoorganization/attachment/', JSON.stringify(item), { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  list_send_paper(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/paper/', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')

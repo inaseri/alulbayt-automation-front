@@ -3,6 +3,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ApiService } from "../../services/api.service";
 // import { MatTabsModule } from '@angular/material/tabs';
 import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
+import { Attachment } from "../../models/attachment/attachment";
 
 
 @Component({
@@ -13,6 +14,7 @@ import { CreateSendPaper } from "../../models/create_send_paper/create-send-pape
 export class CreateSendPaperComponent implements OnInit {
 
   attachmentArray = [];
+  attachment: any;
 
   listLocation: any;
   listUserReceive: any;
@@ -75,6 +77,7 @@ export class CreateSendPaperComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.createSendPaper = new CreateSendPaper();
+    this.attachment = new Attachment();
   }
 
   ngOnInit(): void {
@@ -90,7 +93,6 @@ export class CreateSendPaperComponent implements OnInit {
     for (let i=0; i < number2; i ++) {
       this.attachmentArray.push(i.toString());
     }
-    console.log(this.attachmentArray);
   }
 
   list_send_location() {
@@ -142,6 +144,7 @@ export class CreateSendPaperComponent implements OnInit {
       this.persianTemp = true
     }
   }
+
   create_send_paper() {
     if (this.persianTemp) {
       this.createSendPaper.date = JSON.stringify(this.persianDate).split('T')[0].replace('"', '');
@@ -150,9 +153,13 @@ export class CreateSendPaperComponent implements OnInit {
     }
     this.apiService.create_send_paper(this.createSendPaper).subscribe(
       response => {
-        console.log('response is:', response);
+        console.log('response is:', response['id']);
+        const dict = {text: this.attachment, mokatebat: response['id']}
+        this.apiService.save_send_paper_attachment(dict).subscribe(
+          response2 => console.log(response2),
+          error => console.log('There is some problems: ', error)
+        );
         alert('نامه با موفقیت ارسال گردید.');
-        // f
       },
       error => console.log('There is some problems: ', error)
     );

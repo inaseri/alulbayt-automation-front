@@ -12,29 +12,18 @@
             <table class=" table tablesorter text-right" id="">
               <thead class=" text-primary">
               <tr>
-                <th class=" text-right">ردیف</th>
-                <th class=" text-right">شماره نامه</th>
-                <th class=" text-right">سازمان گیرنده</th>
-                <th class=" text-right">شخص گیرنده</th>
-                <th class=" text-right">موضوع</th>
-                <th class=" text-right">عملیات</th>
+                <th *ngFor="let item of tableHead" class=" text-right">{{item}}</th>
               </tr>
               </thead>
-              <tbody>
-                <th class=" text-right">ردیف</th>
-                <th class=" text-right">شماره نامه</th>
-                <th class=" text-right">سازمان گیرنده</th>
-                <th class=" text-right">شخص گیرنده</th>
-                <th class=" text-right">موضوع</th>
+              <tbody *ngFor="let row of listSendPaper; let indexOf=index">
+                <th class=" text-right">{{indexOf}}</th>
+                <th class=" text-right">{{row.id}}</th>
+                <th class=" text-right">{{row.organize}}</th>
+                <th class=" text-right">{{row.user}}</th>
+                <th class=" text-right">{{row.subject}}</th>
                 <th class=" text-right">
                   <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">عملیات</button>
                 </th>
-<!--              <tr mdbTableCol *ngFor="let el of elements">-->
-<!--                <th scope="row">{{el.id}}</th>-->
-<!--                <td>{{el.id}}</td>-->
-<!--                <td>{{el.organization}}</td>-->
-<!--                <td>{{el.subject}}</td>-->
-<!--              </tr>-->
               </tbody>
             </table>
           </div>
