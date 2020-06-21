@@ -41,6 +41,7 @@ export class CreateReceivePaperComponent implements OnInit {
         this.fileUpload = data;
         if (data === 201) {
           alert('ثبت نامه با موفقیت انجام گرفت.');
+          this.router.navigate(['/list-receive-paper']);
           this.data.organization = '';
           this.data.subject = '';
         }

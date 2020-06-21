@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ApiService } from "../../services/api.service";
-// import { MatTabsModule } from '@angular/material/tabs';
+import { Router } from "@angular/router";
 import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
 import { Attachment } from "../../models/attachment/attachment";
 
@@ -75,7 +75,7 @@ export class CreateSendPaperComponent implements OnInit {
     toolbarPosition: 'top',
   };
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
     this.createSendPaper = new CreateSendPaper();
     this.attachment = new Attachment();
   }
@@ -160,6 +160,7 @@ export class CreateSendPaperComponent implements OnInit {
           error => console.log('There is some problems: ', error)
         );
         alert('نامه با موفقیت ارسال گردید.');
+        this.router.navigate(['/list-send-paper']);
       },
       error => console.log('There is some problems: ', error)
     );

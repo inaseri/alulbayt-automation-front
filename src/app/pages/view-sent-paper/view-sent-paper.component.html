@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-          <p style="color: darkgreen; font-size: 14px">بسمه تعالی</p>
+          <p style="font-size: 14px">بسمه تعالی</p>
         </div>
         <div class="col-4"></div>
       </div>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-1"></div>
         <div class="col-5">
-          <p style="color: black; font-size: 14px; font-weight: bold; text-align: right">{{listSendPaper['user']['location'].name}}</p>
+          <p style="font-size: 14px; font-weight: bold; text-align: right">{{listSendPaper['user']['location'].name}}</p>
         </div>
         <div class="col-5"></div>
         <div class="col-1"></div>
@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-1"></div>
         <div class="col-5">
-          <p style="color: black; font-weight: bold; font-size: 14px; text-align: right">موضوع: &nbsp;{{listSendPaper['subject'].text}}</p>
+          <p style="font-weight: bold; font-size: 14px; text-align: right">موضوع: &nbsp;{{listSendPaper['subject'].text}}</p>
         </div>
         <div class="col-5"></div>
         <div class="col-1"></div>
@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-1"></div>
         <div class="col-10" style="color: black; font-size: 11px; text-align: right;">
-          {{listSendPaper.text}}
+          <p [innerHTML]="listSendPaper.text" style="font-size: 14px;"></p>
         </div>
         <div class="col-1"></div>
       </div>
@@ -41,13 +41,30 @@
       <div class="row"><div class="col"></div></div>
       <div class="row text-center" style="margin-top: 20px;">
         <div class="col-4"></div>
-        <div class="col-3"></div>
+        <div class="col-4"></div>
         <div class="col-4">
-          <p style="color: black; font-size: 12px; font-weight: bold;" >با کمال تشکر</p>
-          <p style="color: black; font-size: 12px; font-weight: bold;" >مدیریت مرکز جهانی آل البیت (ع)</p>
-          <p style="color: black; font-size: 12px; font-weight: bold;" >{{listSendPaper['user'].name}}</p>
+          <p style="font-size: 12px; font-weight: bold;" >با کمال تشکر</p>
+          <p style="font-size: 12px; font-weight: bold;" >مدیریت مرکز جهانی آل البیت (ع)</p>
+          <p style="font-size: 12px; font-weight: bold;" >{{listSendPaper['user'].name}}</p>
         </div>
-        <div class="col-1"></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 20px" class="card text-center">
+    <div class="card-footer">
+      <div class="row">
+        <div class="col">
+          <button class="w-100 btn btn-info">پرینت A4</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-info">پرینت A5</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-warning">اصلاح نامه</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-success">امضا نامه</button>
+        </div>
       </div>
     </div>
   </div>

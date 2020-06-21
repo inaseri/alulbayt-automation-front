@@ -18,8 +18,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr mdbTableCol *ngFor="let el of elements">
-                <th scope="row">{{el.id}}</th>
+              <tr mdbTableCol *ngFor="let el of elements; let indexOf=index">
+                <th>{{indexOf}}</th>
                 <td>{{el.id}}</td>
                 <td>{{el.organization}}</td>
                 <td>{{el.subject}}</td>
