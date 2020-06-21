@@ -22,7 +22,7 @@
                 <th class=" text-right">{{row.user}}</th>
                 <th class=" text-right">{{row.subject}}</th>
                 <th class=" text-right">
-                  <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">عملیات</button>
+                  <a class="btn btn-lg btn-outline-primary" [routerLink]="['/view-sent-paper/'+row.id]" >مشاهده نامه</a>
                 </th>
               </tbody>
             </table>
@@ -46,7 +46,7 @@
       </div>
       <div class="col">
         <div class="modal-body">
-          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">مشاهده نامه</button>
+          <button type="button" class="btn btn-outline-dark" style="width: 100%"  (click)="modal.close('Save click')">مشاهده نامه</button>
         </div>
       </div>
       <div class="col">

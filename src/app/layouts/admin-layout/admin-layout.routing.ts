@@ -16,6 +16,7 @@ import { SettingUserComponent } from "../../pages/setting-user/setting-user.comp
 import { CreateMokebComponent } from "../../pages/create-mokeb/create-mokeb.component";
 import { ListMokebComponent } from "../../pages/list-mokeb/list-mokeb.component";
 import { CreateCertificateComponent} from "../../pages/create-certificate/create-certificate.component";
+import { ViewSentPaperComponent } from "../../pages/view-sent-paper/view-sent-paper.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -27,9 +28,10 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'create-send-paper', component: CreateSendPaperComponent },
   { path: 'list-send-paper', component: ListSendPaperComponent },
   { path: 'mokatebat-settings', component: SettingsMokatebatComponent },
-  { path: 'user-settings', component: SettingUserComponent },
+  { path: 'view-sent-paper/:paperID', component: ViewSentPaperComponent},
 
   // Mavakeb Urls
+  { path: 'user-settings', component: SettingUserComponent },
   { path: 'create-mokeb', component: CreateMokebComponent},
   { path: 'list-mokeb', component: ListMokebComponent},
   { path: 'create-certificate', component: CreateCertificateComponent},

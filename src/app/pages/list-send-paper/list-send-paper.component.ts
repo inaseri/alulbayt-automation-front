@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from "../../services/api.service";
-import { ListSendPaper } from "../../models/list_send_paper/list-send-paper";
 
 @Component({
   selector: 'app-list-send-paper',
@@ -44,8 +43,6 @@ export class ListSendPaperComponent implements OnInit {
         this.listSendPaper = []
         for (const key in response['objects']) {
           if (response['objects'].hasOwnProperty(key)) {
-            console.log(response['objects'][key]);
-            console.log('id: ', response['objects'][key].id, 'subject: ', response['objects'][key]['subject'].text, 'user: ', response['objects'][key]['user'].name, 'organize: ',  response['objects'][key]['user']['location'].name)
             this.listSendPaper.push({
               id: response['objects'][key].id,
               subject: response['objects'][key]['subject'].text,
@@ -54,7 +51,6 @@ export class ListSendPaperComponent implements OnInit {
             });
           }
         }
-        console.log('list is:',this.listSendPaper);
       },
       error => console.log('There is some problems: ', error)
     );

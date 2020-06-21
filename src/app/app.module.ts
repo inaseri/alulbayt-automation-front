@@ -31,6 +31,7 @@ import { ListMokebComponent } from './pages/list-mokeb/list-mokeb.component';
 import { CreateCertificateComponent } from './pages/create-certificate/create-certificate.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ViewSentPaperComponent } from './pages/view-sent-paper/view-sent-paper.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,7 @@ import { environment } from '../environments/environment';
     MatTabsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

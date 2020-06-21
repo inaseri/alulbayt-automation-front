@@ -343,4 +343,18 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
+
+  view_sent_paper(id: string): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/paper/' + id + '/', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
 }
