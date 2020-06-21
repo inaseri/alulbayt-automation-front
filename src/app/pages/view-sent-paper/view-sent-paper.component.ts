@@ -25,39 +25,24 @@ export class ViewSentPaperComponent implements OnInit {
     this.apiService.view_sent_paper(this.id).subscribe(
       response => {
         this.listSendPaper = response;
+        const data = this.converter(this.listSendPaper.text)
         console.log(
-          this.toUTF8Array(this.listSendPaper.text)
+          data
         )
       },
       error => console.log('There is some problems: ', error)
     );
   }
 
-  toUTF8Array(str) {
-    var utf8 = [];
-    for (var i=0; i < str.length; i++) {
-      var charcode = str.charCodeAt(i);
-      if (charcode < 0x80) utf8.push(charcode);
-      else if (charcode < 0x800) {
-        utf8.push(0xc0 | (charcode >> 6),
-          0x80 | (charcode & 0x3f));
-      }
-      else if (charcode < 0xd800 || charcode >= 0xe000) {
-        utf8.push(0xe0 | (charcode >> 12),
-          0x80 | ((charcode>>6) & 0x3f),
-          0x80 | (charcode & 0x3f));
-      }
-      // surrogate pair
-      else {
-        i++;
-        charcode = ((charcode&0x3ff)<<10)|(str.charCodeAt(i)&0x3ff)
-        utf8.push(0xf0 | (charcode >>18),
-          0x80 | ((charcode>>12) & 0x3f),
-          0x80 | ((charcode>>6) & 0x3f),
-          0x80 | (charcode & 0x3f));
-      }
+  converter(text){
+    let str = ''
+    const array = text.replaceAll("&#","").replaceAll(" ","32;").replaceAll("(","40;").replaceAll(")","41;").replaceAll(".","46;").split(";")
+    for(let key in array ){
+      if(array[key].length>0)
+        str = str+ String.fromCharCode(array[key]);
     }
-    return utf8;
+    console.log(str);
+    return str
   }
 
 
