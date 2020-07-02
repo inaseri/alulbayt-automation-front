@@ -34,6 +34,8 @@ export class VerifyComponent implements OnInit {
       } else {
         this.apiService.is_superuser = false;
       }
+      localStorage.setItem('userID', response.id)
+      this.apiService.userID = response.id;
       localStorage.setItem('token_alulbayt_automation', response.token);
       this.router.navigate(['home']);
     });

@@ -22,6 +22,7 @@ export class ApiService {
   base_path = 'https://api.atomation.inaseri.ir/api/';
   token = 'token';
   is_superuser = false;
+  userID: string;
 
   public user = localStorage.getItem('user_id');
   public isUserLoggedIn: boolean;
@@ -355,6 +356,20 @@ export class ApiService {
       .pipe(
         retry(0),
         catchError(this.handleError)
+      );
+  }
+
+  get_notify(owner: string): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/notify/?owner=' + owner + '&status=0', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+         catchError(this.handleError)
       );
   }
 }

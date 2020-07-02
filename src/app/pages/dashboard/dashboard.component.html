@@ -22,11 +22,9 @@
           <h4 class="card-title">نامه های دریافتی من</h4>
         </div>
         <div class=" card-body">
-          <ngb-alert [type]="'info'" [dismissible]="false">
-            <span> نامه دریافتی از آقای لاجوردی </span>
-          </ngb-alert>
-          <ngb-alert [type]="'info'" [dismissible]="false">
-            <span> نامه دریافتی از آقای لاجوردی </span>
+
+          <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let nofie of notifyList">
+            <span> {{notie}} </span>
           </ngb-alert>
         </div>
       </div>
