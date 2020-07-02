@@ -24,3 +24,42 @@ button {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media print {
+  .sidebar {
+    display: none !important;
+  }
+
+  .card-footer {
+    display: none !important;
+  }
+
+  .navbar-collapse .collapse {
+    display: none !important;
+  }
+
+  .content  .card .card-body .card-header .card-footer {
+    width: 100%;
+  }
+
+  .card-body {
+    text-align: justify !important;
+  }
+
+  .main-panel .content {
+    padding: 20px !important;
+  }
+
+  .footer {
+    display: none !important;
+  }
+
+  .navbar {
+    display: none !important;
+  }
+
+  .main-panel[data="blue"] {
+    border-top: none !important;
+  }
+}

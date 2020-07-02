@@ -10,7 +10,7 @@
         <div class="col-4"></div>
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" id="contentToConvert" >
       <div class="row">
         <div class="col-1"></div>
         <div class="col-5">
@@ -30,7 +30,7 @@
       </div>
       <div class="row">
         <div class="col-1"></div>
-        <div class="col-10" style="color: black; font-size: 11px; text-align: right;">
+        <div class="col-10" style="color: black; font-size: 11px; text-align: justify !important;">
           <p [innerHTML]="listSendPaper.text" style="font-size: 14px;"></p>
         </div>
         <div class="col-1"></div>
@@ -54,10 +54,7 @@
     <div class="card-footer">
       <div class="row">
         <div class="col">
-          <button class="w-100 btn btn-info">پرینت A4</button>
-        </div>
-        <div class="col">
-          <button class="w-100 btn btn-info">پرینت A5</button>
+          <button class="w-100 btn btn-info" (click)="captureScreen()">پرینت</button>
         </div>
         <div class="col">
           <button class="w-100 btn btn-warning">اصلاح نامه</button>
