@@ -23,8 +23,8 @@
         </div>
         <div class=" card-body">
 
-          <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let nofie of notifyList">
-            <span> {{notie}} </span>
+          <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let notice of notifyList">
+            <span (click)="open_notify(notice.notify)" [routerLink]="['/view-sent-paper/'+notice.id]"> {{notice.text}} </span>
           </ngb-alert>
         </div>
       </div>

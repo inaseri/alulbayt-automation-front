@@ -372,4 +372,18 @@ export class ApiService {
          catchError(this.handleError)
       );
   }
+
+  road_notify(id: string) {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/notify/?id=' + id, { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
 }

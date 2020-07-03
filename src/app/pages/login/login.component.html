@@ -1,10 +1,9 @@
-
 <div class="content">
   <div class="text-center row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="text-center card">
-        <div class=" card-header text-center"><h5 class=" title">ورود</h5></div>
+        <div class=" card-header text-center"><h5 class=" title">Login</h5></div>
         <div class=" card-body">
           <form>
             <div class=" row">
@@ -15,7 +14,7 @@
                   <input
                     name="username"
                     class=" form-control"
-                    type="tel"
+                    type="email"
                     [(ngModel)]="data.username"
                   />
                 </div>
@@ -24,19 +23,17 @@
             </div>
             <div class=" row">
               <div class=" col-md-4 pr-md-1"></div>
-              <div class=" col-md-4 px-md-1">
+              <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
-                  <label> رمز ورود </label>
+                  <label> رمز عبور </label>
                   <input
                     name="password"
                     class=" form-control"
-                    type="text"
+                    type="password"
                     [(ngModel)]="data.password"
                   />
                 </div>
-              <div class=" col-md-4 pl-md-1">
               </div>
-            </div>
               <div class=" col-md-4 pr-md-1"></div>
             </div>
           </form>
