@@ -43,12 +43,14 @@ export class ListSendPaperComponent implements OnInit {
         this.listSendPaper = []
         for (const key in response['objects']) {
           if (response['objects'].hasOwnProperty(key)) {
-            this.listSendPaper.push({
-              id: response['objects'][key].id,
-              subject: response['objects'][key]['subject'].text,
-              user: response['objects'][key]['user'].name,
-              organize: response['objects'][key]['user']['location'].name
-            });
+            if (response['objects'][key].status == 0 || response['objects'][key].status == 1) {
+              this.listSendPaper.push({
+                id: response['objects'][key].id,
+                subject: response['objects'][key]['subject'].text,
+                user: response['objects'][key]['user'].name,
+                organize: response['objects'][key]['user']['location'].name
+              });
+            }
           }
         }
       },

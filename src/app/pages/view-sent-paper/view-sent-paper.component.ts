@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { SentPaperStatus } from "../../models/sentpaperstatus/sent-paper-status";
 
 @Component({
@@ -13,7 +13,7 @@ export class ViewSentPaperComponent implements OnInit {
   listSendPaper: any;
   id: any;
 
-  constructor(private apiService: ApiService, private actRoute: ActivatedRoute) {
+  constructor(private apiService: ApiService, private actRoute: ActivatedRoute,private router: Router) {
     console.log(actRoute.snapshot.params.paperID);
     this.id = actRoute.snapshot.params.paperID;
   }
@@ -38,7 +38,10 @@ export class ViewSentPaperComponent implements OnInit {
     data.id = id;
     data.status = status;
     this.apiService.sent_paper_status(data).subscribe(
-      response => alert('نامه با موفیت تایید شد.'),
+      response => {
+        alert('درخواست شما با موفقیت ثبت شد.');
+        this.router.navigate(['list-send-paper'])
+      },
       error => console.log('There is some problems: ', error)
     );
   }

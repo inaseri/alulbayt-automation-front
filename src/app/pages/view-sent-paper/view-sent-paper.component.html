@@ -56,11 +56,14 @@
         <div class="col">
           <button class="w-100 btn btn-info" (click)="captureScreen()">پرینت</button>
         </div>
-        <div class="col">
+        <div class="col" *ngIf="listSendPaper.status == 0">
           <button class="w-100 btn btn-warning">اصلاح نامه</button>
         </div>
-        <div class="col">
-          <button class="w-100 btn btn-success" (click)="acceptPaper(listSendPaper.id, 1)">امضا نامه</button>
+        <div class="col" *ngIf="listSendPaper.status == 0">
+          <button class="w-100 btn btn-warning" (click)="acceptPaper(listSendPaper.id, '-1')"> رد نامه </button>
+        </div>
+        <div class="col" *ngIf="listSendPaper.status == 0">
+          <button class="w-100 btn btn-success" (click)="acceptPaper(listSendPaper.id, '1')">امضا نامه</button>
         </div>
       </div>
     </div>

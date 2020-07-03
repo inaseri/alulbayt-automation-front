@@ -16,12 +16,12 @@
               </tr>
               </thead>
               <tbody *ngFor="let row of listSendPaper; let indexOf=index">
-                <th class=" text-right">{{indexOf}}</th>
-                <th class=" text-right">{{row.id}}</th>
-                <th class=" text-right">{{row.organize}}</th>
-                <th class=" text-right">{{row.user}}</th>
-                <th class=" text-right">{{row.subject}}</th>
-                <th class=" text-right">
+                <th class=" text-right" >{{indexOf}}</th>
+                <th class=" text-right" >{{row.id}}</th>
+                <th class=" text-right" >{{row.organize}}</th>
+                <th class=" text-right" >{{row.user}}</th>
+                <th class=" text-right" >{{row.subject}}</th>
+                <th class=" text-right" >
                   <a class="btn btn-lg btn-outline-primary" [routerLink]="['/view-sent-paper/'+row.id]" >مشاهده نامه</a>
                 </th>
               </tbody>
