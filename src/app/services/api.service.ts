@@ -11,7 +11,7 @@ import { Subject } from "../models/subject/subject";
 import { UserReceive } from "../models/user-receive";
 import { PreText } from "../models/Pre_text/pre-text";
 import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
-import { Attachment } from "../models/attachment/attachment";
+import { SentPaperStatus } from "../models/sentpaperstatus/sent-paper-status";
 
 @Injectable({
   providedIn: 'root'
@@ -345,6 +345,20 @@ export class ApiService {
       );
   }
 
+  list_my_send_paper(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/sendtoorg/paper/?user=' + localStorage.getItem('userID'), { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
   view_sent_paper(id: string): Observable<any> {
     return this.http
       .get<any>(this.base_path + 'v1/sendtoorg/paper/' + id + '/', { headers: new HttpHeaders(
@@ -385,5 +399,20 @@ export class ApiService {
         retry(0),
         catchError(this.handleError)
       );
+  }
+
+  sent_paper_status(item: SentPaperStatus) {
+    return this.http
+      .post<CreateSendPaper>(this.base_path + 'mokatebat/sendtoorganization/accept/', JSON.stringify(item),{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+
   }
 }

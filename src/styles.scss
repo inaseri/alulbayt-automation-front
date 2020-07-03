@@ -62,4 +62,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .main-panel[data="blue"] {
     border-top: none !important;
   }
+
+  .card-header {
+    display: none !important;
+  }
 }

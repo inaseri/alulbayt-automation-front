@@ -1,0 +1,98 @@
+<div class="content" dir="rtl">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-12">
+          <div class="row form-row">
+            <mat-tab-group (selectedTabChange)="filter($event)" style="width: 100%;">
+              <mat-tab style="font-family: Neda-Custom!important;" label="نامه های ورودی">
+                <div class="row form-row">
+                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class=" form-group text-right">
+                      <label >سازمان ارسال کننده</label>
+                      <input
+                        [(ngModel)]="search.subject"
+                        name="last_name"
+                        class=" form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class=" form-group text-right">
+                      <label >موضوع</label>
+                      <input
+                        [(ngModel)]="search.sign"
+                        name="last_name"
+                        class=" form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class=" table tablesorter text-right" >
+                    <thead class=" text-primary">
+                    <tr>
+                      <th *ngFor="let item of head1" class=" text-right">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr mdbTableCol *ngFor="let el of elements|filterBy: search; let indexOf=index">
+                      <th>{{indexOf}}</th>
+                      <td>{{el.id}}</td>
+                      <td>{{el.organization}}</td>
+                      <td>{{el.subject}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </mat-tab>
+              <mat-tab style="font-family: Neda-Custom!important;" label="نامه های ارسالی">
+                <div class="row form-row">
+                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class=" form-group text-right">
+                      <label >موضوع</label>
+                      <input
+                        [(ngModel)]="search.subject"
+                        name="last_name"
+                        class=" form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class=" form-group text-right">
+                      <label >شخص گیرنده </label>
+                      <input
+                        [(ngModel)]="search.sign"
+                        name="last_name"
+                        class=" form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class=" table-responsive">
+                  <table class=" table tablesorter text-right" id="">
+                    <thead class=" text-primary">
+                    <tr>
+                      <th *ngFor="let item of head2" class=" text-right">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let row of listSendPaper|filterBy: search; let indexOf=index">
+                    <th class=" text-right">{{indexOf}}</th>
+                    <th class=" text-right">{{row.id}}</th>
+                    <th class=" text-right">{{row.organize}}</th>
+                    <th class=" text-right">{{row.user}}</th>
+                    <th class=" text-right">{{row.subject}}</th>
+                    </tbody>
+                  </table>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

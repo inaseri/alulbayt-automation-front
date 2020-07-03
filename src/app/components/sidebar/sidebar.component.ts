@@ -95,6 +95,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-single-02",
     class: "",
   },
+  {
+    path: '/report-mokatebat',
+    title: "گزارش گیری",
+    rtlTitle: "گزارش گیری",
+    icon: "icon-single-02",
+    class: "",
+  }
 
 ];
 

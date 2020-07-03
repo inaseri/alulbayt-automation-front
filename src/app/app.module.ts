@@ -32,6 +32,8 @@ import { CreateCertificateComponent } from './pages/create-certificate/create-ce
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ViewSentPaperComponent } from './pages/view-sent-paper/view-sent-paper.component';
+import { MokatebatReportComponent } from './pages/mokatebat-report/mokatebat-report.component';
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 
 @NgModule({
   imports: [
@@ -49,9 +51,10 @@ import { ViewSentPaperComponent } from './pages/view-sent-paper/view-sent-paper.
     MatSelectModule,
     MatRadioModule,
     MatTabsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

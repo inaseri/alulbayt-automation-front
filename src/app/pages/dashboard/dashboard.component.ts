@@ -8,10 +8,12 @@ import { ApiService } from "../../services/api.service";
 export class DashboardComponent implements OnInit {
 
   notifyList: any[] = [];
+  myPaper: any;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.get_notify_IDs();
+    this.get_my_paper()
   }
 
   get_notify_IDs() {
@@ -42,11 +44,17 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-
   open_notify(id: string) {
     this.apiService.road_notify(id).subscribe(
       response => console.log('The response is:', response),
       error => console.log(error)
+    );
+  }
+
+  get_my_paper() {
+    this.apiService.list_my_send_paper().subscribe(
+      response => this.myPaper = response['objects'],
+      error => console.log('There is some problems: ', error)
     );
   }
 

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api.service";
 import { ActivatedRoute } from "@angular/router";
-
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
+import { SentPaperStatus } from "../../models/sentpaperstatus/sent-paper-status";
 
 @Component({
   selector: 'app-view-sent-paper',
@@ -33,6 +31,16 @@ export class ViewSentPaperComponent implements OnInit {
 
   captureScreen() {
     print();
+  }
+
+  acceptPaper(id: number, status: string) {
+    const data = new SentPaperStatus();
+    data.id = id;
+    data.status = status;
+    this.apiService.sent_paper_status(data).subscribe(
+      response => alert('نامه با موفیت تایید شد.'),
+      error => console.log('There is some problems: ', error)
+    );
   }
 
 

@@ -12,7 +12,8 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
-// import { RtlComponent } from "../../pages/rtl/rtl.component";
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
+
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
@@ -23,7 +24,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     HttpClientModule,
     NgbModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    Ng2FilterPipeModule
   ],
   declarations: [
     DashboardComponent,
