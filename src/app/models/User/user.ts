@@ -10,4 +10,5 @@ export class User {
   email: string;
   sign: string;
   is_superuser: boolean;
+  cellphone: string;
 }

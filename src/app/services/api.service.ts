@@ -50,8 +50,6 @@ export class ApiService {
     return throwError(errorMessage);
   }
 
-
-  // Login a user
   get_key(item): Observable<User> {
     return this.http
       .post<User>(this.base_path + 'mokatebat/getkey/', JSON.stringify(item), this.httpOptions)
@@ -84,6 +82,34 @@ export class ApiService {
       );
   }
 
+  users_list(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'v1/auth/user/', { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_user(item: User): Observable<User> {
+    return this.http
+      .post<User>(this.base_path + 'mokatebat/auth/user/register', JSON.stringify(item), { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
   uploadUserImage(item) {
     return this.http
       .put<any>(this.base_path + 'mokatebat/user_info/' + '?token=' + localStorage.getItem('token_alulbayt_automation'), item)
@@ -93,8 +119,6 @@ export class ApiService {
       );
   }
 
-
-  // Mokatebat specific api
   createReceivePaper(item) {
     return this.http
       .post<ReceivePaper>(this.base_path + 'mokatebat/sendmessage/' + '?token=' + localStorage.getItem('token_alulbayt_automation'), item , {

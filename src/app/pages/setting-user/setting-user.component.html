@@ -8,22 +8,22 @@
         <div class="card-body">
           <form>
             <div class="row form-row">
-              <div class="col">
+              <div class="col-5">
                 <div class=" form-group">
-                  <mat-form-field>
+                  <mat-form-field style="width: 80%">
                     <label style="font-family: Neda-Custom!important; font-size: 15px;">لیست کاربران</label>
                     <mat-select multiple style="width: 100%">
-                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                      <mat-option *ngFor="let user of userList" [value]="user.id">{{user.first_name}} {{user.last_name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-5">
                 <div class="from-group">
-                  <mat-form-field>
+                  <mat-form-field style="width: 80%">
                     <label style="font-family: Neda-Custom!important; font-size: 15px;">لیست دسترسی</label>
                     <mat-select multiple style="width: 100%">
-                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                      <mat-option *ngFor="let topping of permissionList" [value]="topping.id">{{topping.text}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -40,7 +40,7 @@
                 <div class=" form-group">
                   <div class=" form-group">
                     <label> نام </label>
-                    <input class="form-control">
+                    <input class="form-control" name="first_name" [(ngModel)]="user.first_name">
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                 <div class="from-group">
                   <div class=" form-group">
                     <label> نام خانوادگی </label>
-                    <input class="form-control">
+                    <input class="form-control" name="last_name" [(ngModel)]="user.last_name">
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
                 <div class="from-group">
                   <div class=" form-group">
                     <label> شماره موبایل </label>
-                    <input class="form-control">
+                    <input class="form-control" name="cellphone" [(ngModel)]="user.cellphone">
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                 <div class=" form-group">
                   <div class=" form-group">
                     <label> آدرس ایمیل </label>
-                    <input class="form-control">
+                    <input class="form-control" name="email" [(ngModel)]="user.email">
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@
                 <div class="from-group">
                   <div class=" form-group">
                     <label> رمز عبور </label>
-                    <input class="form-control">
+                    <input class="form-control" name="password" [(ngModel)]="user.password">
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@
                 <div class="from-group">
                   <div class=" form-group">
                     <label>&nbsp;</label>
-                    <button class=" btn btn-fill btn-danger" style="width: 100%; margin-top: -3px;" type="submit">ذخیره کاربر</button>
+                    <button class=" btn btn-fill btn-secondry" style="width: 100%; margin-top: -3px;" type="submit" (click)="createUser()">ذخیره کاربر</button>
                   </div>
                 </div>
               </div>
@@ -91,6 +91,5 @@
         </div>
       </div>
     </div>
-<!--    <div class="col-md-2"></div>-->
   </div>
 </div>
