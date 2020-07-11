@@ -148,6 +148,8 @@ export class SettingsMokatebatComponent implements OnInit {
       response => alert('ثبت نامه با مکان دریافت با موفقیت انجام شد.'),
       error => console.log('There is some problem: ', error)
     );
+    this.list_send_location();
+    this.create_location = new Location();
   }
 
   list_send_location() {
@@ -162,6 +164,8 @@ export class SettingsMokatebatComponent implements OnInit {
       response => alert('ثبت شخص دریافت کننده نامه با موفقیت انجام شد.'),
       error => console.log('There is some problem: ', error)
     );
+    this.list_receive_user();
+    this.create_user_receive = new UserReceive();
   }
 
   list_receive_user() {
@@ -176,6 +180,8 @@ export class SettingsMokatebatComponent implements OnInit {
       response => alert('ثبت موضوع با موفقیت انجام شد.'),
       error => console.log('There is some problem: ', error)
     );
+    this.list_send_subject();
+    this.create_subject = new Subject();
   }
 
   list_send_subject() {
@@ -200,6 +206,7 @@ export class SettingsMokatebatComponent implements OnInit {
       response => alert('مهر شخص امضا کننده با موفقیت بارگذاری گردید.'),
       error => console.log('There is some problems: ', error)
     );
+    this.list_send_user_assign();
   }
 
   crete_pre_text() {

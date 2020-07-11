@@ -9,19 +9,19 @@
         </div>
         <div class=" card-body">
           <div class=" table-responsive">
-            <table class=" table tablesorter text-right" id="">
+            <table class=" table tablesorter text-center" id="">
               <thead class=" text-primary">
               <tr>
-                <th *ngFor="let item of tableHead" class=" text-right">{{item}}</th>
+                <th *ngFor="let item of tableHead" class=" text-center">{{item}}</th>
               </tr>
               </thead>
               <tbody *ngFor="let row of listSendPaper; let indexOf=index">
-                <th class=" text-right" >{{indexOf}}</th>
-                <th class=" text-right" >{{row.id}}</th>
-                <th class=" text-right" >{{row.organize}}</th>
-                <th class=" text-right" >{{row.user}}</th>
-                <th class=" text-right" >{{row.subject}}</th>
-                <th class=" text-right" >
+                <th class=" text-center" >{{indexOf}}</th>
+                <th class=" text-center" >{{row.id}}</th>
+                <th class=" text-center" >{{row.organize}}</th>
+                <th class=" text-center" >{{row.user}}</th>
+                <th class=" text-center" >{{row.subject}}</th>
+                <th class=" text-center" >
                   <a class="btn btn-lg btn-outline-primary" [routerLink]="['/view-sent-paper/'+row.id]" >مشاهده نامه</a>
                 </th>
               </tbody>

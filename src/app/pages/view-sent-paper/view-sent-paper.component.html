@@ -31,7 +31,8 @@
       <div class="row">
         <div class="col-1"></div>
         <div class="col-10" style="color: black; font-size: 11px; text-align: justify !important;">
-          <p [innerHTML]="listSendPaper.text" style="font-size: 14px;"></p>
+          <p [innerHTML]="listSendPaper.text" style="font-size: 14px;">
+          <p *ngFor="let attachment of listSendPaper.attachment" [innerHTML]="attachment.text" style="font-size: 14px;"></p>
         </div>
         <div class="col-1"></div>
       </div>
@@ -54,13 +55,28 @@
     <div class="card-footer">
       <div class="row">
         <div class="col">
-          <button class="w-100 btn btn-info" (click)="captureScreen()">پرینت</button>
+          <button class="w-100 btn btn-outline-dark" (click)="printA4Arabic()">پرینت A4 عربی</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-outline-dark" (click)="printA5Arabic()">پرینت A5 عربی</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-outline-dark" (click)="printA4Persian()">پرینت A4 فارسی</button>
+        </div>
+        <div class="col">
+          <button class="w-100 btn btn-outline-dark" (click)="printA5Persian()">پرینت A5 فارسی</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 20px" class="card text-center">
+    <div class="card-footer">
+      <div class="row">
+        <div class="col" *ngIf="listSendPaper.status == 0">
+          <button class="w-100 btn btn-default">اصلاح نامه</button>
         </div>
         <div class="col" *ngIf="listSendPaper.status == 0">
-          <button class="w-100 btn btn-warning">اصلاح نامه</button>
-        </div>
-        <div class="col" *ngIf="listSendPaper.status == 0">
-          <button class="w-100 btn btn-warning" (click)="acceptPaper(listSendPaper.id, '-1')"> رد نامه </button>
+          <button class="w-100 btn btn-danger" (click)="acceptPaper(listSendPaper.id, '-1')"> رد نامه </button>
         </div>
         <div class="col" *ngIf="listSendPaper.status == 0">
           <button class="w-100 btn btn-success" (click)="acceptPaper(listSendPaper.id, '1')">امضا نامه</button>

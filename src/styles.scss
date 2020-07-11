@@ -8,9 +8,19 @@
   src: url("assets/fonts/Mj_Neda_0.ttf");
 }
 
+@font-face {
+  font-family: 'BTitr';
+  src: url("assets/fonts/B Titr Bold_0.ttf");
+}
+
+@font-face {
+  font-family: 'BZar';
+  src: url("assets/fonts/B Zar_0.ttf");
+}
+
 body {
-  font-family: Neda-Custom!important;
-  font-size: 15px!important;
+  font-family: BZar !important;
+  font-size: 14px !important;
 }
 
 label {
@@ -18,12 +28,12 @@ label {
 }
 
 button {
-  font-family: Neda-Custom!important;
+  font-family: BTitr!important;
   font-size: 15px!important;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: BZar, "Helvetica Neue", sans-serif; }
 
 
 @media print {
@@ -37,14 +47,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   .navbar-collapse .collapse {
     display: none !important;
-  }
-
-  .content  .card .card-body .card-header .card-footer {
-    width: 100%;
-  }
-
-  .card-body {
-    text-align: justify !important;
   }
 
   .main-panel .content {
@@ -66,4 +68,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .card-header {
     display: none !important;
   }
+
+  .fixed-plugin {
+    display: none !important;
+  }
+
+  .content  .card .card-body .card-header .card-footer {
+    width: 100%;
+  }
+
+  .card-body {
+    text-align: justify !important;
+  }
+
+  .arabicA5 {
+    font-family: ".SF NS";
+  }
+
+  .arabicA4 {
+    font-family: ".SF NS";
+  }
+
+  .persianA5 {
+
+  }
+
+  .persianA4 {
+
+  }
+
 }
