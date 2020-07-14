@@ -17,12 +17,11 @@ export class DashboardComponent implements OnInit {
   }
 
   get_notify_IDs() {
-    const userID = localStorage.getItem('userID')
     let index = 0;
-    this.apiService.get_notify(userID).subscribe(
+    this.apiService.get_notify().subscribe(
       response => {
         for (const key in response) {
-          if (response.hasOwnProperty(key) && response[key].length > 0) {
+          if (response.hasOwnProperty(key)) {
             const object = JSON.parse(response['objects'][index].extra)
             const id = object.mokatebat;
             const notify = response['objects'][index].id;
@@ -53,7 +52,10 @@ export class DashboardComponent implements OnInit {
 
   get_my_paper() {
     this.apiService.list_my_send_paper().subscribe(
-      response => this.myPaper = response['objects'],
+      response => {
+        this.myPaper = response['objects'];
+        console.log('my sent paper is: ', response);
+      },
       error => console.log('There is some problems: ', error)
     );
   }

@@ -16,6 +16,9 @@ export class CreateSendPaperComponent implements OnInit {
   attachmentArray = [];
   attachment: any;
 
+  europeSelected = true;
+  persianSelected = false;
+
   listLocation: any;
   listUserReceive: any;
   listSubject: any;
@@ -136,12 +139,23 @@ export class CreateSendPaperComponent implements OnInit {
     this.showTextEditor = true
   }
 
-  filter($event) {
-    const value = [$event.index];
-    if (value[0] == 0) {
-      this.persianTemp = false
+  // filter($event) {
+  //   const value = [$event.index];
+  //   if (value[0] == 0) {
+  //     this.persianTemp = false
+  //   } else {
+  //     this.persianTemp = true
+  //   }
+  // }
+
+
+  select_template(type: string) {
+    if (type === '0') {
+      this.persianSelected = false;
+      this.europeSelected = true
     } else {
-      this.persianTemp = true
+      this.persianSelected = true;
+      this.europeSelected = false;
     }
   }
 

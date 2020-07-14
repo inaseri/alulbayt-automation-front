@@ -371,7 +371,7 @@ export class ApiService {
 
   list_my_send_paper(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/paper/?user=' + localStorage.getItem('userID'), { headers: new HttpHeaders(
+      .get<any>(this.base_path + 'v1/sendtoorg/paper/', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
@@ -397,9 +397,9 @@ export class ApiService {
       );
   }
 
-  get_notify(owner: string): Observable<any> {
+  get_notify(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/notify/?owner=' + owner + '&status=0', { headers: new HttpHeaders(
+      .get<any>(this.base_path + 'v1/notify/'+ '?status=0', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
