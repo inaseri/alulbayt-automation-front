@@ -8,22 +8,24 @@
         </div>
         <div class=" card-body">
           <div class=" table-responsive">
-            <table class=" table tablesorter text-right" id="">
+            <table class=" table tablesorter text-center" id="">
               <thead class=" text-primary">
               <tr>
-                <th class=" text-right">ردیف</th>
-                <th class=" text-right">شماره نامه</th>
-                <th class=" text-right">سازمان ارسال کننده</th>
-                <th class=" text-right">موضوع نامه</th>
+                <th class=" text-center">ردیف</th>
+                <th class=" text-center">شماره نامه</th>
+                <th class=" text-center">سازمان ارسال کننده</th>
+                <th class=" text-center">موضوع نامه</th>
+                <th class=" text-center">تصویر نامه</th>
               </tr>
               </thead>
               <tbody>
-              <tr mdbTableCol *ngFor="let el of elements; let indexOf=index">
-                <th>{{indexOf}}</th>
-                <td>{{el.id}}</td>
-                <td>{{el.organization}}</td>
-                <td>{{el.subject}}</td>
-              </tr>
+                <tr mdbTableCol *ngFor="let el of elements; let indexOf=index">
+                  <th class=" text-center" >{{indexOf}}</th>
+                  <td class=" text-center" >{{el.id}}</td>
+                  <td class=" text-center" >{{el.organization}}</td>
+                  <td class=" text-center" >{{el.subject}}</td>
+                  <td class=" text-center"><a class="btn btn-default" href="{{el.image}}" target="_blank">مشاهده</a></td>
+                </tr>
               </tbody>
             </table>
           </div>
