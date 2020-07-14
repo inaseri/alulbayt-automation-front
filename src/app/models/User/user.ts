@@ -11,4 +11,6 @@ export class User {
   sign: string;
   is_superuser: boolean;
   cellphone: string;
+  permid: string;
+  userid: string;
 }

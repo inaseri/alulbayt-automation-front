@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {User} from "../../models/User/user";
+import { User } from "../../models/User/user";
 
 
 @Component({
@@ -8,16 +8,20 @@ import {User} from "../../models/User/user";
   templateUrl: './setting-user.component.html',
   styleUrls: ['./setting-user.component.scss']
 })
+
 export class SettingUserComponent implements OnInit {
 
   permissionList = [];
   user: User;
   userList: any;
 
+  userPermission: User;
 
   constructor(private apiService: ApiService) {
     this.user = new User();
+    this.userPermission = new User();
   }
+
   ngOnInit(): void {
     this.permissionList.push({
       id: 45,
@@ -49,6 +53,14 @@ export class SettingUserComponent implements OnInit {
     this.apiService.create_user(this.user).subscribe(
       response => alert('کاربر با نام کاربری رو به رو ساخته شد:' + response.username),
       error => console.log('There is somp problem: ', error)
+    );
+  }
+
+  setPermissionForUsers() {
+    console.log(this.userPermission.permid);
+    this.apiService.set_permission(this.userPermission).subscribe(
+      response => alert('سطح دسترسی ها با موفقیت تایید گردید.'),
+      error => console.log('There is some problems: ', error)
     );
   }
 

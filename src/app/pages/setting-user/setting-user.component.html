@@ -12,7 +12,7 @@
                 <div class=" form-group">
                   <mat-form-field style="width: 80%">
                     <label style="font-family: Neda-Custom!important; font-size: 15px;">لیست کاربران</label>
-                    <mat-select multiple style="width: 100%">
+                    <mat-select multiple style="width: 100%" [(ngModel)]="userPermission.userid" name="userid">
                       <mat-option *ngFor="let user of userList" [value]="user.id">{{user.first_name}} {{user.last_name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -22,8 +22,8 @@
                 <div class="from-group">
                   <mat-form-field style="width: 80%">
                     <label style="font-family: Neda-Custom!important; font-size: 15px;">لیست دسترسی</label>
-                    <mat-select multiple style="width: 100%">
-                      <mat-option *ngFor="let topping of permissionList" [value]="topping.id">{{topping.text}}</mat-option>
+                    <mat-select multiple style="width: 100%"  [(ngModel)]="userPermission.permid" name="permid">
+                      <mat-option *ngFor="let topping of permissionList" [value]="topping.id" >{{topping.text}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -31,7 +31,7 @@
               <div class="col-2">
                 <div class="from-group">
                   <label>&nbsp;</label>
-                  <i class="tim-icons icon-simple-add form-control"></i>
+                  <i class="tim-icons icon-simple-add form-control" (click)="setPermissionForUsers()"></i>
                 </div>
               </div>
             </div>

@@ -110,6 +110,20 @@ export class ApiService {
       );
   }
 
+  set_permission(item: User): Observable<User> {
+    return this.http
+      .post<User>(this.base_path + 'mokatebat/auth/user/perm_update', JSON.stringify(item), { headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
   uploadUserImage(item) {
     return this.http
       .put<any>(this.base_path + 'mokatebat/user_info/' + '?token=' + localStorage.getItem('token_alulbayt_automation'), item)
