@@ -11,7 +11,7 @@
                     <div class=" form-group text-right">
                       <label >سازمان ارسال کننده</label>
                       <input
-                        [(ngModel)]="search.subject"
+                        [(ngModel)]="search2.organization"
                         name="last_name"
                         class=" form-control"
                         type="text"
@@ -22,7 +22,7 @@
                     <div class=" form-group text-right">
                       <label >موضوع</label>
                       <input
-                        [(ngModel)]="search.sign"
+                        [(ngModel)]="search2.subject"
                         name="last_name"
                         class=" form-control"
                         type="text"
@@ -38,7 +38,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr mdbTableCol *ngFor="let el of elements|filterBy: search; let indexOf=index">
+                    <tr mdbTableCol *ngFor="let el of elements|filterBy: search2; let indexOf=index">
                       <th>{{indexOf}}</th>
                       <td>{{el.id}}</td>
                       <td>{{el.organization}}</td>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api.service";
 import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
+import {ReceivePaper} from "../../models/Mokatebat/receive-paper";
 
 @Component({
   selector: 'app-mokatebat-report',
@@ -13,12 +14,14 @@ export class MokatebatReportComponent implements OnInit {
   head2 = ['ردیف', 'شماره نامه', 'سازمان گیرنده', 'شخص گیرنده', 'موضوع'];
 
   search: CreateSendPaper;
+  search2: ReceivePaper;
 
   elements: any;
   listSendPaper: any[];
 
   constructor(private apiService: ApiService) {
     this.search = new CreateSendPaper();
+    this.search2 = new ReceivePaper();
   }
 
   ngOnInit(): void {

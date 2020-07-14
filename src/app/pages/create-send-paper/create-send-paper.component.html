@@ -40,32 +40,32 @@
                 <button class="btn btn-default w-100" (click)="select_template('1')">قالب فارسی</button>
               </div>
           </div>
-          <div class="row form-row">
-        <div class="col-3" style="margin-top: 15px;" *ngIf="europeSelected">
-          <div class="form-group">
-            <label style="font-family: Neda-Custom!important;"> تاریخ </label>
-            <input
-              class=" form-control" required
-              name="date"
-              type="date"
-              [(ngModel)]="europeDate"
-            />
+          <div class="form-row">
+            <div class="col-md-6" style="margin-top: 15px;" *ngIf="europeSelected">
+              <div class="form-group">
+                <label> تاریخ </label>
+                <input
+                  class=" form-control" required
+                  name="date"
+                  type="date"
+                  [(ngModel)]="europeDate"
+                />
+              </div>
+            </div>
+            <div class="col-md-6" style="margin-top: 15px;" *ngIf="persianSelected">
+              <div class="form-group">
+                <label> تاریخ </label>
+                <dp-date-picker
+                  [(ngModel)]="persianDate"
+                  name="date"
+                  dir="rtl" mode="day"
+                  theme="dp-material"
+                  style="background: transparent!important;"
+                  class="form-control"
+                ></dp-date-picker>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-3" style="margin-top: 15px;" *ngIf="persianSelected">
-          <div class="form-group">
-            <dp-date-picker
-              dir="rtl" mode="day"
-              placeholder="تاریخ"
-              theme="dp-material"
-              class="new-dp"
-              style="background: transparent!important;"
-              [(ngModel)]="persianDate"
-              name="date"
-            ></dp-date-picker>
-          </div>
-        </div>
-      </div>
           <div class="row form-row">
             <div class="col-4">
               <div class=" form-group">
