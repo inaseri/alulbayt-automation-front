@@ -87,7 +87,6 @@ export class CreateSendPaperComponent implements OnInit {
     this.list_send_location();
     this.list_send_subject();
     this.list_send_user_assign();
-    console.log(this.createSendPaper.subject);
   }
 
   select_attachment_number(number: string) {
@@ -152,10 +151,12 @@ export class CreateSendPaperComponent implements OnInit {
   select_template(type: string) {
     if (type === '0') {
       this.persianSelected = false;
-      this.europeSelected = true
+      this.europeSelected = true;
+      this.persianTemp = false;
     } else {
       this.persianSelected = true;
       this.europeSelected = false;
+      this.persianTemp = true;
     }
   }
 
@@ -165,9 +166,9 @@ export class CreateSendPaperComponent implements OnInit {
     } else {
       this.createSendPaper.date = this.europeDate;
     }
+    console.log(this.createSendPaper);
     this.apiService.create_send_paper(this.createSendPaper).subscribe(
       response => {
-        console.log('response is:', response['id']);
         const dict = {text: this.attachment, mokatebat: response['id']}
         this.apiService.save_send_paper_attachment(dict).subscribe(
           response2 => console.log(response2),
