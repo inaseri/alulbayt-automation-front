@@ -13,6 +13,7 @@ import { ListMokebComponent } from "../../pages/list-mokeb/list-mokeb.component"
 import { CreateCertificateComponent} from "../../pages/create-certificate/create-certificate.component";
 import { ViewSentPaperComponent } from "../../pages/view-sent-paper/view-sent-paper.component";
 import { MokatebatReportComponent } from "../../pages/mokatebat-report/mokatebat-report.component";
+import { EditPaperComponent } from "../../pages/edit-paper/edit-paper.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -27,6 +28,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'mokatebat-settings', component: SettingsMokatebatComponent },
   { path: 'view-sent-paper/:paperID', component: ViewSentPaperComponent },
   { path: 'report-mokatebat', component: MokatebatReportComponent },
+  { path: 'edit-paper/:editID', component: EditPaperComponent },
 
   // Mavakeb Urls
   { path: 'user-settings', component: SettingUserComponent },

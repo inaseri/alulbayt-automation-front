@@ -73,7 +73,7 @@
     <div class="card-footer">
       <div class="row">
         <div class="col" *ngIf="listSendPaper.status == 0">
-          <button class="w-100 btn btn-default">اصلاح نامه</button>
+          <a [routerLink]="['/edit-paper/'+id]" class="w-100 btn btn-default">اصلاح نامه</a>
         </div>
         <div class="col" *ngIf="listSendPaper.status == 0">
           <button class="w-100 btn btn-danger" (click)="acceptPaper(listSendPaper.id, '-1')"> رد نامه </button>

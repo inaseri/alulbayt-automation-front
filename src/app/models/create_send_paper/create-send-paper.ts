@@ -4,4 +4,5 @@ export class CreateSendPaper {
   date: string;
   text: string;
   sign: string;
+  id: string;
 }

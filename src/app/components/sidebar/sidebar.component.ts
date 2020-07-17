@@ -101,6 +101,13 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "گزارش گیری",
     icon: "icon-single-02",
     class: "",
+  },
+  {
+    path: '/edit-paper',
+    title: "اصلاح نامه",
+    rtlTitle: "اصلاح نامه",
+    icon: "icon-single-02",
+    class: "",
   }
 
 ];

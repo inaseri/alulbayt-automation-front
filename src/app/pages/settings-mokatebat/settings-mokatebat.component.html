@@ -58,6 +58,7 @@
                 <div class=" form-group">
                   <label> انتخاب مکان </label>
                   <select class="form-control" [(ngModel)]="create_user_receive.location" name="location">
+                    <option style="background: transparent; color: black"> انتخاب کنید</option>
                     <option *ngFor="let item3 of list_location"
                             class=" form-control" [value]="item3.id"
                             style="background: transparent; color: black">{{item3.name}}</option>
@@ -93,6 +94,7 @@
                 <div class=" form-group">
                   <label> شخص امضا کننده </label>
                   <select class="form-control" [(ngModel)]="create_user_assign.id" name="location">
+                    <option style="background: transparent; color: black"> انتخاب کنید</option>
                     <option *ngFor="let item2 of list_user_assign"
                             class=" form-control" [value]="item2.id"
                             style="background: transparent; color: black">{{item2.first_name}}&nbsp;{{item2.last_name}}</option>
@@ -113,16 +115,11 @@
               </div>
             </div>
             <div class="row form-row">
-              <div class="col-8">
-                <div class=" form-group">
-                  <label> متن پیش نویس نامه </label>
-                  <angular-editor [(ngModel)]="create_pre_text.text" [config]="editorConfig" name="pre_text"></angular-editor>
-                </div>
-              </div>
-              <div class="col-2">
+              <div class="col">
                 <div class=" form-group">
                   <label> انتخاب موضوع متن </label>
                   <select class="form-control" [(ngModel)]="create_pre_text.subject" name="location">
+                    <option style="background: transparent; color: black"> انتخاب کنید </option>
                     <option *ngFor="let item4 of list_subject"
                             class=" form-control" [value]="item4.id"
                             style="background: transparent; color: black">{{item4.text}}</option>
@@ -133,6 +130,14 @@
                 <div class="from-group">
                   <label>&nbsp;</label>
                   <i class="tim-icons icon-simple-add form-control" (click)="crete_pre_text()"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col">
+                <div class=" form-group">
+                  <label> متن پیش نویس نامه </label>
+                  <angular-editor [(ngModel)]="create_pre_text.text" [config]="editorConfig" name="pre_text"></angular-editor>
                 </div>
               </div>
             </div>

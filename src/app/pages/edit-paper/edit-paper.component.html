@@ -37,8 +37,8 @@
               <button class="btn btn-default w-100" (click)="select_template('0')">قالب عربی</button>
             </div>
             <div class="col-6">
-                <button class="btn btn-default w-100" (click)="select_template('1')">قالب فارسی</button>
-              </div>
+              <button class="btn btn-default w-100" (click)="select_template('1')">قالب فارسی</button>
+            </div>
           </div>
           <div class="form-row">
             <div class="col-md-6" style="margin-top: 15px;" *ngIf="europeSelected">
@@ -157,10 +157,10 @@
             </div>
           </div>
           <div class="row" *ngFor="let item of attachmentArray; let indexOf=index" style="margin-bottom: 60px;">
-              <div class="col-md-12" >
-                <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]" name="text + {{indexOf}}" ></angular-editor>
-              </div>
+            <div class="col-md-12" >
+              <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]" name="text + {{indexOf}}" ></angular-editor>
             </div>
+          </div>
         </div>
         <div class=" card-footer">
           <button class="btn btn-fill btn-info" type="submit" (click)="create_send_paper()">ثبت نامه</button>

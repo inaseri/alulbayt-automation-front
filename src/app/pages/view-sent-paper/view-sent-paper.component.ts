@@ -14,7 +14,6 @@ export class ViewSentPaperComponent implements OnInit {
   id: any;
 
   constructor(private apiService: ApiService, private actRoute: ActivatedRoute,private router: Router) {
-    console.log(actRoute.snapshot.params.paperID);
     this.id = actRoute.snapshot.params.paperID;
   }
 
