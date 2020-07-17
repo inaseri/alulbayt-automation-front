@@ -35,6 +35,7 @@ import { ViewSentPaperComponent } from './pages/view-sent-paper/view-sent-paper.
 import { MokatebatReportComponent } from './pages/mokatebat-report/mokatebat-report.component';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { EditPaperComponent } from './pages/edit-paper/edit-paper.component';
+import { CreateInhabitancyComponent } from './pages/create-inhabitancy/create-inhabitancy.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,7 @@ import { EditPaperComponent } from './pages/edit-paper/edit-paper.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

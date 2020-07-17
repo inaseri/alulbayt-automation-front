@@ -109,6 +109,14 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-single-02",
     class: "",
   }
+  ,
+  {
+    path: '/create-residence',
+    title: "ایجاد پرونده اقامت",
+    rtlTitle: "ایجاد پرونده اقامت",
+    icon: "icon-single-02",
+    class: "",
+  }
 
 ];
 

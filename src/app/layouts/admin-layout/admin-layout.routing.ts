@@ -14,6 +14,7 @@ import { CreateCertificateComponent} from "../../pages/create-certificate/create
 import { ViewSentPaperComponent } from "../../pages/view-sent-paper/view-sent-paper.component";
 import { MokatebatReportComponent } from "../../pages/mokatebat-report/mokatebat-report.component";
 import { EditPaperComponent } from "../../pages/edit-paper/edit-paper.component";
+import { CreateInhabitancyComponent } from "../../pages/create-inhabitancy/create-inhabitancy.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -35,5 +36,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'create-mokeb', component: CreateMokebComponent},
   { path: 'list-mokeb', component: ListMokebComponent },
   { path: 'create-certificate', component: CreateCertificateComponent },
+
+  // Residence Urls
+  { path: 'create-residence', component: CreateInhabitancyComponent }
 
 ];
