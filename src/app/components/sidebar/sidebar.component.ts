@@ -116,6 +116,13 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "ایجاد پرونده اقامت",
     icon: "icon-single-02",
     class: "",
+  },
+  {
+    path: '/list-residence',
+    title: "فهرست پرونده های اقامت",
+    rtlTitle: "فهرست پرونده های اقامت",
+    icon: "icon-single-02",
+    class: "",
   }
 
 ];
