@@ -12,25 +12,25 @@
             <div class="col-3">
               <div class="form-group">
                 <label>نام</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.firstName" name="firstName">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>نام خانوادگی</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.lastName" name="lastName">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>نام پدر</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.fatherName" name="fatherName">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>تابیعت</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.nation" name="nation">
               </div>
             </div>
           </div>
@@ -38,25 +38,25 @@
             <div class="col-3">
               <div class="form-group">
                 <label>شماره گذرنامه</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.passportNo" name="passportNo">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>محل سکونت</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.address" name="address">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>تلفن همراه</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.phone" name="phone">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
-                <label>معرفت</label>
-                <input class="form-control">
+                <label>معرف</label>
+                <input class="form-control" [(ngModel)]="data.introduced" name="introduced">
               </div>
             </div>
           </div>
@@ -70,25 +70,25 @@
             <div class="col-3">
               <div class="form-group">
                 <label>نام</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.familyFirstName" name="familyFirstName">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>نام خانوادگی</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.familyLastName" name="familyLastName">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>تلفن همراه</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.familyPhone" name="familyPhone">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label>تابیعت</label>
-                <input class="form-control">
+                <input class="form-control" [(ngModel)]="data.familyNation" name="familyNation">
               </div>
             </div>
           </div>
@@ -99,34 +99,43 @@
           </div>
           <h3>اسناد مقیم</h3>
           <div class="row form-row">
-            <div class="col-4">
+            <div class="col-3">
                 <label> تصویر مقیم </label>
-                <input #imageInput
+                <input id="image"
                        type="file"
-                       accept="image/*"
+                       accept="*/*"
                        class="form-control"
+                       name="image"
                 />
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <label> تصویر فرم درخواست </label>
-              <input #imageInput
+              <input id="requestForm"
                      type="file"
-                     accept="image/*"
+                     accept="*/*"
                      class="form-control"
+                     name="requestForm"
               />
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <label> صفحه اول گذرنامه </label>
-              <input #imageInput
+              <input id="passportImage"
                      type="file"
-                     accept="image/*"
+                     accept="*/*"
                      class="form-control"
+                     name="passportImage"
               />
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label> تاریخ </label>
+                <input type="date" class="form-control" [(ngModel)]="data.date" name="date">
+              </div>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-default">ثبت شخص</button>
+          <button class="btn btn-default" (click)="create_residence()">ثبت شخص</button>
         </div>
       </div>
     </div>

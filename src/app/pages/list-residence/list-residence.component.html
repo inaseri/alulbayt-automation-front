@@ -22,15 +22,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <th class=" text-center">ردیف</th>
-                <th class=" text-center">شناسه اقامت</th>
-                <th class=" text-center">نام شخص</th>
-                <th class=" text-center">تابعیت شخص</th>
-                <th class=" text-center">تاریخ اخذ اقامت</th>
+              <tr *ngFor="let residences of data; let indexOf = index">
+                <th class=" text-center">{{indexOf}}</th>
+                <th class=" text-center">{{residences.id}}</th>
+                <th class=" text-center">{{residences.firstName}} &nbsp; {{residences.lastName}}</th>
+                <th class=" text-center">{{residences.nation}}</th>
+                <th class=" text-center">{{residences.date}}</th>
                 <th class=" text-center"><span class="tim-icons icon-pencil"></span></th>
                 <th class=" text-center"><span class="tim-icons icon-simple-remove"></span></th>
-                <th class=" text-center"><span class="tim-icons icon-badge"></span></th>
+                <th class=" text-center"><span class="tim-icons icon-badge" (click)="get_residence_detail(residences.id)"></span></th>
               </tr>
               </tbody>
             </table>
@@ -40,3 +40,4 @@
     </div>
   </div>
 </div>
+

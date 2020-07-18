@@ -12,6 +12,8 @@ import { UserReceive } from "../models/user-receive";
 import { PreText } from "../models/Pre_text/pre-text";
 import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
 import { SentPaperStatus } from "../models/sentpaperstatus/sent-paper-status";
+import { Residence } from "../models/residence/residence";
+
 
 @Injectable({
   providedIn: 'root'
@@ -451,6 +453,46 @@ export class ApiService {
         retry(0),
         catchError(this.handleError)
       );
+  }
 
+  create_residence(data): Observable<Residence> {
+    return this.http
+      .post<Residence>(this.base_path + 'mokatebat/residence/', data,{ headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  list_residence() {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/residence/',{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  selected_residence(id: string): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'residence/detail/' + id + '/',{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
   }
 }
