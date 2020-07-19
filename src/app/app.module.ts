@@ -37,6 +37,7 @@ import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { EditPaperComponent } from './pages/edit-paper/edit-paper.component';
 import { CreateInhabitancyComponent } from './pages/create-inhabitancy/create-inhabitancy.component';
 import { ListResidenceComponent } from './pages/list-residence/list-residence.component';
+import { EditResidenceComponent } from './pages/edit-residence/edit-residence.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,7 @@ import { ListResidenceComponent } from './pages/list-residence/list-residence.co
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

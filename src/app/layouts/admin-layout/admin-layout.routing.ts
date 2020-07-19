@@ -15,7 +15,8 @@ import { ViewSentPaperComponent } from "../../pages/view-sent-paper/view-sent-pa
 import { MokatebatReportComponent } from "../../pages/mokatebat-report/mokatebat-report.component";
 import { EditPaperComponent } from "../../pages/edit-paper/edit-paper.component";
 import { CreateInhabitancyComponent } from "../../pages/create-inhabitancy/create-inhabitancy.component";
-import {ListResidenceComponent} from "../../pages/list-residence/list-residence.component";
+import { ListResidenceComponent } from "../../pages/list-residence/list-residence.component";
+import { EditResidenceComponent } from "../../pages/edit-residence/edit-residence.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -41,5 +42,6 @@ export const AdminLayoutRoutes: Routes = [
   // Residence Urls
   { path: 'create-residence', component: CreateInhabitancyComponent },
   { path: 'list-residence', component: ListResidenceComponent },
+  { path: 'edit-residence/:id', component: EditResidenceComponent },
 
 ];

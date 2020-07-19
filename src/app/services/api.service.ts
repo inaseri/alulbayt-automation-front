@@ -495,4 +495,17 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
+
+  update_residence(data, id: string): Observable<Residence> {
+    return this.http
+      .post<any>(this.base_path + 'mokatebat/residence/detail/' + id + '/', data,{ headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
 }

@@ -123,6 +123,13 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "فهرست پرونده های اقامت",
     icon: "icon-single-02",
     class: "",
+  },
+  {
+    path: '/edit-residence/:id',
+    title: "اصلاح مقیم",
+    rtlTitle: "اصلاح مقیم",
+    icon: "icon-single-02",
+    class: "",
   }
 
 ];

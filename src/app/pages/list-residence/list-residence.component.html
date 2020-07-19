@@ -28,7 +28,11 @@
                 <th class=" text-center">{{residences.firstName}} &nbsp; {{residences.lastName}}</th>
                 <th class=" text-center">{{residences.nation}}</th>
                 <th class=" text-center">{{residences.date}}</th>
-                <th class=" text-center"><span class="tim-icons icon-pencil"></span></th>
+                <th class=" text-center">
+                  <a [routerLink]="['/edit-residence/'+residences.id]">
+                    <span class="tim-icons icon-pencil"></span>
+                  </a>
+                </th>
                 <th class=" text-center"><span class="tim-icons icon-simple-remove"></span></th>
                 <th class=" text-center"><span class="tim-icons icon-badge" (click)="open(detailModal, residences.id)"></span></th>
               </tr>
