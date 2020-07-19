@@ -484,7 +484,7 @@ export class ApiService {
 
   selected_residence(id: string): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'residence/detail/' + id + '/',{ headers: new HttpHeaders(
+      .get<any>(this.base_path + 'mokatebat/residence/detail/' + id + '/',{ headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')

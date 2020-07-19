@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api.service";
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 declare const require: any;
 
@@ -11,7 +12,18 @@ declare const require: any;
 export class ListResidenceComponent implements OnInit {
 
   data: any;
-  constructor(private apiService: ApiService) { }
+  selectedData: any;
+
+  title = 'ng-bootstrap-modal-demo';
+  closeResult: string;
+  modalOptions:NgbModalOptions;
+
+  constructor(private apiService: ApiService, private modalService: NgbModal) {
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop'
+    }
+  }
 
   ngOnInit(): void {
     this.get_residence();
@@ -37,10 +49,26 @@ export class ListResidenceComponent implements OnInit {
     );
   }
 
-  get_residence_detail(id: string) {
+  open(content, id: string) {
     this.apiService.selected_residence(id).subscribe(
-
+      response => this.selectedData = response,
+      error => alert('در دریافت اطلاعات خطایی رخ داده است.')
     );
+    this.modalService.open(content, this.modalOptions).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
 }
