@@ -1,4 +1,4 @@
-<div class="content" dir="rtl">
+<div class="content" dir="rtl" lang="ar">
   <div class="card text-center">
     <div class="card-header">
       <div class="row"></div>
@@ -43,9 +43,14 @@
       <div class="row" style="margin-top: 20px;">
         <div class="col-4"></div>
         <div class="col-4"></div>
-        <div class="col-4 text-center">
+        <div class="col-4 text-center" *ngIf="arabic">
+          <!-- <p style="font-size: 12px; font-weight: bold;" >با کمال تشکر</p> -->
+          <p style="font-size: 12px; font-weight: bold;" >مدیریت موسسه آل البیت (علیه السلام) قم المقدسه</p>
+          <p style="font-size: 12px; font-weight: bold;" >سید ابراهیم اللاجوردی</p>
+        </div>
+        <div class="col-4 text-center" *ngIf="persian">
           <p style="font-size: 12px; font-weight: bold;" >با کمال تشکر</p>
-          <p style="font-size: 12px; font-weight: bold;" >مدیریت مرکز جهانی آل البیت (ع)</p>
+          <p style="font-size: 12px; font-weight: bold;" >(مدیریت مرکز جهانی آل البیت (ع</p>
           <p style="font-size: 12px; font-weight: bold;" >سید ابراهیم لاجوردی</p>
         </div>
       </div>
