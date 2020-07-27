@@ -3,6 +3,8 @@ import { ApiService } from "../../services/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SentPaperStatus } from "../../models/sentpaperstatus/sent-paper-status";
 
+declare const require: any;
+
 @Component({
   selector: 'app-view-sent-paper',
   templateUrl: './view-sent-paper.component.html',
@@ -30,7 +32,6 @@ export class ViewSentPaperComponent implements OnInit {
 
   printA4Arabic() {
     const divToPrint = document.getElementById('contentToConvert');
-    divToPrint.style.fontSize = '160px !important';
     const newWin=window.open('','Print-Window','width=2480,height=3508');
     newWin.document.open();
     newWin.document.write(
@@ -40,7 +41,12 @@ export class ViewSentPaperComponent implements OnInit {
       '@font-face{font-family: \'BZar\'; src: url("../../../assets/fonts/B Zar_0.ttf");}' +
       ' h1 {font-size: 25px !important; font-family: BZar !important;}' +
       'p {font-size: 20px !important; font-family: BZar !important;}' +
-      '</style><body style="margin-top: 25%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+      '@page{size: A4}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">' +
+      '<div class="row" ><div class="col"><p>'+ this.listSendPaper.date + '</p></div></div>' +      
+      '<div class="row" style="margin-bottom: 100px;"><div class="col"><p>'+ this.id + '</p></div></div>' +  
+       divToPrint.innerHTML +
+      '</body></html>'
     );
     newWin.document.close();
     return true;
@@ -48,7 +54,6 @@ export class ViewSentPaperComponent implements OnInit {
 
   printA5Arabic() {
     const divToPrint = document.getElementById('contentToConvert');
-    divToPrint.style.fontSize = '160px !important';
     const newWin=window.open('','Print-Window','width=1748,height=2480');
     newWin.document.open();
     newWin.document.write(
@@ -58,7 +63,12 @@ export class ViewSentPaperComponent implements OnInit {
       '@font-face{font-family: \'BZar\'; src: url("../../../assets/fonts/B Zar_0.ttf");}' +
       ' h1 {font-size: 20px !important; font-family: BZar !important;}' +
       'p {font-size: 10px !important; font-family: BZar !important;}' +
-      '</style><body style="margin-top: 15%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+      '@page{size: A5}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">'+
+      '<div class="row" ><div class="col"><p>'+ this.listSendPaper.date + '</p></div></div>' +      
+      '<div class="row" style="margin-bottom: 80px;"><div class="col"><p>'+ this.id + '</p></div></div>' +  
+      divToPrint.innerHTML +
+      '</body></html>'
     );
     newWin.document.close();
     return true;
@@ -66,8 +76,15 @@ export class ViewSentPaperComponent implements OnInit {
   }
 
   printA4Persian() {
+
+    const persianDate = require('jalaali-js');
+    const year = this.listSendPaper.date.toString().substr(0,4);
+    const month = this.listSendPaper.date.toString().substr(5,2);
+    const day = this.listSendPaper.date.toString().substr(8,2);
+    const persian = persianDate.toJalaali(Number(year), Number(month), Number(day));
+    const newDate = persian.jy.toString() + "/" + persian.jm.toString() + "/" + persian.jd.toString();
+
     const divToPrint = document.getElementById('contentToConvert');
-    divToPrint.style.fontSize = '160px !important';
     const newWin=window.open('','Print-Window','width=2480,height=3508');
     newWin.document.open();
     newWin.document.write(
@@ -77,15 +94,27 @@ export class ViewSentPaperComponent implements OnInit {
       '@font-face{font-family: \'BTitr\'; src: url("../../../assets/fonts/B Titr Bold_0.ttf");}' +
       'h1 {font-size: 25px !important; font-family: BTitr !important;}' +
       'p {font-size: 20px !important; font-family: BTitr !important;}' +
-      '</style><body style="margin-top: 25%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+      '@page{size: A4}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">'+ 
+      '<div class="row" ><div class="col"><p>'+ newDate + '</p></div></div>' +      
+      '<div class="row" style="margin-bottom: 100px;"><div class="col"><p>'+ this.id + '</p></div></div>' +  
+      divToPrint.innerHTML + 
+      '</body></html>'
     );
     newWin.document.close();
     return true;
   }
 
   printA5Persian() {
+
+    const persianDate = require('jalaali-js');
+    const year = this.listSendPaper.date.toString().substr(0,4);
+    const month = this.listSendPaper.date.toString().substr(5,2);
+    const day = this.listSendPaper.date.toString().substr(8,2);
+    const persian = persianDate.toJalaali(Number(year), Number(month), Number(day));
+    const newDate = persian.jy.toString() + "/" + persian.jm.toString() + "/" + persian.jd.toString();
+
     const divToPrint = document.getElementById('contentToConvert');
-    divToPrint.style.fontSize = '160px !important';
     const newWin=window.open('','Print-Window','width=1748,height=2480');
     newWin.document.open();
     newWin.document.write(
@@ -95,7 +124,12 @@ export class ViewSentPaperComponent implements OnInit {
       '@font-face{font-family: \'BTitr\'; src: url("../../../assets/fonts/B Titr Bold_0.ttf");}' +
       'h1 {font-size: 20px !important; font-family: BTitr !important;}' +
       'p {font-size: 10px !important; font-family: BTitr !important;}' +
-      '</style><body style="margin-top: 15%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+      '@page{size: A5}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">' + 
+      '<div class="row" ><div class="col"><p>'+ newDate + '</p></div></div>' +      
+      '<div class="row" style="margin-bottom: 80px;"><div class="col"><p>'+ this.id + '</p></div></div>' +  
+      divToPrint.innerHTML +
+      '</body></html>'
     );
     newWin.document.close();
     return true;
