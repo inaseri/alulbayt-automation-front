@@ -29,39 +29,76 @@ export class ViewSentPaperComponent implements OnInit {
   }
 
   printA4Arabic() {
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '16px';
-    print();
-
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '15px';
+    const divToPrint = document.getElementById('contentToConvert');
+    divToPrint.style.fontSize = '160px !important';
+    const newWin=window.open('','Print-Window','width=2480,height=3508');
+    newWin.document.open();
+    newWin.document.write(
+      '<html>' +
+      '<head>' +
+      '<style>' +
+      '@font-face{font-family: \'BZar\'; src: url("../../../assets/fonts/B Zar_0.ttf");}' +
+      ' h1 {font-size: 25px !important; font-family: BZar !important;}' +
+      'p {font-size: 20px !important; font-family: BZar !important;}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+    );
+    newWin.document.close();
+    return true;
   }
 
   printA5Arabic() {
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '14px';
-    print();
+    const divToPrint = document.getElementById('contentToConvert');
+    divToPrint.style.fontSize = '160px !important';
+    const newWin=window.open('','Print-Window','width=1748,height=2480');
+    newWin.document.open();
+    newWin.document.write(
+      '<html>' +
+      '<head>' +
+      '<style>' +
+      '@font-face{font-family: \'BZar\'; src: url("../../../assets/fonts/B Zar_0.ttf");}' +
+      ' h1 {font-size: 20px !important; font-family: BZar !important;}' +
+      'p {font-size: 10px !important; font-family: BZar !important;}' +
+      '</style><body style="margin-top: 15%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+    );
+    newWin.document.close();
+    return true;
 
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '15px';
   }
 
   printA4Persian() {
-    document.getElementById('contentToConvert').style.fontFamily = 'BTitr';
-    document.getElementById('contentToConvert').style.fontSize = '16px';
-    print();
-
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '15px';
+    const divToPrint = document.getElementById('contentToConvert');
+    divToPrint.style.fontSize = '160px !important';
+    const newWin=window.open('','Print-Window','width=2480,height=3508');
+    newWin.document.open();
+    newWin.document.write(
+      '<html>' +
+      '<head>' +
+      '<style>' +
+      '@font-face{font-family: \'BTitr\'; src: url("../../../assets/fonts/B Titr Bold_0.ttf");}' +
+      'h1 {font-size: 25px !important; font-family: BTitr !important;}' +
+      'p {font-size: 20px !important; font-family: BTitr !important;}' +
+      '</style><body style="margin-top: 25%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+    );
+    newWin.document.close();
+    return true;
   }
 
   printA5Persian() {
-    document.getElementById('contentToConvert').style.fontFamily = 'BTitr';
-    document.getElementById('contentToConvert').style.fontSize = '14px';
-    print();
-
-    document.getElementById('contentToConvert').style.fontFamily = 'BZar';
-    document.getElementById('contentToConvert').style.fontSize = '15px';
+    const divToPrint = document.getElementById('contentToConvert');
+    divToPrint.style.fontSize = '160px !important';
+    const newWin=window.open('','Print-Window','width=1748,height=2480');
+    newWin.document.open();
+    newWin.document.write(
+      '<html>' +
+      '<head>' +
+      '<style>' +
+      '@font-face{font-family: \'BTitr\'; src: url("../../../assets/fonts/B Titr Bold_0.ttf");}' +
+      'h1 {font-size: 20px !important; font-family: BTitr !important;}' +
+      'p {font-size: 10px !important; font-family: BTitr !important;}' +
+      '</style><body style="margin-top: 15%;" onload="window.print()">'+divToPrint.innerHTML+'</body></html>'
+    );
+    newWin.document.close();
+    return true;
   }
 
 

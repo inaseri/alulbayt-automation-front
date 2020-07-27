@@ -35,9 +35,21 @@ button {
 html, body { height: 100%; }
 body { margin: 0; font-family: BZar, "Helvetica Neue", sans-serif; }
 
-
 @media print {
+
   .sidebar {
+    display: none !important;
+  }
+
+  .fixed-plugin {
+    display: none !important;
+  }
+
+  .show-dropdown .dropdown {
+    display: none !important;
+  }
+
+  .footer {
     display: none !important;
   }
 
