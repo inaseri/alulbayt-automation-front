@@ -30,12 +30,20 @@ export class PrintPaperComponent implements OnInit {
 
   ngOnInit(): void {
     this.get_list_send_paper();
-    print();
   }
 
   get_list_send_paper() {
     this.apiService.view_sent_paper(this.id).subscribe(
-      response => this.listSendPaper = response,
+      response => {
+        this.listSendPaper = response;
+        // if (this.type === 'A4') {
+        //   document.getElementsByTagName('body')[0].style.width = '210mm';
+        //   document.getElementsByTagName('body')[0].style.height = '297mm';
+        // } else if (this.type === 'A5') {
+        //   document.getElementsByTagName('body')[0].style.width = '100mm';
+        //   document.getElementsByTagName('body')[0].style.height = '200mm';
+        // }
+      },
       error => console.log('There is some problems: ', error)
     );
   }

@@ -39,15 +39,15 @@ export class ViewSentPaperComponent implements OnInit {
   }
 
   printA5Arabic() {
-    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A4', '', 'width=420,height=595,resizable=0,menubar=0');
+    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A5', '', 'width=420,height=595,resizable=0,menubar=0');
   }
 
   printA4Persian() {
-    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A4', '', 'width=595,height=842,resizable=0,menubar=0');
+    window.open('#/print-paper/' + this.id + '/' + 'fa/' + 'A4', '', 'width=595,height=842,resizable=0,menubar=0');
   }
 
   printA5Persian() {
-    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A4', '', 'width=420,height=595,resizable=0,menubar=0');
+    window.open('#/print-paper/' + this.id + '/' + 'fa/' + 'A5', '', 'width=420,height=595,resizable=0,menubar=0');
   }
 
   acceptPaper(id: number, status: string) {

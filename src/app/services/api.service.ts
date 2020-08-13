@@ -287,7 +287,7 @@ export class ApiService {
 
   list_assign_user(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/auth/user/', { headers: new HttpHeaders(
+      .get<any>(this.base_path + 'v1/auth/user/?sign__gt', { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
