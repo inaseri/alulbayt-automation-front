@@ -17,6 +17,7 @@ import { EditPaperComponent } from "../../pages/edit-paper/edit-paper.component"
 import { CreateInhabitancyComponent } from "../../pages/create-inhabitancy/create-inhabitancy.component";
 import { ListResidenceComponent } from "../../pages/list-residence/list-residence.component";
 import { EditResidenceComponent } from "../../pages/edit-residence/edit-residence.component";
+import { PrintPaperComponent } from "../../pages/print-paper/print-paper.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -32,6 +33,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'view-sent-paper/:paperID', component: ViewSentPaperComponent },
   { path: 'report-mokatebat', component: MokatebatReportComponent },
   { path: 'edit-paper/:editID', component: EditPaperComponent },
+  { path: 'print-paper/:id/:lang/:type', component: PrintPaperComponent },
 
   // Mavakeb Urls
   { path: 'user-settings', component: SettingUserComponent },

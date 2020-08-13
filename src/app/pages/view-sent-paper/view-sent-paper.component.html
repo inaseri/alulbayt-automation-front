@@ -60,16 +60,16 @@
     <div class="card-footer">
       <div class="row">
         <div class="col">
-          <button class="w-100 btn btn-outline-dark" (click)="printA4Arabic()">پرینت A4 عربی</button>
+          <a class="w-100 btn btn-outline-dark" (click)="printA4Arabic()">پرینت A4 عربی</a>
         </div>
         <div class="col">
-          <button class="w-100 btn btn-outline-dark" (click)="printA5Arabic()">پرینت A5 عربی</button>
+          <a class="w-100 btn btn-outline-dark" [routerLink]="['/print-paper/'+id+'/'+'ar/'+'A5']">پرینت A5 عربی</a>
         </div>
         <div class="col">
-          <button class="w-100 btn btn-outline-dark" (click)="printA4Persian()">پرینت A4 فارسی</button>
+          <a class="w-100 btn btn-outline-dark" [routerLink]="['/print-paper/'+id+'/'+'fa/'+'A4']">پرینت A4 فارسی</a>
         </div>
         <div class="col">
-          <button class="w-100 btn btn-outline-dark" (click)="printA5Persian()">پرینت A5 فارسی</button>
+          <a class="w-100 btn btn-outline-dark" [routerLink]="['/print-paper/'+id+'/'+'fa/'+'A5']">پرینت A5 فارسی</a>
         </div>
       </div>
     </div>
