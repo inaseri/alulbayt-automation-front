@@ -30,7 +30,6 @@ export class PrintPaperComponent implements OnInit {
 
   ngOnInit(): void {
     this.get_list_send_paper();
-    console.log('in ts file')
     print();
   }
 
