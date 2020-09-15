@@ -1,4 +1,3 @@
-
 <div class=" content" dir="rtl">
   <div class=" row">
     <div class="col-md-1"></div>
@@ -6,75 +5,23 @@
       <div class="text-right card">
         <div class="card-header"><h5 class=" title">ایجاد نامه ارسالی</h5></div>
         <div class="card-body">
-          <!--            <div class="row form-row">-->
-          <!--              <div class="col" style="margin-top: 15px;">-->
-          <!--                <div class="form-group">-->
-          <!--                  <label style="font-family: Neda-Custom!important;"> تاریخ </label>-->
-          <!--                  <input-->
-          <!--                    class=" form-control" required-->
-          <!--                    name="date"-->
-          <!--                    type="date"-->
-          <!--                    [(ngModel)]="europeDate"-->
-          <!--                  />-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--              <div class="col" style="margin-top: 15px;">-->
-          <!--                <div class="form-group">-->
-          <!--                  <dp-date-picker-->
-          <!--                    dir="rtl" mode="day"-->
-          <!--                    placeholder="تاریخ"-->
-          <!--                    theme="dp-material"-->
-          <!--                    class="new-dp"-->
-          <!--                    style="background: transparent!important;"-->
-          <!--                    [(ngModel)]="persianDate"-->
-          <!--                    name="date"-->
-          <!--                  ></dp-date-picker>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <div class="row form-row">
+          <div style="margin-bottom: 20px;" class="row form-row">
             <div class="col-6">
               <button class="btn btn-default w-100" (click)="select_template('0')">قالب عربی</button>
             </div>
             <div class="col-6">
-                <button class="btn btn-default w-100" (click)="select_template('1')">قالب فارسی</button>
-              </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-6" style="margin-top: 15px;" *ngIf="europeSelected">
-              <div class="form-group">
-                <label> تاریخ </label>
-                <input
-                  class=" form-control" required
-                  name="date"
-                  type="date"
-                  [(ngModel)]="europeDate"
-                />
-              </div>
-            </div>
-            <div class="col-md-6" style="margin-top: 15px;" *ngIf="persianSelected">
-              <div class="form-group">
-                <label> تاریخ </label>
-                <dp-date-picker
-                  [(ngModel)]="persianDate"
-                  name="date"
-                  dir="rtl" mode="day"
-                  theme="dp-material"
-                  style="background: transparent!important;"
-                  class="form-control"
-                ></dp-date-picker>
-              </div>
+              <button class="btn btn-default w-100" (click)="select_template('1')">قالب فارسی</button>
             </div>
           </div>
           <div class="row form-row">
             <div class="col-4">
               <div class=" form-group">
-                <label > موضوع نامه </label>
+                <label> موضوع نامه </label>
                 <select class="form-control" #preTextSelect [(ngModel)]="createSendPaper.subject"
-                        name="subject" (change)="on_change_subject(preTextSelect.value)" >
-                  <option style="background: transparent; color: black"> انتخاب کنید </option>
+                        name="subject" (change)="on_change_subject(preTextSelect.value)">
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
                   <option class=" form-control" *ngFor="let subject of listSubject" [value]="subject.id"
-                          style="background: transparent; color: black" >{{subject.text}}</option>
+                          style="background: transparent; color: black">{{subject.text}}</option>
                 </select>
               </div>
             </div>
@@ -82,9 +29,9 @@
               <label> متن پیش نویس </label>
               <select class="form-control" name="pre_text" #selectedPreText
                       [disabled]="selectPreTextDisable == 0" (change)="on_change_pre_text(selectedPreText.value)">
-                <option style="background: transparent; color: black"> انتخاب کنید </option>
+                <option style="background: transparent; color: black"> انتخاب کنید</option>
                 <option class=" form-control" *ngFor="let pretext of preTextArray" [value]="pretext.text"
-                        style="background: transparent; color: black">{{pretext.text}}</option>
+                        style="background: transparent; color: black">{{pretext.subject_text}}</option>
               </select>
             </div>
             <div class="col-4">
@@ -93,12 +40,19 @@
                 <select #mySelect class="form-control"
                         (change)="select_attachment_number(mySelect.value)"
                         [disabled]="selectPreTextCountDisable == 0">
-                  <option style="background: transparent; color: black"> انتخاب کنید </option>
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
                   <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
                   <option class=" form-control" style="background: transparent; color: black" [value]="1">۱ برگ</option>
                   <option class=" form-control" style="background: transparent; color: black" [value]="2">۲ برگ</option>
                   <option class=" form-control" style="background: transparent; color: black" [value]="3">۳ برگ</option>
                   <option class=" form-control" style="background: transparent; color: black" [value]="4">۴ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="5">۵ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="6">۶ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="7">۷ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="8">۸ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="9">۹ برگ</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="10">۱۰ برگ
+                  </option>
                 </select>
               </div>
             </div>
@@ -108,7 +62,7 @@
               <div class=" form-group">
                 <label>امضا کننده</label>
                 <select class="form-control" name="user_sign" [(ngModel)]="createSendPaper.sign">
-                  <option style="background: transparent; color: black"> انتخاب کنید </option>
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
                   <option class=" form-control"
                           *ngFor="let user_assign of listUserAssign"
                           [value]="user_assign.id"
@@ -122,11 +76,11 @@
               <div class=" form-group">
                 <label>مکان دریافت</label>
                 <select class="form-control" #locationSelect (change)="on_change_location(locationSelect.value)">
-                  <option style="background: transparent; color: black"> انتخاب کنید </option>
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
                   <option class="form-control"
                           *ngFor="let location of listLocation"
                           [value]="location.id"
-                          style="background: transparent; color: black" >{{location.name}}
+                          style="background: transparent; color: black">{{location.name}}
                   </option>
                 </select>
               </div>
@@ -134,33 +88,70 @@
             <div class="col-4">
               <div class=" form-group">
                 <label>شخص دریافت</label>
-                <select class="form-control" name="user" [(ngModel)]="createSendPaper.user" [disabled]="selectReceiveUserDisable == 0">
-                  <option style="background: transparent; color: black"> انتخاب کنید </option>
+                <select class="form-control" name="user" [(ngModel)]="createSendPaper.user"
+                        [disabled]="selectReceiveUserDisable == 0">
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
                   <option class=" form-control"
                           *ngFor="let user_receiver of listUserReceive"
                           [value]="user_receiver.id"
-                          style="background: transparent; color: black" >
+                          style="background: transparent; color: black">
                     {{user_receiver.name}}
                   </option>
                 </select>
               </div>
             </div>
           </div>
-          <div class="row"  style="margin-bottom: 60px;" *ngIf="showTextEditor">
+          <div class="row form-row">
+            <div class="col-md-6">
+              <label> تصویر پیوست </label>
+              <input
+                class="form-control"
+                name="imageAttachment"
+                accept="image/*"
+                type="file"
+              />
+            </div>
+            <div class="col-md-6" *ngIf="europeSelected">
+              <div class="form-group">
+                <label> تاریخ </label>
+                <input
+                  class=" form-control" required
+                  name="date"
+                  type="date"
+                  [(ngModel)]="europeDate"
+                />
+              </div>
+            </div>
+            <div class="col-md-6" *ngIf="persianSelected">
+              <div class="form-group">
+                <label> تاریخ </label>
+                <dp-date-picker
+                  [(ngModel)]="persianDate"
+                  name="date"
+                  dir="rtl" mode="day"
+                  theme="dp-material"
+                  style="background: transparent!important;"
+                  class="form-control"
+                ></dp-date-picker>
+              </div>
+            </div>
+          </div>
+          <div class="row form-row" *ngIf="showTextEditor">
             <div class="col-12">
               <angular-editor [config]="editorConfig" name="text" [(ngModel)]="createSendPaper.text"></angular-editor>
             </div>
           </div>
-          <div class="row">
+          <div class="row form-row">
             <div class="col-12">
               <hr style="">
             </div>
           </div>
-          <div class="row" *ngFor="let item of attachmentArray; let indexOf=index" style="margin-bottom: 60px;">
-              <div class="col-md-12" >
-                <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]" name="text + {{indexOf}}" ></angular-editor>
-              </div>
+          <div class="row form-row" *ngFor="let item of attachmentArray; let indexOf=index" style="margin-bottom: 60px;">
+            <div class="col-md-12">
+              <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]"
+                              name="text + {{indexOf}}"></angular-editor>
             </div>
+          </div>
         </div>
         <div class=" card-footer">
           <button class="btn btn-fill btn-info" type="submit" (click)="create_send_paper()">ثبت نامه</button>

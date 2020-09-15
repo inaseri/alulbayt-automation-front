@@ -90,6 +90,7 @@
     "pdfmake": "^0.1.66",
     "rxjs": "6.5.2",
     "tslib": "1.10.0",
+    "xlsx": "^0.16.7",
     "zone.js": "0.10.2"
   },
   "devDependencies": {

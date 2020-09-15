@@ -5,11 +5,11 @@
         <div class="col-12">
           <div class="row form-row">
             <mat-tab-group (selectedTabChange)="filter($event)" style="width: 100%;">
-              <mat-tab style="font-family: Neda-Custom!important;" label="نامه های ورودی">
+              <mat-tab style="font-family: BZar;" label="نامه های ورودی">
                 <div class="row form-row">
                   <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
                     <div class=" form-group text-right">
-                      <label >سازمان ارسال کننده</label>
+                      <label>سازمان ارسال کننده</label>
                       <input
                         [(ngModel)]="search2.organization"
                         name="last_name"
@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
                     <div class=" form-group text-right">
-                      <label >موضوع</label>
+                      <label>موضوع</label>
                       <input
                         [(ngModel)]="search2.subject"
                         name="last_name"
@@ -30,8 +30,11 @@
                     </div>
                   </div>
                 </div>
+                <div class="row form-row">
+                  <button class="btn btn-neutral" (click)="ExportTOExcel1()">دانلود خروجی در قالب اکسل</button>
+                </div>
                 <div class="table-responsive">
-                  <table class=" table tablesorter text-right" >
+                  <table class=" table tablesorter text-right" #TABLE>
                     <thead class=" text-primary">
                     <tr>
                       <th *ngFor="let item of head1" class=" text-right">{{item}}</th>
@@ -48,11 +51,11 @@
                   </table>
                 </div>
               </mat-tab>
-              <mat-tab style="font-family: Neda-Custom!important;" label="نامه های ارسالی">
+              <mat-tab style="font-family: BZar!important;" label="نامه های ارسالی">
                 <div class="row form-row">
-                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                  <div class="col" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
                     <div class=" form-group text-right">
-                      <label >موضوع</label>
+                      <label>موضوع</label>
                       <input
                         [(ngModel)]="search.subject"
                         name="last_name"
@@ -61,9 +64,9 @@
                       />
                     </div>
                   </div>
-                  <div class="col-6" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                  <div class="col" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
                     <div class=" form-group text-right">
-                      <label >شخص گیرنده </label>
+                      <label>شخص گیرنده </label>
                       <input
                         [(ngModel)]="search.sign"
                         name="last_name"
@@ -72,9 +75,23 @@
                       />
                     </div>
                   </div>
+                  <div class="col" dir="rtl" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class=" form-group text-right">
+                      <label>شخص گیرنده </label>
+                      <input
+                        [(ngModel)]="search.user"
+                        name="last_name"
+                        class=" form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <button class="btn btn-neutral" (click)="ExportTOExcel2()">دانلود خروجی در قالب اکسل</button>
                 </div>
                 <div class=" table-responsive">
-                  <table class=" table tablesorter text-right" id="">
+                  <table class=" table tablesorter text-right" #TABLE2>
                     <thead class=" text-primary">
                     <tr>
                       <th *ngFor="let item of head2" class=" text-right">{{item}}</th>
@@ -91,6 +108,7 @@
                 </div>
               </mat-tab>
             </mat-tab-group>
+          </div>
         </div>
       </div>
     </div>

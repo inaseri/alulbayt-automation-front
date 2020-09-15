@@ -44,6 +44,7 @@ export class ListResidenceComponent implements OnInit {
           }
         }
         this.data = response
+        this.data.reverse();
       },
       error => alert('در گرفتن اطلاعات پرونده های اقامت خطایی رخ داده است. لطفا با پشتیبانی تماس بگیرید.')
     );

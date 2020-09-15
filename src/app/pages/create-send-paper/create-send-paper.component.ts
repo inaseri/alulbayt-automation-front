@@ -166,7 +166,6 @@ export class CreateSendPaperComponent implements OnInit {
     } else {
       this.createSendPaper.date = this.europeDate;
     }
-    console.log(this.createSendPaper);
     this.apiService.create_send_paper(this.createSendPaper).subscribe(
       response => {
         const dict = {text: this.attachment, mokatebat: response['id']}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../../services/api.service";
-import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
-import {ReceivePaper} from "../../models/Mokatebat/receive-paper";
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {ApiService} from '../../services/api.service';
+import {CreateSendPaper} from '../../models/create_send_paper/create-send-paper';
+import {ReceivePaper} from '../../models/Mokatebat/receive-paper';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-mokatebat-report',
@@ -10,7 +11,7 @@ import {ReceivePaper} from "../../models/Mokatebat/receive-paper";
 })
 export class MokatebatReportComponent implements OnInit {
 
-  head1 = ['ردیف', 'شماره نامه', 'سازمان ارسال کننده' , 'موضوع نامه'];
+  head1 = ['ردیف', 'شماره نامه', 'سازمان ارسال کننده', 'موضوع نامه'];
   head2 = ['ردیف', 'شماره نامه', 'سازمان گیرنده', 'شخص گیرنده', 'موضوع'];
 
   search: CreateSendPaper;
@@ -18,6 +19,9 @@ export class MokatebatReportComponent implements OnInit {
 
   elements: any;
   listSendPaper: any[];
+
+  @ViewChild('TABLE', {static: false}) TABLE: ElementRef;
+  @ViewChild('TABLE2', {static: false}) TABLE2: ElementRef;
 
   constructor(private apiService: ApiService) {
     this.search = new CreateSendPaper();
@@ -27,6 +31,7 @@ export class MokatebatReportComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getListRecievePaper().subscribe(response => {
       this.elements = response;
+      this.elements.reverse();
     });
   }
 
@@ -35,6 +40,7 @@ export class MokatebatReportComponent implements OnInit {
     if (value[0] == 0) {
       this.apiService.getListRecievePaper().subscribe(response => {
         this.elements = response;
+        this.elements.reverse();
       });
     } else {
       this.apiService.list_send_paper().subscribe(
@@ -50,10 +56,27 @@ export class MokatebatReportComponent implements OnInit {
               });
             }
           }
+          this.elements.reverse();
         },
         error => console.log('There is some problems: ', error)
       );
     }
+  }
+
+  title = 'Excel';
+
+  ExportTOExcel1() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'ScoreSheet.xlsx');
+  }
+
+  ExportTOExcel2() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'ScoreSheet.xlsx');
   }
 
 }

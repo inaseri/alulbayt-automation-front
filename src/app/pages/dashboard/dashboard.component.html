@@ -8,7 +8,10 @@
         </div>
         <div class="text-center card-body">
           <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let paper of myPaper" [routerLink]="['/view-sent-paper/'+paper.id]">
-            <span>{{ paper['subject'].text }}</span>
+            <div style="overflow: hidden;">
+              <span>{{ paper['subject'].text }}</span>
+              <span style="float: right;">{{ paper['subject'].text }}</span>
+            </div>
           </ngb-alert>
         </div>
       </div>

@@ -54,7 +54,6 @@ export class DashboardComponent implements OnInit {
     this.apiService.list_my_send_paper().subscribe(
       response => {
         this.myPaper = response['objects'];
-        console.log('my sent paper is: ', response);
       },
       error => console.log('There is some problems: ', error)
     );

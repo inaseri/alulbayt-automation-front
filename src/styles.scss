@@ -24,21 +24,35 @@ body {
 }
 
 label {
+  font-family: BZar !important;
   font-size: 15px!important;
 }
 
 button {
-  font-family: BTitr!important;
+  font-family: BZar!important;
   font-size: 15px!important;
 }
 
 h1 {
-  font-family: BTitr!important;
+  font-family: BZar!important;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: BZar, "Helvetica Neue", sans-serif; }
 
+select {
+  font-family: BZar!important;
+  font-size: 15px!important;
+}
+
+option {
+  font-family: BZar!important;
+  font-size: 15px!important;
+}
+
+table {
+  font-family: BZar!important;
+}
 
 //@media print {
 //

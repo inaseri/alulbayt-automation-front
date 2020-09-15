@@ -115,7 +115,7 @@
               </div>
             </div>
             <div class="row form-row">
-              <div class="col">
+              <div class="col-5">
                 <div class=" form-group">
                   <label> انتخاب موضوع متن </label>
                   <select class="form-control" [(ngModel)]="create_pre_text.subject" name="location">
@@ -124,6 +124,12 @@
                             class=" form-control" [value]="item4.id"
                             style="background: transparent; color: black">{{item4.text}}</option>
                   </select>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class=" form-group">
+                  <label> عنوان پیش نویس </label>
+                  <input class="form-control" [(ngModel)]="create_pre_text.subject_text" name="name">
                 </div>
               </div>
               <div class="col-2">

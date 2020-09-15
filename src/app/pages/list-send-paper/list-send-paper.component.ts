@@ -53,6 +53,7 @@ export class ListSendPaperComponent implements OnInit {
             }
           }
         }
+        this.listSendPaper.reverse();
       },
       error => console.log('There is some problems: ', error)
     );

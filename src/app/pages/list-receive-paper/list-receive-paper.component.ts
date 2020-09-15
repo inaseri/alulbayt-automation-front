@@ -23,6 +23,7 @@ export class ListReceivePaperComponent implements OnInit {
   ngOnInit(): void {
     this.apiSerivce.getListRecievePaper().subscribe(response => {
       this.elements = response;
+      this.elements.reverse();
     });
   }
 
