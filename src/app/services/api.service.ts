@@ -21,7 +21,7 @@ import { Residence } from "../models/residence/residence";
 export class ApiService {
 
   // API path
-  base_path = 'http://192.168.110.170:8000/api/';
+  base_path = 'http://api.atomation.inaseri.ir/api/';
   token = 'token';
   is_superuser = false;
   userID: string;
