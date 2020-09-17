@@ -10,7 +10,8 @@
           <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let paper of myPaper" [routerLink]="['/view-sent-paper/'+paper.id]">
             <div style="overflow: hidden;">
               <span>{{ paper['subject'].text }}</span>
-              <span style="float: right;">{{ paper['subject'].text }}</span>
+              <span style="float: right;">{{ paper.id }}</span>
+              <span style="float: left;"> ارسالی به {{ paper.owner.first_name}} {{ paper.owner.last_name}}</span>
             </div>
           </ngb-alert>
         </div>
@@ -24,7 +25,11 @@
         <div class=" card-body">
 
           <ngb-alert [type]="'info'" [dismissible]="false" *ngFor="let notice of notifyList" [routerLink]="['/view-sent-paper/'+notice.id]">
-            <span (click)="open_notify(notice.notify)"> {{notice.text}} </span>
+            <div style="overflow: hidden;">
+              <span (click)="open_notify(notice.notify)"> {{notice.text}} </span>
+              <span style="float: right;">{{ notice.id }}</span>
+              <span style="float: left;"> دریافتی از {{ notice.first_name}} {{ notice.last_name}}</span>
+            </div>
           </ngb-alert>
         </div>
       </div>

@@ -1,16 +1,17 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {ApiService} from './services/api.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = "black-dashboard-angular";
-  constructor(router: Router) {
-    if (localStorage.getItem('token') != null) {
-      router.navigate(['home']);
+
+  constructor(router: Router, private apiService: ApiService) {
+    if (localStorage.getItem('token_alulbayt_automation') == null) {
+      router.navigate(['']);
     }
   }
 }

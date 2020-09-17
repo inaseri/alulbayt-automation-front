@@ -27,7 +27,6 @@ export class VerifyComponent implements OnInit {
     this.data.username = localStorage.getItem('username');
     this.data.password = localStorage.getItem('password');
     this.apiService.login(this.data).subscribe((response) => {
-      console.log(response);
       this.apiService.token = response.token;
       if (response.is_superuser == true) {
         this.apiService.is_superuser = true;
@@ -36,8 +35,9 @@ export class VerifyComponent implements OnInit {
       }
       localStorage.setItem('userID', response.id)
       this.apiService.userID = response.id;
+      this.apiService.token = response.token
       localStorage.setItem('token_alulbayt_automation', response.token);
-      this.router.navigate(['home']);
+      this.router.navigate(['dashboard']);
     });
   }
 

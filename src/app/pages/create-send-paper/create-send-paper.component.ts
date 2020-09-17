@@ -1,9 +1,9 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { ApiService } from "../../services/api.service";
-import { Router } from "@angular/router";
-import { CreateSendPaper } from "../../models/create_send_paper/create-send-paper";
-import { Attachment } from "../../models/attachment/attachment";
+import {Component, OnInit, NgModule} from '@angular/core';
+import {AngularEditorConfig} from '@kolkov/angular-editor';
+import {ApiService} from '../../services/api.service';
+import {Router} from '@angular/router';
+import {CreateSendPaper} from '../../models/create_send_paper/create-send-paper';
+import {Attachment} from '../../models/attachment/attachment';
 
 
 @Component({
@@ -92,7 +92,7 @@ export class CreateSendPaperComponent implements OnInit {
   select_attachment_number(number: string) {
     this.attachmentArray = [];
     const number2 = Number(number);
-    for (let i=0; i < number2; i ++) {
+    for (let i = 0; i < number2; i++) {
       this.attachmentArray.push(i.toString());
     }
   }
@@ -120,14 +120,20 @@ export class CreateSendPaperComponent implements OnInit {
 
   on_change_location(location_id: string) {
     this.apiService.list_user_receive_filter(location_id).subscribe(
-      response => { this.listUserReceive = response['objects']; this.selectReceiveUserDisable = 1 }
+      response => {
+        this.listUserReceive = response['objects'];
+        this.selectReceiveUserDisable = 1
+      }
     );
   }
 
   on_change_subject(subject_id: string) {
     console.log(subject_id)
     this.apiService.get_pre_text(subject_id).subscribe(
-      response => { this.preTextArray = response['objects']; this.selectPreTextDisable = 1 },
+      response => {
+        this.preTextArray = response['objects'];
+        this.selectPreTextDisable = 1
+      },
       error => console.log('There is some problems: ', error)
     );
   }
@@ -137,16 +143,6 @@ export class CreateSendPaperComponent implements OnInit {
     this.createSendPaper.text = text
     this.showTextEditor = true
   }
-
-  // filter($event) {
-  //   const value = [$event.index];
-  //   if (value[0] == 0) {
-  //     this.persianTemp = false
-  //   } else {
-  //     this.persianTemp = true
-  //   }
-  // }
-
 
   select_template(type: string) {
     if (type === '0') {
@@ -166,7 +162,15 @@ export class CreateSendPaperComponent implements OnInit {
     } else {
       this.createSendPaper.date = this.europeDate;
     }
-    this.apiService.create_send_paper(this.createSendPaper).subscribe(
+    const value = (<HTMLInputElement>document.getElementById('imageAttachment')).files[0];
+    const uploadData = new FormData();
+    uploadData.append('user', this.createSendPaper.user);
+    uploadData.append('date', this.createSendPaper.date);
+    uploadData.append('sign', this.createSendPaper.sign);
+    uploadData.append('subject', this.createSendPaper.subject);
+    uploadData.append('text', this.createSendPaper.text);
+    uploadData.append('image', value);
+    this.apiService.create_send_paper(uploadData).subscribe(
       response => {
         const dict = {text: this.attachment, mokatebat: response['id']}
         this.apiService.save_send_paper_attachment(dict).subscribe(

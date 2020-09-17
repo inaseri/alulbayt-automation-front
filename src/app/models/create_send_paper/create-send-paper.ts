@@ -5,4 +5,5 @@ export class CreateSendPaper {
   text: string;
   sign: string;
   id: string;
+  image: string;
 }

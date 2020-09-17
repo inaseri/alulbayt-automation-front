@@ -21,7 +21,7 @@ import { Residence } from "../models/residence/residence";
 export class ApiService {
 
   // API path
-  base_path = 'https://api.atomation.inaseri.ir/api/';
+  base_path = 'http://192.168.110.170:8000/api/';
   token = 'token';
   is_superuser = false;
   userID: string;
@@ -343,11 +343,10 @@ export class ApiService {
       );
   }
 
-  create_send_paper(item: CreateSendPaper): Observable<CreateSendPaper> {
+  create_send_paper(item: any): Observable<CreateSendPaper> {
     return this.http
-      .post<CreateSendPaper>(this.base_path + 'mokatebat/sendtoorganization/create/', JSON.stringify(item),{ headers: new HttpHeaders(
+      .post<CreateSendPaper>(this.base_path + 'mokatebat/sendtoorganization/create/', item,{ headers: new HttpHeaders(
           {
-            'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
@@ -387,7 +386,7 @@ export class ApiService {
 
   list_my_send_paper(): Observable<any> {
     return this.http
-      .get<any>(this.base_path + 'v1/sendtoorg/paper/', { headers: new HttpHeaders(
+      .get<any>(this.base_path + 'v1/sendtoorg/paper/?owner=' + localStorage.getItem('userID'), { headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
