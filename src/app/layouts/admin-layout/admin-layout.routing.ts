@@ -18,6 +18,10 @@ import { CreateInhabitancyComponent } from "../../pages/create-inhabitancy/creat
 import { ListResidenceComponent } from "../../pages/list-residence/list-residence.component";
 import { EditResidenceComponent } from "../../pages/edit-residence/edit-residence.component";
 import { PrintPaperComponent } from "../../pages/print-paper/print-paper.component";
+import { ResidencServiceComponent } from '../../pages/residenc-service/residenc-service.component';
+import {PepeolPassportComponent} from '../../pages/pepeol-passport/pepeol-passport.component';
+import {PepeolPassportListComponent} from '../../pages/pepeol-passport-list/pepeol-passport-list.component';
+import {PepeolPassportEditComponent} from '../../pages/pepeol-passport-edit/pepeol-passport-edit.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -45,5 +49,9 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'create-residence', component: CreateInhabitancyComponent },
   { path: 'list-residence', component: ListResidenceComponent },
   { path: 'edit-residence/:id', component: EditResidenceComponent },
+  { path: 'residence/service', component: ResidencServiceComponent },
+  { path: 'passport', component: PepeolPassportComponent },
+  { path: 'passport/list', component: PepeolPassportListComponent },
+  { path: 'passport/edit/:id', component: PepeolPassportEditComponent }
 
 ];

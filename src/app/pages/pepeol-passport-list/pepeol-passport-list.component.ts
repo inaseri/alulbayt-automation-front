@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../../services/api.service";
-import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import {ModalDismissReasons, NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import {ApiService} from '../../services/api.service';
+import {PeoplePassport} from '../../models/people-passport/people-passport';
 
 declare const require: any;
 
 @Component({
-  selector: 'app-list-residence',
-  templateUrl: './list-residence.component.html',
-  styleUrls: ['./list-residence.component.scss']
+  selector: 'app-pepeol-passport-list',
+  templateUrl: './pepeol-passport-list.component.html',
+  styleUrls: ['./pepeol-passport-list.component.scss']
 })
-export class ListResidenceComponent implements OnInit {
+export class PepeolPassportListComponent implements OnInit {
 
   data: any;
-  selectedData: any;
+  selectedData: PeoplePassport;
 
   disable = false;
 
@@ -21,6 +22,7 @@ export class ListResidenceComponent implements OnInit {
   modalOptions:NgbModalOptions;
 
   constructor(private apiService: ApiService, private modalService: NgbModal) {
+    this.selectedData = new PeoplePassport();
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -41,7 +43,7 @@ export class ListResidenceComponent implements OnInit {
             const month = response[key].date.toString().substr(5,2);
             const day = response[key].date.toString().substr(8,2);
             const persian = persianDate.toJalaali(Number(year), Number(month), Number(day));
-            const newDate = persian.jy.toString() + "/" + persian.jm.toString() + "/" + persian.jd.toString();
+            const newDate = persian.jy.toString() + '/' + persian.jm.toString() + '/' + persian.jd.toString();
             response[key].date = newDate;
           }
         }
@@ -49,28 +51,6 @@ export class ListResidenceComponent implements OnInit {
         this.data.reverse();
       },
       error => alert('در گرفتن اطلاعات پرونده های اقامت خطایی رخ داده است. لطفا با پشتیبانی تماس بگیرید.')
-    );
-  }
-
-  disable_residence(id) {
-    this.apiService.disable_residence(id, '0').subscribe(
-      response => {
-        this.disable = true;
-        this.get_residence();
-        alert('اقامت با موفقیت غیر فعال گردید');
-      },
-      error => alert(error)
-    );
-  }
-
-  enable_residence(id) {
-    this.apiService.disable_residence(id, '1').subscribe(
-      response => {
-        this.disable = true;
-        this.get_residence();
-        alert('اقامت با موفقیت فعال گردید');
-      },
-      error => alert(error)
     );
   }
 
@@ -95,5 +75,6 @@ export class ListResidenceComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
 
 }

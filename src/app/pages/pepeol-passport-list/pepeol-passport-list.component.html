@@ -12,12 +12,10 @@
               <thead class=" text-primary">
               <tr>
                 <th class=" text-center">ردیف</th>
-                <th class=" text-center">شناسه اقامت</th>
+                <th class=" text-center">شماره پرونده</th>
                 <th class=" text-center">نام شخص</th>
                 <th class=" text-center">تابعیت شخص</th>
-                <th class=" text-center">تاریخ اخذ اقامت</th>
                 <th class=" text-center">اصلاح پرونده</th>
-                <th class=" text-center">ابطال / فعال اقامت</th>
                 <th class=" text-center">مشاهده اطلاعات</th>
               </tr>
               </thead>
@@ -27,15 +25,10 @@
                 <th class=" text-center">{{residences.id}}</th>
                 <th class=" text-center">{{residences.firstName}} &nbsp; {{residences.lastName}}</th>
                 <th class=" text-center">{{residences.nation}}</th>
-                <th class=" text-center">{{residences.date}}</th>
                 <th class=" text-center">
-                  <a [routerLink]="['/edit-residence/'+residences.id]">
+                  <a [routerLink]="['/passport/edit/'+residences.id]">
                     <span class="tim-icons icon-pencil"></span>
                   </a>
-                </th>
-                <th class=" text-center">
-                  <span class="tim-icons icon-simple-remove" *ngIf="residences.status" (click)="disable_residence(residences.id)"></span>
-                  <span class="tim-icons icon-check-2" *ngIf="!residences.status" (click)="enable_residence(residences.id)"></span>
                 </th>
                 <th class=" text-center"><span class="tim-icons icon-badge" (click)="open(detailModal, residences.id)"></span></th>
               </tr>
@@ -50,7 +43,7 @@
 
 <ng-template #detailModal let-modal dir="rtl" style="text-align: right">
   <div class="modal-header" dir="rtl">
-    <h4 class="modal-title" id="modal-basic-title">مشخصات مقیم</h4>
+    <h4 class="modal-title" id="modal-basic-title">مشخصات فرد</h4>
     <button type="button" class="close" aria-label="Close" style="text-align: left;" dir="ltr" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -61,31 +54,28 @@
         <ul>
           <li> نام شخص:  {{selectedData[0].firstName}} &nbsp; {{selectedData[0].lastName}}</li>
           <li> تابعیت شخص: {{selectedData[0].nation}}</li>
-          <li> تاریخ اخذ اقامت: {{selectedData[0].date}}</li>
           <li> نام پدر:{{selectedData[0].fatherName}}</li>
           <li> شماره گذرنامه:{{selectedData[0].passportNo}}</li>
           <li> ادرس: {{selectedData[0].address}}</li>
-          <li>  معرف: {{selectedData[0].introduced}}</li>
         </ul>
       </div>
       <div class="col">
         <ul>
+          <li>  معرف: {{selectedData[0].introduced}}</li>
           <li> تلفن: {{selectedData[0].phone}}</li>
           <li>
             عکس مقیم:
             <a target="_blank" href="{{selectedData[0].image}}">مشاهده</a>
           </li>
           <li>
-            عکس گذرنامه:
-            <a target="_blank" href="{{selectedData[0].passportImage}}">مشاهده</a>
+            عکس صفحه اول گذرنامه:
+            <a target="_blank" href="{{selectedData[0].passportpageone}}">مشاهده</a>
           </li>
           <li>
             فرم درخواست:
             <a target="_blank" href="{{selectedData[0].requestForm}}">مشاهده</a>
           </li>
-          <li> نام وابستگان:{{selectedData[0].familyFirstName}} &nbsp; {{selectedData[0].familyLastName}}</li>
-          <li> ملیت وابستگان:{{selectedData[0].familyNation}}</li>
-          <li> تلفن وابستگان: {{selectedData[0].familyPhone}}</li>
+
         </ul>
       </div>
     </div>

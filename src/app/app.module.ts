@@ -39,6 +39,10 @@ import { CreateInhabitancyComponent } from './pages/create-inhabitancy/create-in
 import { ListResidenceComponent } from './pages/list-residence/list-residence.component';
 import { EditResidenceComponent } from './pages/edit-residence/edit-residence.component';
 import { PrintPaperComponent } from './pages/print-paper/print-paper.component';
+import { ResidencServiceComponent } from './pages/residenc-service/residenc-service.component';
+import { PepeolPassportComponent } from './pages/pepeol-passport/pepeol-passport.component';
+import { PepeolPassportListComponent } from './pages/pepeol-passport-list/pepeol-passport-list.component';
+import { PepeolPassportEditComponent } from './pages/pepeol-passport-edit/pepeol-passport-edit.component';
 
 @NgModule({
   imports: [
@@ -59,7 +63,7 @@ import { PrintPaperComponent } from './pages/print-paper/print-paper.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

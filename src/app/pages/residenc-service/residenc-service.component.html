@@ -1,0 +1,112 @@
+<div class="content" dir="rtl">
+  <div class="row">
+    <div class="card">
+      <div class="card-header text-right">
+        <h1>خدمات اقامت</h1>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="خدمات اقامت" [(ngModel)]="id">
+            </div>
+          </div>
+          <div class="col">
+            <button class="btn btn-default" (click)="get_detail()">جستجو</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="showDetail">
+    <div class="card text-right">
+      <div class="card-header">
+        <h1>مشخصات فرد</h1>
+      </div>
+      <div class="card-body">
+        <div class="row form-row">
+          <div class="col">
+            <ul>
+              <li> نام شخص:  {{selectedData[0].firstName}} &nbsp; {{selectedData[0].lastName}}</li>
+              <li> تابعیت شخص: {{selectedData[0].nation}}</li>
+              <li> تاریخ اخذ اقامت: {{selectedData[0].date}}</li>
+              <li> نام پدر:{{selectedData[0].fatherName}}</li>
+              <li> شماره گذرنامه:{{selectedData[0].passportNo}}</li>
+              <li> ادرس: {{selectedData[0].address}}</li>
+              <li>  معرف: {{selectedData[0].introduced}}</li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul>
+              <li> تلفن: {{selectedData[0].phone}}</li>
+              <li>
+                عکس مقیم:
+                <a target="_blank" href="{{selectedData[0].image}}">مشاهده</a>
+              </li>
+              <li>
+                عکس گذرنامه:
+                <a target="_blank" href="{{selectedData[0].passportImage}}">مشاهده</a>
+              </li>
+              <li>
+                فرم درخواست:
+                <a target="_blank" href="{{selectedData[0].requestForm}}">مشاهده</a>
+              </li>
+              <li> نام وابستگان:{{selectedData[0].familyFirstName}} &nbsp; {{selectedData[0].familyLastName}}</li>
+              <li> ملیت وابستگان:{{selectedData[0].familyNation}}</li>
+              <li> تلفن وابستگان: {{selectedData[0].familyPhone}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="showDetail">
+    <div class="card text-right">
+      <div class="card-header">
+        <h1>ثبت درخواست</h1>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label> تاریخ ارسال </label>
+              <dp-date-picker
+                [(ngModel)]="data.date"
+                name="date"
+                dir="rtl" mode="day"
+                theme="dp-material"
+                style="background: transparent!important;"
+                class="form-control"
+              ></dp-date-picker>
+            </div>
+          </div>
+          <div class="col">
+            <div class=" form-group">
+              <label>نوع خدمت</label>
+              <select class="form-control" name="user" [(ngModel)]="data.service">
+                <option style="background: transparent; color: black"> انتخاب کنید</option>
+                <option style="background: transparent; color: black" value="1">تمدید اقامت</option>
+                <option style="background: transparent; color: black" value="2"> خروج و مراجعت</option>
+                <option style="background: transparent; color: black" value="3"> خروج قطعی</option>
+                <option style="background: transparent; color: black" value="4"> صدور و تمدید گواهینامه</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <label> تصویر پیوست </label>
+            <input
+              class="form-control"
+              name="imageAttachment"
+              accept="*/*"
+              type="file"
+              id="imageAttachment"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-default" (click)="create_service()">ذخیره</button>
+      </div>
+    </div>
+  </div>
+</div>

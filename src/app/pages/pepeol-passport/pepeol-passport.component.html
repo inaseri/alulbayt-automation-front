@@ -4,7 +4,7 @@
     <div class="col-md-11">
       <div class="card">
         <div class="card-header">
-          <h1>ویرایش پرونده اقامت</h1>
+          <h1>تمدید روادید</h1>
         </div>
         <div class="card-body">
           <h3>مشخاصت مقیم</h3>
@@ -56,40 +56,13 @@
             <div class="col-3">
               <div class="form-group">
                 <label>معرف</label>
-                <input class="form-control" [(ngModel)]="data.introduced" name="introduced">
+                <input class="form-control" [(ngModel)]="data.moaref" name="introduced">
               </div>
             </div>
           </div>
           <div class="row form-row">
             <div class="col">
               <hr style="width: 100%; color: grey;">
-            </div>
-          </div>
-          <h3>مشخاصت وابستگان</h3>
-          <div class="row form-row">
-            <div class="col-3">
-              <div class="form-group">
-                <label>نام</label>
-                <input class="form-control" [(ngModel)]="data.familyFirstName" name="familyFirstName">
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label>نام خانوادگی</label>
-                <input class="form-control" [(ngModel)]="data.familyLastName" name="familyLastName">
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label>تلفن همراه</label>
-                <input class="form-control" [(ngModel)]="data.familyPhone" name="familyPhone">
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label>تابیعت</label>
-                <input class="form-control" [(ngModel)]="data.familyNation" name="familyNation">
-              </div>
             </div>
           </div>
           <div class="row form-row">
@@ -99,7 +72,7 @@
           </div>
           <h3>اسناد مقیم</h3>
           <div class="row form-row">
-            <div class="col-3">
+            <div class="col">
               <label> تصویر مقیم </label>
               <input id="image"
                      type="file"
@@ -108,7 +81,7 @@
                      name="image"
               />
             </div>
-            <div class="col-3">
+            <div class="col">
               <label> تصویر فرم درخواست </label>
               <input id="requestForm"
                      type="file"
@@ -117,25 +90,19 @@
                      name="requestForm"
               />
             </div>
-            <div class="col-3">
+            <div class="col">
               <label> صفحه اول گذرنامه </label>
-              <input id="passportImage"
+              <input id="passportpageone"
                      type="file"
                      accept="*/*"
                      class="form-control"
-                     name="passportImage"
+                     name="passportpageone"
               />
-            </div>
-            <div class="col-3">
-              <div class="form-group">
-                <label> تاریخ </label>
-                <input type="date" class="form-control" [(ngModel)]="data.date" name="date">
-              </div>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-default" (click)="update_residence()">ثبت شخص</button>
+          <button class="btn btn-default" (click)="create_residence()">ثبت شخص</button>
         </div>
       </div>
     </div>

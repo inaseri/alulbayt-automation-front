@@ -13,6 +13,7 @@ import { PreText } from "../models/Pre_text/pre-text";
 import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
 import { SentPaperStatus } from "../models/sentpaperstatus/sent-paper-status";
 import { Residence } from "../models/residence/residence";
+import {ResidencService} from '../models/residence/service/residenc-service';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ import { Residence } from "../models/residence/residence";
 export class ApiService {
 
   // API path
-  base_path = 'http://api.atomation.inaseri.ir/api/';
+  base_path = 'https://api.atomation.inaseri.ir/api/';
   token = 'token';
   is_superuser = false;
   userID: string;
@@ -507,4 +508,45 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
+
+  disable_residence(id: string, status: string): Observable<Residence> {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/residence/status/' + id + '/?status=' + status,{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_residence_service(data) {
+    return this.http
+      .post<ResidencService>(this.base_path + 'mokatebat/residence/service/', data, { headers: new HttpHeaders(
+      {
+        Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+      })
+    })
+  .pipe(
+      retry(0),
+      catchError(this.handleError)
+    );
+  }
+
+  create_passport(data): Observable<Residence> {
+    return this.http
+      .post<Residence>(this.base_path + 'mokatebat/residence/passport/', data,{ headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
 }
