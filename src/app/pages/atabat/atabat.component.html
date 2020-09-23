@@ -1,0 +1,80 @@
+<div class="content" dir="rtl">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card text-right">
+        <div class="card-header">
+          <h1>عتبات</h1>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label> تاریخ جلسه</label>
+                <dp-date-picker
+                  name="date"
+                  dir="rtl" mode="day"
+                  theme="dp-material"
+                  style="background: transparent!important;"
+                  class="form-control"
+                ></dp-date-picker>
+              </div>
+            </div>
+            <div class="col">
+              <div class="from-group">
+                <label>زمان جلسه</label>
+                <input type="time" class="form-control">
+              </div>
+            </div>
+            <div class="col">
+              <div class="from-group">
+                <label>مکان جلسه</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label>اعضای حاضر در جلسه</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col">
+              <div class="from-group">
+                <label>موضوع جلسه</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col">
+              <div class="from-group">
+                <label>مطالب بیان شده</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="from-group">
+                <label>انتخاب مکان جلسه</label>
+                <select #mySelect class="form-control" >
+                  <option style="background: transparent; color: black"> انتخاب کنید</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
+                  <option class=" form-control" style="background: transparent; color: black" [value]="1">عراق</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label>پیگیری ها</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-default">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

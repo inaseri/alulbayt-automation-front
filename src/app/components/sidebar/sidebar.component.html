@@ -88,6 +88,21 @@
       </ul>
     </li>
     <li class=" nav-item" ngbDropdown >
+      <a class=" nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle> عتبات </a>
+      <ul class=" dropdown-navbar" ngbDropdownMenu>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/atabat']" href="javascript:void(0)" ngbDropdownItem>
+            ایجاد عبته
+          </a>
+        </li>
+        <li style="color: black;" class=" nav-link">
+          <a style="color: black;" class=" nav-item" [routerLink]="['/atabat/list']" href="javascript:void(0)" ngbDropdownItem>
+            فهرست عتبات
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class=" nav-item" ngbDropdown >
       <a class=" nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle> تنظیمات </a>
       <ul class=" dropdown-navbar" ngbDropdownMenu>
         <li style="color: black;" class=" nav-link">
