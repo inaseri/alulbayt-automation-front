@@ -7,4 +7,5 @@ export class Atabat {
   subject: string;
   description: string;
   followUps: string;
+  id: string;
 }

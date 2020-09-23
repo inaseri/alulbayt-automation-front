@@ -20,7 +20,15 @@
                     <th class=" text-center">جزییات</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody *ngFor="let atabe of atabeData; let indexOf=index">
+                    <td class=" text-center">{{indexOf}}</td>
+                    <td class=" text-center">{{atabe.id}}</td>
+                    <td class=" text-center">{{atabe.subject}}</td>
+                    <td class=" text-center">{{atabe.date}} &nbsp;&nbsp; {{atabe.time}}</td>
+                    <td class=" text-center">{{atabe.city}}</td>
+                    <td class=" text-center">
+                      <span class="tim-icons icon-badge" (click)="open(detailModal, atabe.id)"></span>
+                    </td>
                   </tbody>
                 </table>
               </div>
@@ -41,7 +49,14 @@
   </div>
   <div class="modal-body" dir="rtl" style="text-align: right;">
     <div class="row form-row">
-
+      <div class="col">
+        <ul>
+          <li> توضیحات: {{selectedData[0].description}}</li>
+          <li> پیگیری ها: {{selectedData[0].followUps}}</li>
+          <li> آدرس: {{selectedData[0].location}}</li>
+          <li> اعضا:{{selectedData[0].parts}}</li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="modal-footer" style="text-align: right;" dir="rtl">

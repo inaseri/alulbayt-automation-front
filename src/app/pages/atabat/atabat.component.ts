@@ -18,6 +18,7 @@ export class AtabatComponent implements OnInit {
   }
 
   createAtabe() {
+    this.atabe.date = JSON.stringify(this.atabe.date).split('T')[0].replace('"', '')
     this.apiService.create_atabe(this.atabe).subscribe(
       response => alert('عتبات با موفیت ذخیره شد')
     );
