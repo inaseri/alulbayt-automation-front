@@ -49,9 +49,15 @@
             </div>
             <div class="row form-row">
               <div class="col-4">
-                <div class="from-group">
-                  <label>تاریخ تولد</label>
-                  <input type="text" class="form-control">
+                <div class="form-group">
+                  <label> تاریخ تولد </label>
+                  <dp-date-picker
+                    name="date"
+                    dir="rtl" mode="day"
+                    theme="dp-material"
+                    style="background: transparent!important;"
+                    class="form-control"
+                  ></dp-date-picker>
                 </div>
               </div>
               <div class="col-4">
@@ -100,30 +106,36 @@
               <div class="col-4">
                 <div>
                   <label>مهر </label>
-                  <input #imageInput1
-                         type="file"
-                         accept="image/*"
-                         class="form-control"
+                  <input
+                    class="form-control"
+                    name="sign"
+                    accept="*/*"
+                    type="file"
+                    id="sign"
                   />
                 </div>
               </div>
               <div class="col-4">
                 <div>
                   <label>امضا مدیر </label>
-                  <input #imageInput2
-                         type="file"
-                         accept="image/*"
-                         class="form-control"
+                  <input
+                    class="form-control"
+                    name="admin-sign"
+                    accept="*/*"
+                    type="file"
+                    id="admin-sign"
                   />
                 </div>
               </div>
               <div class="col-4">
                 <div>
                   <label>فرم درخواست ثبت</label>
-                  <input #imageInput3
-                         type="file"
-                         accept="image/*"
-                         class="form-control"
+                  <input
+                    class="form-control"
+                    name="request-form"
+                    accept="*/*"
+                    type="file"
+                    id="request-form"
                   />
                 </div>
               </div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCertificateComponent implements OnInit {
 
+  showDetail = false;
+  selectedData: any;
   constructor() { }
 
   ngOnInit(): void {
