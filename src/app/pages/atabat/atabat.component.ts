@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from "../../services/api.service";
+import  { Atabat } from "../../models/atabat";
 
 @Component({
   selector: 'app-atabat',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtabatComponent implements OnInit {
 
-  constructor() { }
+  atabe: Atabat;
+  constructor(private apiService: ApiService) {
+    this.atabe = new Atabat();
+  }
 
   ngOnInit(): void {
+  }
+
+  createAtabe() {
+    this.apiService.create_atabe(this.atabe).subscribe(
+      response => alert('عتبات با موفیت ذخیره شد')
+    );
   }
 
 }

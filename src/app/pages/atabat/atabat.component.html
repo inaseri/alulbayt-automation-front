@@ -16,19 +16,20 @@
                   theme="dp-material"
                   style="background: transparent!important;"
                   class="form-control"
+                  [(ngModel)]="atabe.date"
                 ></dp-date-picker>
               </div>
             </div>
             <div class="col">
               <div class="from-group">
                 <label>زمان جلسه</label>
-                <input type="time" class="form-control">
+                <input type="time" class="form-control" [(ngModel)]="atabe.time">
               </div>
             </div>
             <div class="col">
               <div class="from-group">
                 <label>مکان جلسه</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="atabe.location">
               </div>
             </div>
           </div>
@@ -36,19 +37,19 @@
             <div class="col">
               <div class="form-group">
                 <label>اعضای حاضر در جلسه</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="atabe.parts">
               </div>
             </div>
             <div class="col">
               <div class="from-group">
                 <label>موضوع جلسه</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="atabe.subject">
               </div>
             </div>
             <div class="col">
               <div class="from-group">
                 <label>مطالب بیان شده</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="atabe.description">
               </div>
             </div>
           </div>
@@ -56,23 +57,26 @@
             <div class="col">
               <div class="from-group">
                 <label>انتخاب مکان جلسه</label>
-                <select #mySelect class="form-control" >
+                <select [(ngModel)]="atabe.city" class="form-control" >
                   <option style="background: transparent; color: black"> انتخاب کنید</option>
-                  <option class=" form-control" style="background: transparent; color: black" [value]="0">صلوات</option>
-                  <option class=" form-control" style="background: transparent; color: black" [value]="1">عراق</option>
+                  <option class=" form-control" style="background: transparent; color: black" value="Najaf">نجف</option>
+                  <option class=" form-control" style="background: transparent; color: black" value="Karbala">کربلا</option>
+                  <option class=" form-control" style="background: transparent; color: black" value="Kazemeyn">کاظمین</option>
+                  <option class=" form-control" style="background: transparent; color: black" value="Samera">سامرا</option>
+                  <option class=" form-control" style="background: transparent; color: black" value="Imam Zadehgan">امام زادگان</option>
                 </select>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label>پیگیری ها</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="atabe.followUps">
               </div>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-default">ذخیره</button>
+          <button class="btn btn-default" (click)="createAtabe()">ذخیره</button>
         </div>
       </div>
     </div>

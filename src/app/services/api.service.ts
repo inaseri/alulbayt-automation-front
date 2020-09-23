@@ -14,6 +14,7 @@ import { CreateSendPaper } from "../models/create_send_paper/create-send-paper";
 import { SentPaperStatus } from "../models/sentpaperstatus/sent-paper-status";
 import { Residence } from "../models/residence/residence";
 import {ResidencService} from '../models/residence/service/residenc-service';
+import {Atabat} from "../models/atabat";
 
 
 @Injectable({
@@ -540,6 +541,20 @@ export class ApiService {
     return this.http
       .post<Residence>(this.base_path + 'mokatebat/residence/passport/', data,{ headers: new HttpHeaders(
           {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  create_atabe(data: Atabat): Observable<Residence> {
+    return this.http
+      .post<Residence>(this.base_path + 'mokatebat/holy-shrines/', JSON.stringify(data),{ headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
           })
       })
