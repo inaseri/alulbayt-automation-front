@@ -31,7 +31,7 @@ export class PepeolPassportComponent implements OnInit {
     uploadData.append('passportNo', this.data.passportNo);
     uploadData.append('address', this.data.address);
     uploadData.append('phone', this.data.phone);
-    uploadData.append('introduced', this.data.moaref);
+    uploadData.append('introduced', this.data.introduced);
     uploadData.append('image', image);
     uploadData.append('passportpageone', passportpageone);
     uploadData.append('requestForm', requestForm);

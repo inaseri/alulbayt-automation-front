@@ -30,23 +30,12 @@ export class PepeolPassportListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.get_residence();
+    this.getPassportList();
   }
 
-  get_residence() {
-    this.apiService.list_residence().subscribe(
+  getPassportList() {
+    this.apiService.passport_list().subscribe(
       response => {
-        const persianDate = require('jalaali-js');
-        for (const key in response) {
-          if (response.hasOwnProperty(key)) {
-            const year = response[key].date.toString().substr(0,4);
-            const month = response[key].date.toString().substr(5,2);
-            const day = response[key].date.toString().substr(8,2);
-            const persian = persianDate.toJalaali(Number(year), Number(month), Number(day));
-            const newDate = persian.jy.toString() + '/' + persian.jm.toString() + '/' + persian.jd.toString();
-            response[key].date = newDate;
-          }
-        }
         this.data = response
         this.data.reverse();
       },
@@ -55,7 +44,7 @@ export class PepeolPassportListComponent implements OnInit {
   }
 
   open(content, id: string) {
-    this.apiService.selected_residence(id).subscribe(
+    this.apiService.passport_detail(id).subscribe(
       response => this.selectedData = response,
       error => alert('در دریافت اطلاعات خطایی رخ داده است.')
     );

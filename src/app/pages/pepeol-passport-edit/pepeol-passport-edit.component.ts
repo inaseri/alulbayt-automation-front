@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PeoplePassport} from '../../models/people-passport/people-passport';
@@ -13,7 +13,7 @@ export class PepeolPassportEditComponent implements OnInit {
   id: any;
   data: PeoplePassport;
 
-  constructor(private apiService: ApiService, private actRoute: ActivatedRoute,private router: Router) {
+  constructor(private apiService: ApiService, private actRoute: ActivatedRoute, private router: Router) {
     this.id = actRoute.snapshot.params.id;
     this.data = new PeoplePassport();
   }
@@ -23,11 +23,16 @@ export class PepeolPassportEditComponent implements OnInit {
   }
 
   get_residence() {
-    this.apiService.selected_residence(this.id).subscribe(
-      response => this.data = response[0],
+    this.apiService.passport_detail(this.id).subscribe(
+      response => {
+        this.data = response[0]
+        this.data.passportpageone = response[0].passportImage;
+        this.data.requestForm = response[0].requestForm;
+        this.data.image = response[0].image;
+      },
       error => {
         alert('در دریافت اطلاعات مقیم خطایی رخ داده است. لطفا مجددا تلاش کنید');
-        this.router.navigate(['/list-residence'])
+        this.router.navigate(['/passport/list'])
       }
     );
   }
@@ -44,14 +49,14 @@ export class PepeolPassportEditComponent implements OnInit {
     uploadData.append('passportNo', this.data.passportNo);
     uploadData.append('address', this.data.address);
     uploadData.append('phone', this.data.phone);
-    uploadData.append('moaref', this.data.moaref);
+    uploadData.append('introduced', this.data.introduced);
     uploadData.append('image', image);
     uploadData.append('passportonepage', passportonepage);
     uploadData.append('requestForm', requestForm);
-    this.apiService.update_residence(uploadData, this.id).subscribe(
+    this.apiService.passport_edit(uploadData, this.id).subscribe(
       response => {
         alert('به روز رسانی با موفقیت انجام شد.');
-        this.router.navigate(['/list-residence'])
+        this.router.navigate(['/passport/list'])
       },
       error => {
         alert('در به روز رسانی اطلاعات مقیم خطایی رخ داده است. لطفا مجددا تلاش کنید');

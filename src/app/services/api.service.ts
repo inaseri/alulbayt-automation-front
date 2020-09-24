@@ -15,6 +15,7 @@ import {SentPaperStatus} from '../models/sentpaperstatus/sent-paper-status';
 import {Residence} from '../models/residence/residence';
 import {ResidencService} from '../models/residence/service/residenc-service';
 import {Atabat} from '../models/atabat';
+import {PeoplePassport} from "../models/people-passport/people-passport";
 
 
 @Injectable({
@@ -51,7 +52,6 @@ export class ApiService {
       // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.error['error']}`;
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 
@@ -568,9 +568,53 @@ export class ApiService {
       );
   }
 
-  create_passport(data): Observable<Residence> {
+  create_passport(data): Observable<PeoplePassport> {
     return this.http
-      .post<Residence>(this.base_path + 'mokatebat/residence/passport/', data, {
+      .post<PeoplePassport>(this.base_path + 'mokatebat/residence/passport/', data, {
+        headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  passport_list(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/residence/passport/', {
+        headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  passport_detail(id): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/residence/passport/' + id + '/', {
+        headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  passport_edit(data, id: string): Observable<PeoplePassport> {
+    return this.http
+      .post<PeoplePassport>(this.base_path + 'mokatebat/residence/passport/' + id + '/', data, {
         headers: new HttpHeaders(
           {
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
@@ -584,7 +628,8 @@ export class ApiService {
 
   create_atabe(data: Atabat): Observable<Residence> {
     return this.http
-      .post<Residence>(this.base_path + 'mokatebat/holy-shrines/', JSON.stringify(data),{ headers: new HttpHeaders(
+      .post<Residence>(this.base_path + 'mokatebat/holy-shrines/', JSON.stringify(data), {
+        headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
@@ -598,7 +643,8 @@ export class ApiService {
 
   atabe_list(): Observable<Atabat> {
     return this.http
-      .get<Atabat>(this.base_path + 'mokatebat/holy-shrines/',{ headers: new HttpHeaders(
+      .get<Atabat>(this.base_path + 'mokatebat/holy-shrines/', {
+        headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
@@ -612,7 +658,8 @@ export class ApiService {
 
   atabe_detail(id: string): Observable<Atabat> {
     return this.http
-      .get<Atabat>(this.base_path + 'mokatebat/holy-shrines/' + id + '/',{ headers: new HttpHeaders(
+      .get<Atabat>(this.base_path + 'mokatebat/holy-shrines/' + id + '/', {
+        headers: new HttpHeaders(
           {
             'Content-Type': 'application/json',
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')

@@ -6,7 +6,7 @@ export class PeoplePassport {
   passportNo: string;
   address: string;
   phone: string;
-  moaref: string;
+  introduced: string;
   image: string;
   requestForm: string;
   passportpageone: string;

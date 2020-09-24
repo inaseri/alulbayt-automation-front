@@ -32,7 +32,6 @@
         <div class="col-1"></div>
         <div class="col-10" style="color: black; font-size: 11px; text-align: justify !important;">
           <p [innerHTML]="listSendPaper.text" style="font-size: 14px;">
-          <p *ngFor="let attachment of listSendPaper.attachment" [innerHTML]="attachment.text" style="font-size: 14px;"></p>
         </div>
         <div class="col-1"></div>
       </div>
@@ -53,6 +52,17 @@
           <p style="font-size: 12px; font-weight: bold;" >(مدیریت مرکز جهانی آل البیت (ع</p>
           <p style="font-size: 12px; font-weight: bold;" >سید ابراهیم لاجوردی</p>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="card text-right"  *ngFor="let attachment of listSendPaper.attachment">
+    <div class="card-body">
+      <div class="form-row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <p [innerHTML]="attachment.text" style="font-size: 14px;"></p>
+        </div>
+        <div class="col-1"></div>
       </div>
     </div>
   </div>
