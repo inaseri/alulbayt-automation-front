@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatRadioModule} from '@angular/material/radio';
+import {Mokeb} from "../../models/mokeb/mokeb";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-create-mokeb',
@@ -8,9 +10,14 @@ import {MatRadioModule} from '@angular/material/radio';
 })
 export class CreateMokebComponent implements OnInit {
 
-  constructor() { }
+  createMokebMode: Mokeb;
+  constructor(private apiService: ApiService) {
+    this.createMokebMode = new Mokeb();
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }

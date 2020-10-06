@@ -45,6 +45,7 @@ import { PepeolPassportListComponent } from './pages/pepeol-passport-list/pepeol
 import { PepeolPassportEditComponent } from './pages/pepeol-passport-edit/pepeol-passport-edit.component';
 import { AtabatComponent } from './pages/atabat/atabat.component';
 import { AtabatListComponent } from './pages/atabat-list/atabat-list.component';
+import { SettingsMavakebComponent } from './pages/settings-mavakeb/settings-mavakeb.component';
 
 @NgModule({
   imports: [
@@ -65,7 +66,7 @@ import { AtabatListComponent } from './pages/atabat-list/atabat-list.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent, AtabatComponent, AtabatListComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent, AtabatComponent, AtabatListComponent, SettingsMavakebComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
