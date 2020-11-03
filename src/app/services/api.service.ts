@@ -16,7 +16,7 @@ import {Residence} from '../models/residence/residence';
 import {ResidencService} from '../models/residence/service/residenc-service';
 import {Atabat} from '../models/atabat';
 import {PeoplePassport} from "../models/people-passport/people-passport";
-import {Mokeb} from "../models/mokeb/mokeb";
+import {Mokeb, MokebAdmin} from "../models/mokeb/mokeb";
 
 
 @Injectable({
@@ -675,6 +675,20 @@ export class ApiService {
   createMokeb(): Observable<Mokeb> {
     return this.http
       .post<any>(this.base_path + 'mokatebat/residence/mavakeb/', {
+        headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  createAdminMokeb(data) {
+    return this.http
+      .post<any>(this.base_path + 'mokatebat/mavakeb/admin/', data, {
         headers: new HttpHeaders(
           {
             Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
