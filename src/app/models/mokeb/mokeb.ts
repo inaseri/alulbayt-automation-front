@@ -1,9 +1,16 @@
 export class Mokeb {
   name: string;
-  establishment: string;
-  admin_detail_org: number;
-  agent_detail_org: number;
-  status_org: number;
+  established: string;
+  admin_detail_org: string;
+  agent_detail_org: string;
+  status_org: string;
+  heiat_omana: any;
+  org_detail: any;
+  sign: any;
+  request_page: any;
+  location: string;
+  status: any;
+  id: string
 }
 
 export class MokebAdmin {

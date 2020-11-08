@@ -25,6 +25,7 @@ import {PepeolPassportEditComponent} from '../../pages/pepeol-passport-edit/pepe
 import {AtabatComponent} from "../../pages/atabat/atabat.component";
 import {AtabatListComponent} from "../../pages/atabat-list/atabat-list.component";
 import {SettingsMavakebComponent} from "../../pages/settings-mavakeb/settings-mavakeb.component";
+import {EditMokebComponent} from "../../pages/edit-mokeb/edit-mokeb.component";
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -48,6 +49,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'list-mokeb', component: ListMokebComponent },
   { path: 'create-certificate', component: CreateCertificateComponent },
   { path: 'mavakeb/settings', component: SettingsMavakebComponent },
+  { path: 'mavakeb/edit/:id', component: EditMokebComponent },
 
   // Residence Urls
   { path: 'create-residence', component: CreateInhabitancyComponent },

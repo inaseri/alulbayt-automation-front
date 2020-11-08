@@ -46,6 +46,7 @@ import { PepeolPassportEditComponent } from './pages/pepeol-passport-edit/pepeol
 import { AtabatComponent } from './pages/atabat/atabat.component';
 import { AtabatListComponent } from './pages/atabat-list/atabat-list.component';
 import { SettingsMavakebComponent } from './pages/settings-mavakeb/settings-mavakeb.component';
+import { EditMokebComponent } from './pages/edit-mokeb/edit-mokeb.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,7 @@ import { SettingsMavakebComponent } from './pages/settings-mavakeb/settings-mava
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     Ng2FilterPipeModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent, AtabatComponent, AtabatListComponent, SettingsMavakebComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent, AtabatComponent, AtabatListComponent, SettingsMavakebComponent, EditMokebComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

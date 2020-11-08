@@ -12,29 +12,32 @@
             <table class=" table tablesorter text-right" id="">
               <thead class=" text-primary">
               <tr>
-                <th class=" text-right">ردیف</th>
-                <th class=" text-right">شناسه ثبت موکب</th>
-                <th class=" text-right">نام موکب</th>
-                <th class=" text-right">مدیر موکب</th>
-                <th class=" text-right">محل استقرار موکب</th>
-                <th class=" text-right">عملیات</th>
+                <th class="text-center">ردیف</th>
+                <th class="text-center">شناسه ثبت موکب</th>
+                <th class="text-center">نام موکب</th>
+                <th class="text-center">مدیر موکب</th>
+                <th class="text-center">محل استقرار موکب</th>
+                <th class="text-center">عملیات</th>
               </tr>
               </thead>
               <tbody>
-              <th class=" text-right">ردیف</th>
-              <th class=" text-right">شناسه ثبت موکب</th>
-              <th class=" text-right">نام موکب</th>
-              <th class=" text-right">مدیر موکب</th>
-              <th class=" text-right">محل استقرار موکب</th>
-              <th class=" text-right">
-                <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">عملیات</button>
-              </th>
-              <!--              <tr mdbTableCol *ngFor="let el of elements">-->
-              <!--                <th scope="row">{{el.id}}</th>-->
-              <!--                <td>{{el.id}}</td>-->
-              <!--                <td>{{el.organization}}</td>-->
-              <!--                <td>{{el.subject}}</td>-->
-              <!--              </tr>-->
+              <tr mdbTableCol *ngFor="let el of mokebList; let indexOf=index">
+                <th class="text-center">{{indexOf}}</th>
+                <td class="text-center">{{el.id}}</td>
+                <td class="text-center">{{el.name}}</td>
+                <td class="text-center">{{el.admin_detail_org}}</td>
+                <td class="text-center">{{el.locationName}}</td>
+                <th class="text-center">
+                  <a [routerLink]="['/mavakeb/edit/'+el.id]">
+                    <span class="tim-icons icon-pencil" style="margin-left: 20px;"></span>
+                  </a>
+                  <a>
+                    <span class="tim-icons icon-alert-circle-exc" (click)="open(viewModal, el)" style="margin-left: 20px;"></span>
+                  </a>
+                  <span class="tim-icons icon-simple-remove" *ngIf="el.status"></span>
+                  <span class="tim-icons icon-check-2" *ngIf="!el.status"></span>
+                </th>
+              </tr>
               </tbody>
             </table>
           </div>
@@ -42,27 +45,31 @@
       </div>
     </div>
   </div>
-  <ng-template #mymodal let-modal dir="rtl" style="text-align: right">
+
+  <ng-template #viewModal let-modal dir="ltr" style="text-align: right">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">انجام عملیات</h4>
+      <h4 class="modal-title" id="modal-basic-title">مشاهده مشخصات موکب</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="modal-body">
-          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">اصلاح موکب</button>
+    <div class="modal-body text-right">
+      <div class="row">
+        <div class="col-6">
+          <ul style="list-style: none;">
+            <li style="text-align: right;"> شماره سند موکب: {{mokebViwe.id}}</li>
+            <li style="text-align: right;"> نام موکب: {{mokebViwe.name}}</li>
+            <li style="text-align: right;"> نام مدیر موکب: {{mokebViwe.admin_detail_org}}</li>
+            <li style="text-align: right;"> تصویر امضای مدیر موکب: <a href="{{mokebViwe.sign}}">مشاهده</a></li>
+          </ul>
         </div>
-      </div>
-      <div class="col">
-        <div class="modal-body">
-          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">راکد کردن موکب</button>
-        </div>
-      </div>
-      <div class="col">
-        <div class="modal-body">
-          <button type="button" class="btn btn-outline-dark" style="width: 100%" (click)="modal.close('Save click')">مشاهده اطلاعات موکب</button>
+        <div class="col-6">
+          <ul style="list-style: none;">
+            <li style="text-align: right;"> نوع موکب: {{mokebViwe.status_org}}</li>
+            <li style="text-align: right;"> محل استقرار موکب: {{mokebViwe.location}}</li>
+            <li style="text-align: right;"> وضعیت موکب: {{mokebViwe.status}}</li>
+            <li style="text-align: right;"> تصویر صفحه درخواست موکب: <a href="{{mokebViwe.request_page}}">مشاهده</a></li>
+          </ul>
         </div>
       </div>
     </div>

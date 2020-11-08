@@ -700,4 +700,76 @@ export class ApiService {
       );
   }
 
+  getAdminMokeb(): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/mavakeb/admin/', {
+        headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  creatMokeb(data): Observable<Mokeb> {
+    return this.http
+      .post<any>(this.base_path + 'mokatebat/mavakeb/', data, {
+        headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  getMavakebs() {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/mavakeb/', {
+        headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  getMokeb(id: number): Observable<any> {
+    return this.http
+      .get<any>(this.base_path + 'mokatebat/mavakeb/' + id + '/', {
+        headers: new HttpHeaders(
+          {
+            'Content-Type': 'application/json',
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
+  updateMokeb(data, id): Observable<Mokeb> {
+    return this.http
+      .put<any>(this.base_path + + 'mokatebat/mavakeb/' + id + '/', data, {
+        headers: new HttpHeaders(
+          {
+            Authorization: 'Token ' + localStorage.getItem('token_alulbayt_automation')
+          })
+      })
+      .pipe(
+        retry(0),
+        catchError(this.handleError)
+      );
+  }
+
 }
