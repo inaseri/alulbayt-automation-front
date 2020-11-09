@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from "../../models/User/user";
 import { ApiService } from "../../services/api.service";
 import { Router } from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-verify',
@@ -11,6 +12,9 @@ import { Router } from "@angular/router";
 export class VerifyComponent implements OnInit {
 
   data: User;
+  authFormGroup = new FormGroup({
+    key: new FormControl('')
+  });
 
   constructor(
     public router: Router,
@@ -24,6 +28,7 @@ export class VerifyComponent implements OnInit {
   }
 
   verify() {
+    this.data.key = this.authFormGroup.value.key;
     this.data.username = localStorage.getItem('username');
     this.data.password = localStorage.getItem('password');
     this.apiService.login(this.data).subscribe((response) => {

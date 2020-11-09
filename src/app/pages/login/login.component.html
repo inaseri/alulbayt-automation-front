@@ -1,48 +1,53 @@
-<div class="content">
-  <div class="text-center row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="text-center card">
-        <div class=" card-header text-center"><h5 class=" title">Login</h5></div>
-        <div class=" card-body">
-          <form>
+<body class="bg-img">
+<div class="container-fluid" dir="rtl" style="height: 100% !important;">
+  <div class="text-center row" style="height: 100% !important;">
+    <div class="col-4" style="background: white !important; padding-top: 150px;">
+      <div class="text-center" style="background: transparent !important;">
+        <div class="text-center">
+          <h1 style="font-size: 25px;" class="text-uppercase text-muted">ورود به سیستم</h1>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="authFormGroup" >
             <div class=" row">
-              <div class=" col-md-4 pr-md-1"></div>
-              <div class=" col-md-4 pr-md-1">
-                <div class=" form-group">
-                  <label> شماره تلفن </label>
-                  <input
-                    name="username"
-                    class=" form-control"
-                    type="email"
-                    [(ngModel)]="data.username"
-                  />
-                </div>
+              <div class=" form-group" style="width: 100%; !important;">
+                <label style="text-align: right;"> شماره تلفن </label>
+                <input
+                  style="text-align: left; direction: ltr;"
+                  name="email"
+                  class=" form-control text-muted"
+                  type="tel" formControlName="username"
+                />
               </div>
-              <div class=" col-md-4 pr-md-1"></div>
             </div>
             <div class=" row">
-              <div class=" col-md-4 pr-md-1"></div>
-              <div class=" col-md-4 pr-md-1">
-                <div class=" form-group">
-                  <label> رمز عبور </label>
-                  <input
-                    name="password"
-                    class=" form-control"
-                    type="password"
-                    [(ngModel)]="data.password"
-                  />
-                </div>
+              <div class=" form-group" style="width: 100%; !important;">
+                <label style="text-align: right;"> رمز عبور </label>
+                <input
+                  style="text-align: left; direction: ltr;"
+                  name="password"
+                  class=" form-control text-muted"
+                  type="password" formControlName="password"
+                />
               </div>
-              <div class=" col-md-4 pr-md-1"></div>
+            </div>
+            <div class="row" style="margin-top: 15px;">
+              <button class="btn w-100" type="submit" (click)="get_key()">دریافت کد تایید</button>
             </div>
           </form>
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit" (click)="get_key()">دریافت کد تایید</button>
-        </div>
       </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-8" style="padding-top: 150px;">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <img src="assets/img/robust-logo-light.png" style="width: 35%;">
+          <h1 style="color: white; margin-top: 50px; font-size: 37px; font-weight: bold;">مرکز جهانی آل البیت (ع)</h1>
+          <p style="color: white; margin-top: 50px; font-size: 15px; font-weight: bold;">سیستم اتوماسیون اداری - مالی</p>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
   </div>
 </div>
+</body>

@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
@@ -49,24 +49,25 @@ import { SettingsMavakebComponent } from './pages/settings-mavakeb/settings-mava
 import { EditMokebComponent } from './pages/edit-mokeb/edit-mokeb.component';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    NgbModule,
-    RouterModule,
-    AppRoutingModule,
-    ToastrModule.forRoot(),
-    DpDatePickerModule,
-    CKEditorModule,
-    AngularEditorModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatTabsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    Ng2FilterPipeModule
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        ComponentsModule,
+        NgbModule,
+        RouterModule,
+        AppRoutingModule,
+        ToastrModule.forRoot(),
+        DpDatePickerModule,
+        CKEditorModule,
+        AngularEditorModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatTabsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        Ng2FilterPipeModule,
+        ReactiveFormsModule
+    ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, VerifyComponent, CreateReceivePaperComponent, ListReceivePaperComponent, CreateSendPaperComponent, ListSendPaperComponent, SettingsMokatebatComponent, SettingUserComponent, CreateMokebComponent, ListMokebComponent, CreateCertificateComponent, ViewSentPaperComponent, MokatebatReportComponent, EditPaperComponent, CreateInhabitancyComponent, ListResidenceComponent, EditResidenceComponent, PrintPaperComponent, ResidencServiceComponent, PepeolPassportComponent, PepeolPassportListComponent, PepeolPassportEditComponent, AtabatComponent, AtabatListComponent, SettingsMavakebComponent, EditMokebComponent],
   providers: [],
   bootstrap: [AppComponent]
