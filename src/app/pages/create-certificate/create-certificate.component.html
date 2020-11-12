@@ -9,11 +9,11 @@
         <div class="form-row">
           <div class="col">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="شناسه موکب" >
+              <input type="text" class="form-control" placeholder="شناسه موکب" [(ngModel)]="id">
             </div>
           </div>
           <div class="col">
-            <button class="btn btn-default" >جستجو</button>
+            <button class="btn btn-default" (click)="getMokeb()">جستجو</button>
           </div>
         </div>
       </div>
@@ -26,41 +26,26 @@
       </div>
       <div class="card-body">
         <div class="row form-row">
-          <div class="col">
-            <ul>
-              <li> نام شخص:  {{selectedData[0].firstName}} &nbsp; {{selectedData[0].lastName}}</li>
-              <li> تابعیت شخص: {{selectedData[0].nation}}</li>
-              <li> تاریخ اخذ اقامت: {{selectedData[0].date}}</li>
-              <li> نام پدر:{{selectedData[0].fatherName}}</li>
-              <li> شماره گذرنامه:{{selectedData[0].passportNo}}</li>
-              <li> ادرس: {{selectedData[0].address}}</li>
-              <li>  معرف: {{selectedData[0].introduced}}</li>
+          <div class="col-6">
+            <ul style="list-style: none;">
+              <li style="text-align: right;"> شماره سند موکب: {{selectedData.id}}</li>
+              <li style="text-align: right;"> نام موکب: {{selectedData.name}}</li>
+              <li style="text-align: right;"> نام مدیر موکب: {{selectedData.admin_detail_org}}</li>
+              <li style="text-align: right;"> تصویر امضای مدیر موکب: <a href="{{selectedData.sign}}">مشاهده</a></li>
             </ul>
           </div>
-          <div class="col">
-            <ul>
-              <li> تلفن: {{selectedData[0].phone}}</li>
-              <li>
-                عکس مقیم:
-                <a target="_blank" href="{{selectedData[0].image}}">مشاهده</a>
-              </li>
-              <li>
-                عکس گذرنامه:
-                <a target="_blank" href="{{selectedData[0].passportImage}}">مشاهده</a>
-              </li>
-              <li>
-                فرم درخواست:
-                <a target="_blank" href="{{selectedData[0].requestForm}}">مشاهده</a>
-              </li>
-              <li> نام وابستگان:{{selectedData[0].familyFirstName}} &nbsp; {{selectedData[0].familyLastName}}</li>
-              <li> ملیت وابستگان:{{selectedData[0].familyNation}}</li>
-              <li> تلفن وابستگان: {{selectedData[0].familyPhone}}</li>
+          <div class="col-6">
+            <ul style="list-style: none;">
+              <li style="text-align: right;"> نوع موکب: {{selectedData.status_org}}</li>
+              <li style="text-align: right;"> محل استقرار موکب: {{selectedData.location}}</li>
+              <li style="text-align: right;"> وضعیت موکب: {{selectedData.status}}</li>
+              <li style="text-align: right;"> تصویر صفحه درخواست موکب: <a href="{{selectedData.request_page}}">مشاهده</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="card-header">
-        <button class="btn btn-default">پرینت</button>
+        <button class="btn" (click)="printMokeb()">پرینت</button>
       </div>
     </div>
   </div>
