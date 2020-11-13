@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('password', this.data.password);
       this.router.navigate(['verify']);
       window.location.assign('#/verify');
-    });
+    } ,error => alert('نام کاربری یا رمز عبور اشتباه است')
+    );
   }
 
 }

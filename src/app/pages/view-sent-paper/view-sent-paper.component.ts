@@ -14,8 +14,6 @@ export class ViewSentPaperComponent implements OnInit {
 
   listSendPaper: any;
   id: any;
-  fromCenterText = 'مدیریت مرکز جهانی آل البیت (ع)';
-  lajevardi = 'سید ابراهیم لاجوردی';
   arabic = false;
   persian = true;
 
@@ -35,19 +33,23 @@ export class ViewSentPaperComponent implements OnInit {
   }
 
   printA4Arabic() {
-    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A4', '', 'width=595,height=842,resizable=No,menubar=0');
-  }
-
-  printA5Arabic() {
-    window.open('#/print-paper/' + this.id + '/' + 'ar/' + 'A5', '', 'width=420,height=595,resizable=0,menubar=0');
+    document.getElementById('contentToConvert').style.marginTop = '160px';
+    window.print()
+    this.persian = false;
+    this.arabic = true;
+    window.onafterprint = () => {
+      document.getElementById('contentToConvert').style.marginTop = '0px';
+    }
   }
 
   printA4Persian() {
-    window.open('#/print-paper/' + this.id + '/' + 'fa/' + 'A4', '', 'width=595,height=842,resizable=0,menubar=0');
-  }
-
-  printA5Persian() {
-    window.open('#/print-paper/' + this.id + '/' + 'fa/' + 'A5', '', 'width=420,height=595,resizable=0,menubar=0');
+    document.getElementById('contentToConvert').style.marginTop = '160px';
+    window.print()
+    this.persian = true;
+    this.arabic = false;
+    window.onafterprint = () => {
+      document.getElementById('contentToConvert').style.marginTop = '0px';
+    }
   }
 
   acceptPaper(id: number, status: string) {

@@ -18,7 +18,11 @@ export class CreateCertificateComponent implements OnInit {
   }
 
   printMokeb() {
+    document.getElementById('hideFind').style.display = 'none'
     window.print()
+    window.onafterprint = () => {
+      document.getElementById('hideFind').style.display = 'block'
+    }
   }
 
   getMokeb() {

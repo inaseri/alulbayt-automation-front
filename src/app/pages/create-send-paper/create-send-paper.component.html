@@ -139,7 +139,7 @@
           </div>
           <div class="row form-row" *ngIf="showTextEditor">
             <div class="col-12">
-              <angular-editor [config]="editorConfig" name="text" [(ngModel)]="createSendPaper.text"></angular-editor>
+              <ckeditor [config]="editorConfig" [editor]="Editor" [(ngModel)]="createSendPaper.text" name="text"></ckeditor>
             </div>
           </div>
           <div class="row form-row">
@@ -149,8 +149,9 @@
           </div>
           <div class="row form-row" *ngFor="let item of attachmentArray; let indexOf=index" style="margin-bottom: 60px;">
             <div class="col-md-12">
-              <angular-editor [config]="editorConfig" [(ngModel)]="attachment[indexOf]"
-                              name="text + {{indexOf}}"></angular-editor>
+              <ckeditor
+                [config]="editorConfig" [editor]="Editor" name="text"
+                [(ngModel)]="attachment[indexOf]" name="text + {{indexOf}}"></ckeditor>
             </div>
           </div>
         </div>

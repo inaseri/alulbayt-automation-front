@@ -1,10 +1,9 @@
-import {Component, OnInit, NgModule} from '@angular/core';
-import {AngularEditorConfig} from '@kolkov/angular-editor';
+import {Component, OnInit} from '@angular/core';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
 import {CreateSendPaper} from '../../models/create_send_paper/create-send-paper';
 import {Attachment} from '../../models/attachment/attachment';
-
 
 @Component({
   selector: 'app-create-send-paper',
@@ -12,6 +11,45 @@ import {Attachment} from '../../models/attachment/attachment';
   styleUrls: ['./create-send-paper.component.scss']
 })
 export class CreateSendPaperComponent implements OnInit {
+
+  Editor = ClassicEditor;
+
+  editorConfig = {
+    toolbar: {
+      items: [
+        'bold',
+        'italic',
+        'underline',
+        'bulletedList',
+        'numberedList',
+        '|',
+        'indent',
+        'outdent',
+        '|',
+        'blockQuote',
+        'insertTable',
+        'undo',
+        'redo',
+      ]
+    },
+    image: {
+      toolbar: [
+        'imageStyle:full',
+        'imageStyle:side',
+        '|',
+        'imageTextAlternative'
+      ]
+    },
+    table: {
+      contentToolbar: [
+        'tableColumn',
+        'tableRow',
+        'mergeTableCells'
+      ]
+    },
+    // This value must be kept in sync with the language defined in webpack.config.js.
+    language: 'fa'
+  };
 
   attachmentArray = [];
   attachment: any;
@@ -36,47 +74,47 @@ export class CreateSendPaperComponent implements OnInit {
   selectPreTextCountDisable = 0
   showTextEditor = false
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: 'auto',
-    minHeight: '0',
-    maxHeight: 'auto',
-    width: 'auto',
-    minWidth: '0',
-    translate: 'yes',
-    enableToolbar: true,
-    showToolbar: true,
-    placeholder: 'Enter text here...',
-    defaultParagraphSeparator: '',
-    defaultFontName: '',
-    defaultFontSize: '',
-    fonts: [
-      {class: 'arial', name: 'Arial'},
-      {class: 'times-new-roman', name: 'Times New Roman'},
-      {class: 'calibri', name: 'Calibri'},
-      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-    ],
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ],
-    uploadUrl: 'v1/image',
-    uploadWithCredentials: false,
-    sanitize: true,
-    toolbarPosition: 'top',
-  };
+  // editorConfig: AngularEditorConfig = {
+  //   editable: true,
+  //   spellcheck: true,
+  //   height: 'auto',
+  //   minHeight: '0',
+  //   maxHeight: 'auto',
+  //   width: 'auto',
+  //   minWidth: '0',
+  //   translate: 'yes',
+  //   enableToolbar: true,
+  //   showToolbar: true,
+  //   placeholder: 'Enter text here...',
+  //   defaultParagraphSeparator: '',
+  //   defaultFontName: '',
+  //   defaultFontSize: '',
+  //   fonts: [
+  //     {class: 'arial', name: 'Arial'},
+  //     {class: 'times-new-roman', name: 'Times New Roman'},
+  //     {class: 'calibri', name: 'Calibri'},
+  //     {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+  //   ],
+  //   customClasses: [
+  //     {
+  //       name: 'quote',
+  //       class: 'quote',
+  //     },
+  //     {
+  //       name: 'redText',
+  //       class: 'redText'
+  //     },
+  //     {
+  //       name: 'titleText',
+  //       class: 'titleText',
+  //       tag: 'h1',
+  //     },
+  //   ],
+  //   uploadUrl: 'v1/image',
+  //   uploadWithCredentials: false,
+  //   sanitize: true,
+  //   toolbarPosition: 'top',
+  // };
 
   constructor(private apiService: ApiService, private router: Router) {
     this.createSendPaper = new CreateSendPaper();
