@@ -25,7 +25,7 @@ import {Mokeb, MokebAdmin} from "../models/mokeb/mokeb";
 export class ApiService {
 
   // API path
-  base_path = 'https://api.atomation.inaseri.ir/api/';
+  base_path = 'http://192.168.1.68/api/';
   token = 'token';
   is_superuser = false;
   userID: string;
