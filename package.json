@@ -78,7 +78,7 @@
     "@ckeditor/ckeditor5-build-classic": "^19.0.2",
     "@kolkov/angular-editor": "^1.1.2",
     "@ng-bootstrap/ng-bootstrap": "6.0.0",
-    "chart.js": "2.8.0",
+    "chart.js": "2.9.4",
     "core-js": "3.6.4",
     "html2canvas": "^1.0.0-rc.5",
     "jalaali-js": "^1.1.0",
